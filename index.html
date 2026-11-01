@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>رحلة الصين الكبرى - 20 يوماً | عرض موشن جرافيك تفاعلي</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Cairo & Tajawal for premium Arabic typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+            tajawal: ['Tajawal', 'sans-serif'],
+          },
+          colors: {
+            imperial: {
+              red: '#DC2626',
+              crimson: '#991B1B',
+              gold: '#F59E0B',
+              amber: '#D97706',
+              dark: '#090D16',
+              card: '#131B2E'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Cairo', 'Tajawal', sans-serif;
+      background-color: #090D16;
+      color: #F8FAFC;
+      overflow-x: hidden;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090D16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #DC2626;
+      border-radius: 9999px;
+    }
+
+    /* Keyframe Animations for Motion Graphics */
+    @keyframes kenBurns {
+      0% { transform: scale(1) translate(0, 0); }
+      50% { transform: scale(1.12) translate(-1.5%, -1.5%); }
+      100% { transform: scale(1) translate(0, 0); }
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.5), 0 0 25px rgba(220, 38, 38, 0.35); }
+      50% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0), 0 0 40px rgba(245, 158, 11, 0.6); }
+    }
+
+    @keyframes dashMove {
+      to {
+        stroke-dashoffset: -40;
+      }
+    }
+
+    @keyframes slideUpStagger {
+      0% {
+        opacity: 0;
+        transform: translateY(28px) scale(0.97);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes lanternsGlow {
+      0%, 100% { opacity: 0.25; transform: scale(1); }
+      50% { opacity: 0.55; transform: scale(1.15); }
+    }
+
+    .animate-ken-burns {
+      animation: kenBurns 22s ease-in-out infinite;
+    }
+
+    .animate-float {
+      animation: floatSlow 4s ease-in-out infinite;
+    }
+
+    .animate-glow {
+      animation: pulseGlow 3s infinite;
+    }
+
+    .animate-route-line {
+      stroke-dasharray: 8 6;
+      animation: dashMove 1.8s linear infinite;
+    }
+
+    .stagger-item {
+      opacity: 0;
+      animation: slideUpStagger 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.22s; }
+    .delay-300 { animation-delay: 0.34s; }
+    .delay-400 { animation-delay: 0.46s; }
+    .delay-500 { animation-delay: 0.58s; }
+
+    /* Glassmorphism Utilities */
+    .glass-panel {
+      background: rgba(19, 27, 46, 0.78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .glass-pill {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+    }
+
+    /* Hide scrollbar for horizontal pills on mobile */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950">
+
+  <!-- Ambient Motion Background Orbs -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-red-600/20 blur-3xl" style="animation: lanternsGlow 7s ease-in-out infinite;"></div>
+    <div class="absolute top-1/2 -left-28 w-96 h-96 rounded-full bg-amber-500/15 blur-3xl" style="animation: lanternsGlow 9s ease-in-out infinite 2s;"></div>
+    <div class="absolute -bottom-24 right-1/3 w-80 h-80 rounded-full bg-rose-600/15 blur-3xl" style="animation: lanternsGlow 8s ease-in-out infinite 4s;"></div>
+  </div>
+
+  <!-- Top Navigation & Motion Controls -->
+  <header class="sticky top-0 z-40 glass-panel border-b border-white/10 px-3 sm:px-6 py-2.5">
+    <div class="max-w-7xl mx-auto flex flex-col gap-2">
+      <!-- Top Row: Brand Title + View Mode & Auto-Play Controls -->
+      <div class="flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-red-600 to-amber-500 flex items-center justify-center shadow-lg shadow-red-600/30 animate-glow">
+            <i class="fa-solid fa-dragon text-white text-base sm:text-lg"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span class="text-[11px] sm:text-xs font-bold tracking-wider text-amber-400 uppercase">الرياض ⇄ الصين</span>
+              <span class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-red-500/20 text-red-300 border border-red-500/30">20 يوماً</span>
+            </div>
+            <h1 class="text-sm sm:text-lg font-extrabold text-white leading-tight">موشن جرافيك رحلة الصين الكبرى</h1>
+          </div>
+        </div>
+
+        <!-- Action Buttons: Play/Pause Motion Show & Full Schedule Modal -->
+        <div class="flex items-center gap-1.5 sm:gap-2.5">
+          <button id="autoplay-btn" onclick="toggleAutoPlay()" class="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-r from-amber-500 to-red-600 text-white shadow-md hover:opacity-95 active:scale-95 transition-all cursor-pointer">
+            <i id="autoplay-icon" class="fa-solid fa-play text-xs"></i>
+            <span id="autoplay-text">تشغيل العرض</span>
+          </button>
+
+          <button onclick="toggleFullView()" id="view-toggle-btn" class="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-white/15 active:scale-95 transition-all cursor-pointer">
+            <i id="view-toggle-icon" class="fa-solid fa-table-list text-amber-400"></i>
+            <span id="view-toggle-text" class="hidden sm:inline">الجدول الكامل</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Auto-Play Story Progress Bars (Instagram/Motion Reel Style) -->
+      <div id="story-progress-bars" class="grid grid-cols-12 gap-1 pt-0.5">
+        <!-- Populated dynamically by JS -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Interactive Animated Route Map Bar (Scrollable on Mobile) -->
+  <section class="relative z-20 bg-slate-950/70 border-b border-white/10 py-2.5 px-3 sm:px-6">
+    <div class="max-w-7xl mx-auto">
+      <div id="city-nav-pills" class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+        <!-- Populated dynamically by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN INTERACTIVE MOTION STAGE (Slide Reel Mode) -->
+  <main id="motion-stage-view" class="relative z-10 flex-grow flex flex-col justify-center max-w-7xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-6">
+    
+    <!-- Motion Card Container -->
+    <div id="active-slide-card" class="relative w-full rounded-3xl overflow-hidden shadow-2xl border border-white/15 bg-slate-900/90 min-h-[540px] sm:min-h-[600px] flex flex-col lg:flex-row">
+      <!-- Populated dynamically by JS with smooth motion transitions -->
+    </div>
+
+    <!-- Bottom Mobile-Friendly Touch Controls & Swipe Hint -->
+    <div class="mt-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center justify-between w-full sm:w-auto gap-3">
+        <button onclick="prevSlide()" class="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-slate-800/90 hover:bg-slate-700 text-white font-bold text-sm border border-white/10 active:scale-95 transition cursor-pointer shadow-lg">
+          <i class="fa-solid fa-chevron-right text-amber-400"></i>
+          <span>المحطة السابقة</span>
+        </button>
+
+        <div id="slide-counter-badge" class="px-4 py-2 rounded-xl glass-pill text-xs sm:text-sm font-bold text-amber-300 whitespace-nowrap">
+          1 / 12
+        </div>
+
+        <button onclick="nextSlide()" class="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-l from-red-600 to-amber-600 hover:from-red-500 hover:to-amber-500 text-white font-bold text-sm active:scale-95 transition cursor-pointer shadow-lg shadow-red-600/25">
+          <span>المحطة التالية</span>
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+      </div>
+
+      <p class="text-xs text-slate-400 flex items-center gap-2">
+        <i class="fa-solid fa-hand-pointer text-amber-400 animate-bounce"></i>
+        <span>اسحب يميناً أو يساراً على الشاشة للتنقل بين أيام الرحلة</span>
+      </p>
+    </div>
+  </main>
+
+  <!-- FULL TIMELINE & 20-DAY TABLE VIEW (Toggled or Scrollable) -->
+  <section id="full-schedule-view" class="hidden relative z-10 max-w-7xl w-full mx-auto px-3 sm:px-6 py-6 space-y-8">
+    
+    <!-- Header Banner -->
+    <div class="glass-panel rounded-3xl p-5 sm:p-8 border border-amber-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div>
+        <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">الدليل الشامل خطوة بخطوة</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-white mt-1">الجدول الكامل لرحلة الـ 20 يوماً في الصين</h2>
+        <p class="text-slate-300 text-sm sm:text-base mt-1">جميع المدن، وسائل التنقل المريحة، المعالم السياحية، وأشهى الوجبات المقترحة لكل يوم.</p>
+      </div>
+      <button onclick="toggleFullView()" class="px-5 py-3 rounded-2xl bg-gradient-to-r from-red-600 to-amber-500 text-white font-bold text-sm flex items-center gap-2 shadow-lg cursor-pointer">
+        <i class="fa-solid fa-film"></i>
+        <span>العودة لعرض الموشن جرافيك</span>
+      </button>
+    </div>
+
+    <!-- All Destination Cards Grid (Mobile Friendly) -->
+    <div id="all-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Populated dynamically by JS -->
+    </div>
+
+    <!-- Complete 20-Day Day-by-Day Table / Mobile Cards -->
+    <div class="glass-panel rounded-3xl p-4 sm:p-8 border border-white/10">
+      <h3 class="text-xl sm:text-2xl font-extrabold text-amber-400 mb-4 flex items-center gap-2">
+        <i class="fa-solid fa-calendar-check"></i>
+        <span>ملخص الأيام الـ 20 بالتفصيل (من الرياض والعودة إليها)</span>
+      </h3>
+      <div id="twenty-days-list" class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+        <!-- Populated dynamically by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="relative z-10 border-t border-white/10 bg-slate-950/90 py-4 px-4 text-center text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <p>خطة سفر مخصصة لمدة 20 يوماً: الرياض ← بكين ← تشانغجياجيه ← تشونغتشينغ ← منتجع دالي ← قويلين ← قوانغتشو ← الرياض</p>
+      <p class="text-amber-400 font-semibold">تصميم موشن جرافيك تفاعلي متجاوب مع الجوال</p>
+    </div>
+  </footer>
+
+  <script>
+    // ==========================================
+    // COMPLETE ARABIC DATA FOR ALL 12 SLIDES
+    // ==========================================
+    const slidesData = [
+      {
+        id: 1,
+        daysBadge: "نظرة عامة • 20 يوماً",
+        city: "ملخص الرحلة",
+        title: "أوديسا الصين الكبرى: من الرياض إلى قوانغتشو",
+        subtitle: "مسار متسلسل من الشمال إلى الجنوب يجمع بين العواصم الإمبراطورية، بوابة السماء، منتجعات بحيرة إيرهاي، وأكبر مدن الملاهي العالمية",
+        transport: "طيران مباشر (الرياض ⇄ الصين) + قطارات الرصاصة الفائقة السرعة (الدرجة الأولى)",
+        transportIcon: "fa-plane-departure",
+        image: "https://content.paulreiffer.com/wp-content/uploads/2018/08/beijing-banner-mutianyu-great-wall-china-frost-winter-paul-reiffer-workshop-luxury-all-inclusive-expedition-tour-photo-photography-asia.jpg",
+        fallbackImage: "https://placehold.co/1200x800/1e293b/f59e0b?text=Grand+China+20+Days",
+        locationTag: "6 وجهات رئيسية في الصين",
+        places: [
+          "بكين (الأيام 1–4): المدينة المحرمة، سور الصين العظيم، ويونيفرسال ستوديوز",
+          "تشانغجياجيه (الأيام 5–7): بوابة السماء (جبل تيانمن) وجبال أفاتار المعلقة",
+          "تشونغتشينغ ودالي (الأيام 8–13): المدينة السيبرانية تليها 3 أيام استجمام في منتجع بحيرة إيرهاي",
+          "قويلين وقوانغتشو (الأيام 14–20): نهر لي، منتجع تشيميلونغ الترفيهي، وبرج كانتون"
+        ],
+        meals: [
+          "بط بكين الإمبراطوري المشوي على حطب الفاكهة",
+          "هوت بوت تشونغتشينغ (مقسوم لنصفين: حار ومرق عظام غير حار)",
+          "نودلز عبور الجسر في دالي وسمك البيرة في يانغتشو",
+          "ديم سوم كانتوني تقليدي في قوانغتشو قبل رحلة العودة للرياض"
+        ],
+        highlightNote: "تم تخطي هاربين وهوانغشان لتجنب رحلات الطيران الإضافية المرهقة وضمان أقصى درجات الراحة."
+      },
+      {
+        id: 2,
+        daysBadge: "الأيام 1–3 • بكين",
+        city: "بكين الإمبراطورية",
+        title: "عظمة التاريخ الإمبراطوري وسور الصين العظيم",
+        subtitle: "بداية فخمة لرحلتك بعد الوصول مباشرة من الرياض إلى العاصمة الصينية بكين",
+        transport: "طيران مباشر من الرياض (RUH) إلى بكين (9.5 ساعات) + سيارة خاصة مع سائق",
+        transportIcon: "fa-plane-arrival",
+        image: "https://content.paulreiffer.com/wp-content/uploads/2018/08/beijing-banner-mutianyu-great-wall-china-frost-winter-paul-reiffer-workshop-luxury-all-inclusive-expedition-tour-photo-photography-asia.jpg",
+        fallbackImage: "https://placehold.co/1200x800/7f1d1d/fde68a?text=Beijing+Great+Wall",
+        locationTag: "بكين • المدينة المحرمة وموتانيو",
+        places: [
+          "اليوم 1: الوصول إلى مطار بكين، تسجيل الدخول في الفندق، وجولة مسائية في شارع وانغفوجينغ",
+          "اليوم 2: ساحة تيانانمن، القصر الإمبراطوري (المدينة المحرمة)، وإطلالة الغروب من حديقة جينغشان",
+          "اليوم 3: سور الصين العظيم (قطاع موتانيو المزود بتلفريك مريح وزحليقة التوبوغان) + القصر الصيفي"
+        ],
+        meals: [
+          "عشاء ترحيبي فاخر: بط بكين المشوي التقليدي",
+          "نودلز بكين القديمة بصلصة الصويا (Zhajiangmian)",
+          "لحم الضأن المسلوق في القدر النحاسي (Copper-pot Mutton) وسمك السلمون المرقط المشوي"
+        ],
+        highlightNote: "قطاع موتانيو في سور الصين العظيم هو الأكثر راحة للعائلات بفضل التلفريك المغلق."
+      },
+      {
+        id: 3,
+        daysBadge: "اليوم 4 • ملاهي بكين",
+        city: "يونيفرسال بكين",
+        title: "منتجع يونيفرسال ستوديوز بكين العالمي",
+        subtitle: "يوم كامل من الإثارة والترفيه في أحدث وأضخم مدن يونيفرسال الترفيهية في العالم",
+        transport: "سيارة خاصة أو مترو مباشر إلى منطقة تونغتشو (إقامة داخل المنتجع)",
+        transportIcon: "fa-wand-magic-sparkles",
+        image: "https://www.universalbeijingresort.com/sites/default/files/2021-04/%E6%88%B7%E5%A4%961-min_0.jpg",
+        fallbackImage: "https://placehold.co/1200x800/1e3a8a/fde68a?text=Universal+Studios+Beijing",
+        locationTag: "منتجع يونيفرسال بكين • 7 مناطق ترفيهية",
+        places: [
+          "عالم هاري بوتر السحري وقلعة هوجورتس (Harry Potter and the Forbidden Journey)",
+          "أرض كونغ فو باندا (Kung Fu Panda Land of Awesomeness) المصممة بالكامل داخل قاعة مكيفة",
+          "منطقة ترانسفورمرز وأفعوانية الديسيبتيكون (Decepticoaster) + ممشى سيتي ووك المسائي",
+          "الإقامة المقترحة: فندق The Universal Studios Grand Hotel أو فندق NUO Resort للدخول المبكر"
+        ],
+        meals: [
+          "مشروب الزبدة الشهير (Butterbeer) وأطباق المشويات في مطعم Three Broomsticks",
+          "عشاء كانتوني فاخر في مطعم Jia داخل فندق NUO أو مطاعم سيتي ووك"
+        ],
+        highlightNote: "نوصي بشراء بطاقة Universal Express لتجاوز الطوابير والاستمتاع بجميع الألعاب في يوم واحد."
+      },
+      {
+        id: 4,
+        daysBadge: "الأيام 5–6 • تشانغجياجيه",
+        city: "بوابة السماء",
+        title: "جبل تيانمن وأسطورة بوابة السماء (Heaven's Gate)",
+        subtitle: "تحليق فوق السحاب عبر أطول تلفريك جبلي في العالم وصولاً إلى القوس الصخري العملاق",
+        transport: "طيران مباشر من بكين إلى مطار تشانغجياجيه (ساعتان ونصف) + تلفريك الجبل",
+        transportIcon: "fa-cable-car",
+        image: "https://nomadict.org/wp-content/uploads/2018/12/@rkrkrk_Tianmen-Mountain-region-Gate.jpg",
+        fallbackImage: "https://placehold.co/1200x800/064e3b/fde68a?text=Tianmen+Heavens+Gate",
+        locationTag: "منتزه جبل تيانمن الوطني • تشانغجياجيه",
+        places: [
+          "اليوم 5: الوصول إلى تشانغجياجيه وزيارة معلم المباني الـ 72 العجيبة المضاءة ليلاً",
+          "اليوم 6: ركوب تلفريك المسار (A) من وسط المدينة مباشرة إلى قمة جبل تيانمن",
+          "المرور عبر الممشى الزجاجي المعلق على حافة الجرف (Coiling Dragon Cliff Glass Skywalk)",
+          "النزول إلى قوس بوابة السماء الشهير عبر السلالم الكهربائية المحفورة داخل الصخور أو درج الـ 999 خطوة"
+        ],
+        meals: [
+          "طبق سانشياغو التوجي التقليدي (Tujia Sanxiaguo - يخنة ساخنة باللحوم والخضار)",
+          "براعم الخيزران الجبلية الطازجة مع اللحوم المدخنة على طريقة شيانغشي"
+        ],
+        highlightNote: "المسار A يتيح لك الصعود بالتلفريك والنزول عبر السلالم الكهربائية داخل الجبل بأقل مجهود بدني."
+      },
+      {
+        id: 5,
+        daysBadge: "اليوم 7 • وولينغشتوان",
+        city: "جبال أفاتار",
+        title: "قمم وولينغشتوان المعلقة ومصعد بايلونغ الزجاجي",
+        subtitle: "استكشاف الأعمدة الصخرية الشاهقة التي ألهمت جبال هاليلويا في فيلم أفاتار",
+        transport: "سيارة خاصة إلى محمية وولينغشتوان + مصعد بايلونغ الزجاجي الخارجي",
+        transportIcon: "fa-mountain-sun",
+        image: "https://www.yellowbirdtour.com/wp-content/uploads/2026/03/Zhangjiajie-Avatar-scaled.webp",
+        fallbackImage: "https://placehold.co/1200x800/065f46/fde68a?text=Avatar+Floating+Peaks",
+        locationTag: "منتزه تشانغجياجيه الوطني للغابات",
+        places: [
+          "الصعود بمصعد بايلونغ الزجاجي (أعلى وأسرع مصعد خارجي في العالم بارتفاع 326 متراً في 88 ثانية)",
+          "منطقة يوانجياجيه (Yuanjiajie) ومشاهدة عمود السماء الجنوبي (جبل أفاتار المعلق)",
+          "جسر تحت السماء الأول (الجسر الصخري الطبيعي بين قمتين) ومعرض العشرة أميال بقطار المنتزه"
+        ],
+        meals: [
+          "حساء الفطر البري الجبلي الدافئ",
+          "كعك الأرتيميسيا اللزج المحشو (Artemisia Baba) والأسماك النهرية المطهوة على البخار"
+        ],
+        highlightNote: "المصعد الزجاجي والتلفريك يوفران عليك ساعات طويلة من تسلق الجبال."
+      },
+      {
+        id: 6,
+        daysBadge: "الأيام 8–9 • تشونغتشينغ",
+        city: "تشونغتشينغ الليلية",
+        title: "أفق السايبر بانك ومجمع هونغ يادونغ المضيء",
+        subtitle: "الانتقال المريح بالقطار السريع إلى أعجب مدينة جبلية متعددة الطبقات في الصين",
+        transport: "قطار الرصاصة السريع من تشانغجياجيه غرب إلى تشونغتشينغ (ساعتان ونصف)",
+        transportIcon: "fa-train-tram",
+        image: "https://english.www.gov.cn/images/202505/29/683859a3c6d0868f1eab6c2a.jpeg",
+        fallbackImage: "https://placehold.co/1200x800/4c1d95/fde68a?text=Chongqing+Hongyadong",
+        locationTag: "تشونغتشينغ • التقاء نهري اليانغتسي وجيالينغ",
+        places: [
+          "مجمع هونغ يادونغ (Hongyadong): مبنى تاريخي من 11 طابقاً محفور في الجرف يتوهج ليلاً كأفلام الأنمي",
+          "ساحة ونصب التحرير (Jiefangbei) للتسوق والمقاهي العصرية",
+          "رحلة كروز ليلية فاخرة (Two Rivers Night Cruise) لمشاهدة ناطحات السحاب المضاءة والجسور العملاقة"
+        ],
+        meals: [
+          "هوت بوت تشونغتشينغ الشهير (اطلب قدر Yuanyang المقسوم: نصف مرق دجاج أو عظام غير حار ونصف حار)",
+          "السمك المشوي المتبل بالأعشاب العطرية (Chongqing Grilled Fish)"
+        ],
+        highlightNote: "تشونغتشينغ مبنية فوق الجبال؛ قد تدخل مبنى من الطابق الأول وتجد نفسك في الطابق الحادي عشر!"
+      },
+      {
+        id: 7,
+        daysBadge: "اليوم 10 • معالم تشونغتشينغ",
+        city: "قطار المباني",
+        title: "محطة ليزيبا، البلدة القديمة، وجسر رافلز السماوي",
+        subtitle: "يوم حافل بالعجائب الهندسية والتراث الكلاسيكي في قلب تشونغتشينغ",
+        transport: "سيارة خاصة + تجربة خط المونوريل المعلق وتلفريك نهر اليانغتسي",
+        transportIcon: "fa-train-subway",
+        image: "https://media.odynovotours.com/article/81000/chongqing-liziba-train-through-building_80642.jpg",
+        fallbackImage: "https://placehold.co/1200x800/312e81/fde68a?text=Chongqing+Monorail",
+        locationTag: "محطة ليزيبا & بلدة تسيتشيكو",
+        places: [
+          "محطة ليزيبا (Liziba Station): مشاهدة وتجربة قطار المونوريل الذي يخترق قلب عمارة سكنية من الطابق السادس",
+          "بلدة تسيتشيكو القديمة (Ciqikou Ancient Town): شوارع حجرية تاريخية ومقاهي شاي تقليدية",
+          "جسر رافلز سيتي السماوي (Raffles City Skybridge) المطل على ملتقى النهرين بارتفاع 250 متراً"
+        ],
+        meals: [
+          "نودلز تشونغتشينغ الصغيرة الشهيرة (Xiaomian)",
+          "حلوى الجيلي المثلج بالسكر البني والفواكه (Bingfen) لتبريد الحواس"
+        ],
+        highlightNote: "تلفريك نهر اليانغتسي يمنحك إطلالة بانورامية رائعة فوق النهر بين ضفتي المدينة."
+      },
+      {
+        id: 8,
+        daysBadge: "الأيام 11–12 • منتجع دالي",
+        city: "منتجع بحيرة إيرهاي",
+        title: "استجمام فاخر (3 ليالٍ) في منتجع دالي على بحيرة إيرهاي",
+        subtitle: "محطة الاسترخاء والهدوء وسط طبيعة مقاطعة يونان الساحرة وطقسها الربيعي المعتدل",
+        transport: "قطار فائق السرعة من تشونغتشينغ إلى دالي عبر المناظر الجبلية (أو طيران إلى كونمينغ + قطار)",
+        transportIcon: "fa-umbrella-beach",
+        image: "https://www.visityunnanchina.com/files/2022-03/Mount_Cangshan_Dali_Yunnan_China_02.jpg",
+        fallbackImage: "https://placehold.co/1200x800/0284c7/fde68a?text=Dali+Erhai+Lake+Resort",
+        locationTag: "بحيرة إيرهاي • قرية شوانغلانغ (دالي)",
+        places: [
+          "الإقامة لمدة 3 ليالٍ في منتجع بوتيكي فاخر مطل مباشرة على مياه بحيرة إيرهاي وجبال كانغشان",
+          "جولة بسيارة مكشوفة خاصة أو دراجات كهربائية على طول الممر البيئي الساحلي لبحيرة إيرهاي",
+          "زيارة قرية شوانغلانغ (Shuanglang) للاستمتاع بشاي ما بعد الظهيرة على التراسات المائية",
+          "قرية شيتشو التراثية (Xizhou Town) لتجربة فن الصباغة التقليدي لقومية باي (Tie-Dye)"
+        ],
+        meals: [
+          "نودلز الأرز اليونانية الشهيرة (Crossing-the-Bridge Rice Noodles)",
+          "هوت بوت الفطر البري الجبلي الطازج وجبن الحليب المشوي (Rushan)"
+        ],
+        highlightNote: "صممنا هذه الأيام الثلاثة في منتصف الرحلة لتجديد النشاط والاستمتاع بالطبيعة الهادئة."
+      },
+      {
+        id: 9,
+        daysBadge: "اليوم 13 • دالي التاريخية",
+        city: "مدينة دالي القديمة",
+        title: "الباغودات الثلاث، جبال كانغشان، وبلدة دالي القديمة",
+        subtitle: "مزيج ساحر بين التاريخ الملكي لمملكة دالي والقمم الجبلية المكسوة بالغيوم",
+        transport: "سيارة المنتجع الخاصة + تلفريك جبل كانغشان (Ximatan Cableway)",
+        transportIcon: "fa-gopuram",
+        image: "https://www.fabionodariphoto.com/wp-content/uploads/2021/10/dali-three-pagodas-aerial.jpg",
+        fallbackImage: "https://placehold.co/1200x800/0369a1/fde68a?text=Dali+Three+Pagodas",
+        locationTag: "معبد تشونغشينغ & دالي القديمة",
+        places: [
+          "معبد تشونغشينغ والباغودات الثلاث التاريخية (Three Pagodas) التي يعود تاريخها لأكثر من 1000 عام",
+          "الصعود بتلفريك جبل كانغشان للاستمتاع بالهواء النقي وإطلالة بانورامية كاملة على بحيرة إيرهاي",
+          "التجول المسائي في شوارع مدينة دالي القديمة، برج ووهوا، وشارع الحرف الفضية والمقاهي"
+        ],
+        meals: [
+          "سمك بحيرة دالي المطهو في القدر الفخاري (Claypot Fish)",
+          "فطائر الورد الطازجة المخبوزة (Yunnan Rose Flower Cakes) مع قهوة يونان العربية"
+        ],
+        highlightNote: "فطائر الورد الدافئة في شوارع دالي القديمة تعد من ألذ الحلويات التراثية في الصين."
+      },
+      {
+        id: 10,
+        daysBadge: "الأيام 14–16 • قويلين ويانغتشو",
+        city: "قويلين ونهر لي",
+        title: "رحلة كروز نهر لي وقوارب الخيزران بين جبال الكارست",
+        subtitle: "الإبحار وسط أجمل لوحة طبيعية في الصين المطبوعة على العملة الورقية فئة 20 يوان",
+        transport: "قطار سريع من دالي إلى قويلين + مركب كروز 4 نجوم VIP في نهر لي",
+        transportIcon: "fa-ship",
+        image: "https://notesfromchina.com/images/covers/li-river-bamboo-raft-uiLIZKss15Y.webp",
+        fallbackImage: "https://placehold.co/1200x800/047857/fde68a?text=Guilin+Li+River+Cruise",
+        locationTag: "قويلين • نهر لي • يانغتشو",
+        places: [
+          "اليوم 14 (قويلين): جبل خرطوم الفيل، مغارة الناي القصب المضاءة، والباغودتين التوأم (الشمس والقمر) ليلاً",
+          "اليوم 15 (كروز نهر لي): رحلة بحرية فاخرة لمدة 4 ساعات من قويلين إلى يانغتشو وسط آلاف القمم الخضراء",
+          "اليوم 16 (يانغتشو): تجربة ركوب قوارب الخيزران الهادئة في نهر يولونغ وجولة في ريف معرض العشرة أميال"
+        ],
+        meals: [
+          "نودلز أرز قويلين الأصلية مع المرق الغني والمخللات المقرمشة",
+          "سمك يانغتشو الشهير المطهو مع الطماطم والفلفل الطازج، وطبق القلقاس (Lipu Taro)"
+        ],
+        highlightNote: "كروز نهر لي من قويلين إلى يانغتشو يتيح لك مشاهدة المناظر الطبيعية الخلابة وأنت مسترخٍ في مقصورة VIP."
+      },
+      {
+        id: 11,
+        daysBadge: "الأيام 17–18 • ملاهي قوانغتشو",
+        city: "منتجع تشيميلونغ",
+        title: "منتجع تشيميلونغ الترفيهي الضخم (Chimelong Resort)",
+        subtitle: "أكبر وجهة ترفيهية متكاملة في جنوب الصين: سفاري الباندا، أفعوانيات عالمية، والسيرك الدولي",
+        transport: "قطار الرصاصة السريع من يانغتشو/قويلين إلى محطة قوانغتشو الجنوبية (ساعتان ونصف)",
+        transportIcon: "fa-paw",
+        image: "https://www.kkday.com/en/blog/wp-content/uploads/Chimelong-Safari-Park-Guangzhou-Travel-Guide-Tickets-Getting-There-Food-and-Highlights.jpg",
+        fallbackImage: "https://placehold.co/1200x800/b45309/fde68a?text=Chimelong+Resort+Guangzhou",
+        locationTag: "حي بانيو • قوانغتشو",
+        places: [
+          "حديقة سفاري تشيميلونغ (Chimelong Safari Park): موطن توائم الباندا الثلاثة النادرة والنمور البيضاء وتلفريك السفاري",
+          "ملاهي تشيميلونغ بارادايس (Chimelong Paradise): أفعوانيات عملاقة مثل Dive Coaster",
+          "عرض السيرك الدولي المسائي (Chimelong International Circus): عروض بهلوانية واستعراضية عالمية مبهرة",
+          "الإقامة في فندق Chimelong Hotel أو فندق Chimelong Panda Hotel داخل المنتجع"
+        ],
+        meals: [
+          "بوفيه النمر الأبيض (White Tiger Buffet) بإطلالة زجاجية مباشرة على النمور البيضاء وطيور الفلامنغو",
+          "مأكولات كانتونية فاخرة في مطاعم المنتجع"
+        ],
+        highlightNote: "يبعد منتجع تشيميلونغ 15 دقيقة فقط عن محطة قطار قوانغتشو الجنوبية، مما يجعل الوصول إليه سلساً للغاية."
+      },
+      {
+        id: 12,
+        daysBadge: "الأيام 19–20 • الختام والعودة",
+        city: "قوانغتشو ← الرياض",
+        title: "برج كانتون، نهر اللؤلؤ، والعودة المباشرة إلى الرياض",
+        subtitle: "مسك ختام الرحلة في عاصمة التجارة والمذاق الكانتوني قبل رحلة العودة المريحة إلى الوطن",
+        transport: "سيارة خاصة في قوانغتشو + طيران مباشر من مطار بايون (CAN) إلى الرياض (RUH)",
+        transportIcon: "fa-plane",
+        image: "https://images.unsplash.com/photo-1787644330269-5293307a5925?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+        fallbackImage: "https://placehold.co/1200x800/be123c/fde68a?text=Guangzhou+Canton+Tower",
+        locationTag: "وسط قوانغتشو • مطار بايون الدولي",
+        places: [
+          "اليوم 19: الصعود إلى قمة برج كانتون (Canton Tower) وتجربة الترام الفقاعي الزجاجي الدوار (Bubble Tram)",
+          "زيارة جزيرة شاميان التاريخية، قاعة عشيرة تشن (Chen Clan Ancestral Hall)، وكروز ليلي في نهر اللؤلؤ",
+          "اليوم 20: تسوق الهدايا التذكارية في شارع بكين للمشاة (Beijing Road) ثم التوجه للمطار للعودة إلى الرياض"
+        ],
+        meals: [
+          "فطور كانتوني تقليدي (Yum Cha) يضم فطائر الروبيان الشفافة (Har Gow) والديم سوم",
+          "أرز القدر الفخاري (Claypot Rice) والإوز الكانتوني المشوي، بالإضافة إلى وفرة المطاعم الحلال العريقة في قوانغتشو"
+        ],
+        highlightNote: "تضم قوانغتشو أقدم المساجد في الصين (مسجد أبي وقاص) وعشرات المطاعم الحلال الممتازة."
+      }
+    ];
+
+    // ==========================================
+    // DAY-BY-DAY 20 DAYS MASTER DATA (ARABIC)
+    // ==========================================
+    const twentyDaysSchedule = [
+      { day: "اليوم 1", city: "بكين", transit: "طيران مباشر: الرياض (RUH) ← بكين", sights: "الوصول، استلام الغرفة، جولة مسائية في شارع وانغفوجينغ", food: "عشاء ترحيبي: بط بكين المشوي" },
+      { day: "اليوم 2", city: "بكين", transit: "سيارة خاصة", sights: "ساحة تيانانمن، المدينة المحرمة، وحديقة جينغشان عند الغروب", food: "نودلز بكين التقليدية (Zhajiangmian)" },
+      { day: "اليوم 3", city: "بكين", transit: "سيارة خاصة (1.5 ساعة)", sights: "سور الصين العظيم (موتانيو بالتلفريك والزحليقة) + القصر الصيفي", food: "سمك السلمون المرقط ولحم الضأن بالقدر النحاسي" },
+      { day: "اليوم 4", city: "بكين", transit: "داخل منتجع يونيفرسال", sights: "يوم كامل في ملاهي يونيفرسال ستوديوز بكين وممشى سيتي ووك", food: "مشروب الزبدة، مطعم Three Broomsticks وعشاء ديم سوم" },
+      { day: "اليوم 5", city: "تشانغجياجيه", transit: "طيران مباشر: بكين ← تشانغجياجيه (2.5 ساعة)", sights: "الوصول عند سفح جبل تيانمن، ومشاهدة المباني الـ 72 العجيبة ليلاً", food: "يخنة سانشياغو التوجية (Sanxiaguo)" },
+      { day: "اليوم 6", city: "تشانغجياجيه", transit: "تلفريك جبل تيانمن والسلالم الكهربائية", sights: "بوابة السماء (Heaven's Gate)، الممشى الزجاجي المعلق، وطريق الـ 99 منعطفاً", food: "اللحوم المدخنة وبراعم الخيزران الجبلية" },
+      { day: "اليوم 7", city: "تشانغجياجيه", transit: "سيارة خاصة + مصعد بايلونغ الزجاجي", sights: "جبال أفاتار المعلقة في وولينغشتوان، يوانجياجيه، ومعرض العشرة أميال", food: "حساء الفطر البري وكعك الأرتيميسيا" },
+      { day: "اليوم 8", city: "تشونغتشينغ", transit: "قطار سريع: تشانغجياجيه ← تشونغتشينغ (2.5 ساعة)", sights: "ساحة التحرير (Jiefangbei) ومجمع هونغ يادونغ المضيء ليلاً", food: "هوت بوت تشونغتشينغ (مقسوم حار وغير حار)" },
+      { day: "اليوم 9", city: "تشونغتشينغ", transit: "سيارة خاصة + قطار المونوريل", sights: "قطار ليزيبا المخترق للمبنى، بلدة تسيتشيكو القديمة، وحديقة إيلينغ", food: "نودلز تشونغتشينغ والسمك المشوي المتبل" },
+      { day: "اليوم 10", city: "تشونغتشينغ", transit: "سيارة خاصة + مركب نهري", sights: "جسر رافلز السماوي، تلفريك نهر اليانغتسي، وكروز النهرين الليلي", food: "دجاج سيتشوان المقرمش وجيلي Bingfen المثلج" },
+      { day: "اليوم 11", city: "منتجع دالي", transit: "قطار سريع: تشونغتشينغ ← دالي", sights: "تسجيل الدخول في منتجع بحيرة إيرهاي الفاخر (إقامة 3 ليالٍ) والاسترخاء", food: "نودلز عبور الجسر اليونانية الشهيرة" },
+      { day: "اليوم 12", city: "منتجع دالي", transit: "سيارة مكشوفة خاصة / دراجة كهربائية", sights: "الممر البيئي لبحيرة إيرهاي، قرية شوانغلانغ، وورش الصباغة في شيتشو", food: "هوت بوت الفطر الجبلي وجبن Rushan المشوي" },
+      { day: "اليوم 13", city: "منتجع دالي", transit: "سيارة المنتجع + تلفريك الجبل", sights: "الباغودات الثلاث، تلفريك جبل كانغشان، ومدينة دالي القديمة", food: "سمك القدر الفخاري وفطائر الورد الطازجة" },
+      { day: "اليوم 14", city: "قويلين", transit: "قطار سريع / طيران: دالي ← قويلين", sights: "جبل خرطوم الفيل، مغارة الناي القصب، وباغودتي الشمس والقمر ليلاً", food: "نودلز أرز قويلين الأصلية والبط المطهو" },
+      { day: "اليوم 15", city: "قويلين / يانغتشو", transit: "كروز نهر لي VIP (4 ساعات)", sights: "الإبحار في نهر لي وسط قمم الكارست إلى يانغتشو، والتجول في الشارع الغربي", food: "سمك يانغتشو المطهو على الطريقة المحلية" },
+      { day: "اليوم 16", city: "يانغتشو", transit: "قارب خيزران + سيارة خاصة", sights: "التجديف بقوارب الخيزران في نهر يولونغ وجولة في ريف معرض العشرة أميال", food: "أطباق قلقاس ليبو والدجاج المطهو بالخيزران" },
+      { day: "اليوم 17", city: "قوانغتشو", transit: "قطار سريع: يانغتشو ← قوانغتشو (2.5 ساعة)", sights: "تسجيل الدخول في منتجع تشيميلونغ وحضور عرض السيرك الدولي المسائي", food: "بوفيه النمر الأبيض أو وليمة كانتونية" },
+      { day: "اليوم 18", city: "قوانغتشو", transit: "حافلات المنتجع الداخلية", sights: "يوم كامل في سفاري تشيميلونغ (الباندا الثلاثة) وملاهي تشيميلونغ بارادايس", food: "غداء ديم سوم والإوز الكانتوني المشوي" },
+      { day: "اليوم 19", city: "قوانغتشو", transit: "سيارة خاصة إلى وسط المدينة", sights: "برج كانتون (الترام الفقاعي)، جزيرة شاميان، قاعة تشن، وكروز نهر اللؤلؤ", food: "فطور Yum Cha الكانتوني وأرز القدر الفخاري" },
+      { day: "اليوم 20", city: "قوانغتشو ← الرياض", transit: "طيران مباشر: قوانغتشو (CAN) ← الرياض (RUH)", sights: "التسوق الأخير في شارع بكين للمشاة والتوجه إلى مطار بايون الدولي", food: "نودلز الونتون الكانتونية والمأكولات الحلال قبل المغادرة" }
+    ];
+
+    // ==========================================
+    // STATE & MOTION CONTROLLER
+    // ==========================================
+    let currentSlideIndex = 0;
+    let isAutoPlaying = false;
+    let autoPlayInterval = null;
+    let progressInterval = null;
+    let slideProgress = 0;
+    const SLIDE_DURATION_MS = 6500;
+    let isFullScheduleOpen = false;
+
+    function initApp() {
+      renderProgressBars();
+      renderCityNavPills();
+      renderActiveSlide();
+      renderFullScheduleView();
+      setupTouchSwipe();
+      setupKeyboardShortcuts();
+    }
+
+    // Render top 12 story progress bars
+    function renderProgressBars() {
+      const container = document.getElementById('story-progress-bars');
+      container.innerHTML = slidesData.map((slide, idx) => `
+        <button onclick="goToSlide(${idx})" title="${slide.city}" class="h-1.5 rounded-full bg-white/15 overflow-hidden relative cursor-pointer focus:outline-none">
+          <div id="progress-bar-${idx}" class="h-full bg-gradient-to-l from-amber-400 to-red-500 transition-all duration-100" style="width: ${idx < currentSlideIndex ? '100%' : (idx === currentSlideIndex ? Math.max(slideProgress, 15) + '%' : '0%')}"></div>
+        </button>
+      `).join('');
+    }
+
+    // Render horizontal city navigation pills
+    function renderCityNavPills() {
+      const container = document.getElementById('city-nav-pills');
+      container.innerHTML = slidesData.map((slide, idx) => {
+        const isActive = idx === currentSlideIndex;
+        return `
+          <button onclick="goToSlide(${idx})" id="city-pill-${idx}" class="flex items-center gap-2 px-3.5 py-2 rounded-2xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all cursor-pointer ${
+            isActive
+              ? 'bg-gradient-to-l from-red-600 to-amber-500 text-white shadow-lg shadow-red-600/30 scale-105'
+              : 'bg-slate-900/90 text-slate-300 hover:bg-slate-800 border border-white/10'
+          }">
+            <span class="w-5 h-5 rounded-full flex items-center justify-center text-[11px] ${isActive ? 'bg-black/25 text-white' : 'bg-white/10 text-amber-400'}">${idx + 1}</span>
+            <i class="fa-solid ${slide.transportIcon} text-xs ${isActive ? 'text-white' : 'text-amber-400'}"></i>
+            <span>${slide.city}</span>
+          </button>
+        `;
+      }).join('');
+
+      // Scroll active pill into center on mobile
+      const activePill = document.getElementById(`city-pill-${currentSlideIndex}`);
+      if (activePill) {
+        activePill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+    }
+
+    // Render current slide inside the main motion stage
+    function renderActiveSlide() {
+      const slide = slidesData[currentSlideIndex];
+      const container = document.getElementById('active-slide-card');
+      const badge = document.getElementById('slide-counter-badge');
+      badge.textContent = `المحطة ${currentSlideIndex + 1} من ${slidesData.length}`;
+
+      container.innerHTML = `
+        <!-- Visual Half (Right Side on Desktop RTL, Top on Mobile) -->
+        <div class="relative w-full lg:w-7/12 min-h-[270px] sm:min-h-[360px] lg:min-h-full overflow-hidden bg-slate-950 flex-shrink-0">
+          <img
+            src="${slide.image}"
+            alt="${slide.title}"
+            onerror="this.onerror=null;this.src='${slide.fallbackImage}';"
+            class="w-full h-full object-cover absolute inset-0 animate-ken-burns"
+          />
+          <!-- Gradient Overlays for readability -->
+          <div class="absolute inset-0 bg-gradient-to-t from-[#090D16] via-[#090D16]/35 to-transparent lg:bg-gradient-to-l lg:from-[#131B2E] lg:via-transparent lg:to-black/30"></div>
+
+          <!-- Top Floating Badges on Image -->
+          <div class="absolute top-4 right-4 left-4 flex items-center justify-between gap-2 flex-wrap">
+            <span class="px-3.5 py-1.5 rounded-full glass-pill text-amber-300 font-extrabold text-xs sm:text-sm flex items-center gap-2 shadow-lg">
+              <i class="fa-solid fa-calendar-day text-red-400"></i>
+              <span>${slide.daysBadge}</span>
+            </span>
+
+            <span class="px-3 py-1.5 rounded-full bg-black/65 backdrop-blur-md text-slate-200 text-xs font-semibold flex items-center gap-1.5 border border-white/15">
+              <i class="fa-solid fa-location-dot text-amber-400"></i>
+              <span>${slide.locationTag}</span>
+            </span>
+          </div>
+
+          <!-- Bottom Image Caption: Transport Method Ribbon -->
+          <div class="absolute bottom-3 right-4 left-4">
+            <div class="glass-panel rounded-2xl p-3 border border-amber-500/40 flex items-center gap-3 shadow-xl">
+              <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-red-600 flex items-center justify-center flex-shrink-0 animate-float">
+                <i class="fa-solid ${slide.transportIcon} text-white text-base"></i>
+              </div>
+              <div class="min-w-0">
+                <p class="text-[11px] font-bold text-amber-400">وسيلة التنقل الموصى بها</p>
+                <p class="text-xs sm:text-sm font-bold text-white leading-snug">${slide.transport}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Half (Left Side on Desktop RTL, Bottom on Mobile) -->
+        <div class="w-full lg:w-5/12 p-5 sm:p-7 lg:p-8 flex flex-col justify-between bg-[#131B2E] relative">
+          <div class="space-y-4">
+            <!-- Title & Subtitle -->
+            <div class="stagger-item delay-100">
+              <h2 class="text-xl sm:text-2xl lg:text-3xl font-black text-white leading-snug">${slide.title}</h2>
+              <p class="text-slate-300 text-xs sm:text-sm mt-1.5 leading-relaxed">${slide.subtitle}</p>
+            </div>
+
+            <!-- Animated Route SVG Line Decoration -->
+            <div class="stagger-item delay-200 py-1">
+              <svg viewBox="0 0 400 16" class="w-full h-4">
+                <line x1="10" y1="8" x2="390" y2="8" stroke="#F59E0B" stroke-width="2" class="animate-route-line" />
+                <circle cx="385" cy="8" r="5" fill="#DC2626" />
+                <circle cx="200" cy="8" r="4" fill="#F59E0B" />
+                <circle cx="15" cy="8" r="5" fill="#10B981" />
+              </svg>
+            </div>
+
+            <!-- Places to Visit Box -->
+            <div class="stagger-item delay-300 rounded-2xl bg-slate-900/80 border border-white/10 p-4 space-y-2.5">
+              <h3 class="text-sm sm:text-base font-extrabold text-amber-400 flex items-center gap-2">
+                <i class="fa-solid fa-map-location-dot text-red-500"></i>
+                <span>أبرز الأماكن والأنشطة السياحية</span>
+              </h3>
+              <ul class="space-y-2">
+                ${slide.places.map(place => `
+                  <li class="flex items-start gap-2 text-xs sm:text-sm text-slate-200 leading-relaxed">
+                    <i class="fa-solid fa-circle-check text-amber-400 mt-1 text-xs flex-shrink-0"></i>
+                    <span>${place}</span>
+                  </li>
+                `).join('')}
+              </ul>
+            </div>
+
+            <!-- Meals to Eat Box -->
+            <div class="stagger-item delay-400 rounded-2xl bg-gradient-to-br from-red-950/50 to-amber-950/30 border border-amber-500/25 p-4 space-y-2">
+              <h3 class="text-sm sm:text-base font-extrabold text-amber-300 flex items-center gap-2">
+                <i class="fa-solid fa-utensils text-amber-400"></i>
+                <span>أشهى الوجبات والمأكولات المقترحة</span>
+              </h3>
+              <ul class="space-y-1.5">
+                ${slide.meals.map(meal => `
+                  <li class="flex items-start gap-2 text-xs sm:text-sm text-amber-100/90 leading-relaxed">
+                    <i class="fa-solid fa-bowl-rice text-red-400 mt-1 text-xs flex-shrink-0"></i>
+                    <span>${meal}</span>
+                  </li>
+                `).join('')}
+              </ul>
+            </div>
+          </div>
+
+          <!-- Expert Tip Footer -->
+          <div class="stagger-item delay-500 mt-4 pt-3 border-t border-white/10 flex items-start gap-2.5 text-xs text-slate-300">
+            <i class="fa-solid fa-lightbulb text-amber-400 text-sm mt-0.5 flex-shrink-0"></i>
+            <p><strong class="text-amber-300">نصيحة الخبير:</strong> ${slide.highlightNote}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    // Render Full Schedule & All Cards Grid
+    function renderFullScheduleView() {
+      const grid = document.getElementById('all-cards-grid');
+      grid.innerHTML = slidesData.map((slide, idx) => `
+        <div class="glass-panel rounded-3xl overflow-hidden border border-white/10 flex flex-col justify-between hover:border-amber-500/50 transition-all group">
+          <div>
+            <div class="relative h-48 overflow-hidden bg-slate-950">
+              <img
+                src="${slide.image}"
+                alt="${slide.title}"
+                onerror="this.onerror=null;this.src='${slide.fallbackImage}';"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-black/30"></div>
+              <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-red-600 text-white text-xs font-bold shadow">
+                ${slide.daysBadge}
+              </span>
+              <span class="absolute bottom-3 right-3 text-amber-300 text-xs font-bold flex items-center gap-1.5">
+                <i class="fa-solid ${slide.transportIcon}"></i>
+                <span>${slide.city}</span>
+              </span>
+            </div>
+
+            <div class="p-5 space-y-3">
+              <h3 class="text-lg font-extrabold text-white">${slide.title}</h3>
+              <p class="text-xs text-amber-300 bg-amber-500/10 border border-amber-500/20 rounded-xl p-2.5">
+                <i class="fa-solid fa-route ml-1"></i> ${slide.transport}
+              </p>
+
+              <div class="space-y-1">
+                <p class="text-xs font-bold text-slate-400">الأماكن:</p>
+                <ul class="text-xs text-slate-200 space-y-1">
+                  ${slide.places.map(p => `<li class="flex items-start gap-1.5"><span class="text-amber-400">•</span><span>${p}</span></li>`).join('')}
+                </ul>
+              </div>
+
+              <div class="space-y-1 pt-1">
+                <p class="text-xs font-bold text-amber-400">الوجبات:</p>
+                <ul class="text-xs text-slate-300 space-y-1">
+                  ${slide.meals.map(m => `<li class="flex items-start gap-1.5"><span class="text-red-400">•</span><span>${m}</span></li>`).join('')}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 pt-0">
+            <button onclick="openSlideFromGrid(${idx})" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-red-600 text-white text-xs font-bold transition cursor-pointer flex items-center justify-center gap-2">
+              <i class="fa-solid fa-play"></i>
+              <span>عرض في شاشة الموشن</span>
+            </button>
+          </div>
+        </div>
+      `).join('');
+
+      const daysList = document.getElementById('twenty-days-list');
+      daysList.innerHTML = twentyDaysSchedule.map((item, i) => `
+        <div class="rounded-2xl bg-slate-900/90 border border-white/10 p-4 flex flex-col justify-between gap-2 hover:border-amber-500/40 transition">
+          <div class="flex items-center justify-between gap-2 border-b border-white/10 pb-2">
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-1 rounded-lg bg-gradient-to-l from-red-600 to-amber-500 text-white font-extrabold text-xs">${item.day}</span>
+              <span class="font-bold text-white text-sm sm:text-base">${item.city}</span>
+            </div>
+            <span class="text-[11px] font-semibold text-amber-300 bg-amber-500/10 px-2.5 py-1 rounded-lg border border-amber-500/20">${item.transit}</span>
+          </div>
+          <div class="space-y-1.5 text-xs sm:text-sm pt-1">
+            <p class="text-slate-200"><strong class="text-amber-400">المعالم:</strong> ${item.sights}</p>
+            <p class="text-slate-300"><strong class="text-red-400">الوجبات:</strong> ${item.food}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Navigation Functions
+    function goToSlide(index) {
+      currentSlideIndex = (index + slidesData.length) % slidesData.length;
+      slideProgress = 0;
+      renderProgressBars();
+      renderCityNavPills();
+      renderActiveSlide();
+    }
+
+    function nextSlide() {
+      goToSlide(currentSlideIndex + 1);
+    }
+
+    function prevSlide() {
+      goToSlide(currentSlideIndex - 1);
+    }
+
+    function openSlideFromGrid(index) {
+      if (isFullScheduleOpen) {
+        toggleFullView();
+      }
+      goToSlide(index);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Toggle Auto-Play Motion Presentation
+    function toggleAutoPlay() {
+      isAutoPlaying = !isAutoPlaying;
+      const icon = document.getElementById('autoplay-icon');
+      const text = document.getElementById('autoplay-text');
+
+      if (isAutoPlaying) {
+        icon.className = 'fa-solid fa-pause text-xs';
+        text.textContent = 'إيقاف مؤقت';
+        startAutoPlayTimer();
+      } else {
+        icon.className = 'fa-solid fa-play text-xs';
+        text.textContent = 'تشغيل العرض';
+        stopAutoPlayTimer();
+      }
+    }
+
+    function startAutoPlayTimer() {
+      stopAutoPlayTimer();
+      const stepMs = 100;
+      progressInterval = setInterval(() => {
+        slideProgress += (stepMs / SLIDE_DURATION_MS) * 100;
+        const activeBar = document.getElementById(`progress-bar-${currentSlideIndex}`);
+        if (activeBar) {
+          activeBar.style.width = `${Math.min(slideProgress, 100)}%`;
+        }
+        if (slideProgress >= 100) {
+          nextSlide();
+        }
+      }, stepMs);
+    }
+
+    function stopAutoPlayTimer() {
+      if (progressInterval) {
+        clearInterval(progressInterval);
+        progressInterval = null;
+      }
+    }
+
+    // Toggle between Motion Reel View & Full 20-Day Schedule View
+    function toggleFullView() {
+      isFullScheduleOpen = !isFullScheduleOpen;
+      const motionStage = document.getElementById('motion-stage-view');
+      const fullView = document.getElementById('full-schedule-view');
+      const toggleText = document.getElementById('view-toggle-text');
+      const toggleIcon = document.getElementById('view-toggle-icon');
+
+      if (isFullScheduleOpen) {
+        if (isAutoPlaying) toggleAutoPlay();
+        motionStage.classList.add('hidden');
+        fullView.classList.remove('hidden');
+        toggleText.textContent = 'شاشة الموشن';
+        toggleIcon.className = 'fa-solid fa-film text-amber-400';
+      } else {
+        fullView.classList.add('hidden');
+        motionStage.classList.remove('hidden');
+        toggleText.textContent = 'الجدول الكامل';
+        toggleIcon.className = 'fa-solid fa-table-list text-amber-400';
+      }
+    }
+
+    // Touch Swipe Gesture Support for Mobile
+    function setupTouchSwipe() {
+      const stage = document.getElementById('active-slide-card');
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      stage.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      stage.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const deltaX = touchEndX - touchStartX;
+        if (Math.abs(deltaX) > 50) {
+          // In RTL: swiping right-to-left (negative deltaX) goes previous, left-to-right goes next
+          if (deltaX > 0) {
+            nextSlide();
+          } else {
+            prevSlide();
+          }
+        }
+      }, { passive: true });
+    }
+
+    // Keyboard Arrow Support
+    function setupKeyboardShortcuts() {
+      window.addEventListener('keydown', (e) => {
+        if (isFullScheduleOpen) return;
+        if (e.key === 'ArrowLeft') {
+          nextSlide();
+        } else if (e.key === 'ArrowRight') {
+          prevSlide();
+        } else if (e.key === ' ') {
+          e.preventDefault();
+          toggleAutoPlay();
+        }
+      });
+    }
+
+    window.onload = initApp;
+  </script>
+</body>
+</html>
