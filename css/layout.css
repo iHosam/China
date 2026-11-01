@@ -6,7 +6,7 @@
   width: 100%;
   max-width: 1280px;
   margin-inline: auto;
-  padding-inline: 1rem;
+  padding-inline: 0.85rem;
 }
 
 @media (min-width: 640px) {
@@ -20,6 +20,8 @@
   position: sticky;
   top: 0;
   z-index: 40;
+  width: 100%;
+  max-width: 100%;
   background-color: var(--bg-glass);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -31,80 +33,134 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding-block: 0.75rem;
+  gap: 0.75rem;
+  padding-block: 0.65rem;
   flex-wrap: wrap;
+  width: 100%;
+  max-width: 100%;
 }
 
 .brand-group {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.65rem;
   cursor: pointer;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.brand-group > div:last-child {
+  min-width: 0;
+  flex: 1;
 }
 
 .brand-logo {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.35rem;
+  height: 2.35rem;
   border-radius: var(--radius-md);
   background: linear-gradient(135deg, var(--accent-primary), #199473);
   color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   box-shadow: var(--shadow-sm);
   flex-shrink: 0;
 }
 
 .brand-title {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 800;
   color: var(--text-primary);
-  line-height: 1.25;
+  line-height: 1.3;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.35rem;
   flex-wrap: wrap;
 }
 
 .brand-subtitle {
-  font-size: 0.78rem;
+  display: none;
+  font-size: 0.74rem;
   color: var(--text-secondary);
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+@media (min-width: 640px) {
+  .brand-subtitle {
+    display: block;
+  }
+}
+
+.hide-on-mobile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hide-on-mobile {
+    display: table-cell;
+  }
 }
 
 /* Main Navigation Tabs */
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+  gap: 0.45rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+@media (min-width: 1024px) {
+  .nav-actions {
+    width: auto;
+  }
 }
 
 .nav-tabs {
   display: flex;
   align-items: center;
   background-color: var(--bg-secondary);
-  padding: 0.25rem;
+  padding: 0.22rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-subtle);
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  flex: 1 1 0%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .nav-tabs {
+    flex: 0 1 auto;
+  }
 }
 
 .nav-tab-btn {
-  padding: 0.42rem 0.9rem;
+  padding: 0.38rem 0.7rem;
   border-radius: var(--radius-sm);
   border: none;
   background: transparent;
   color: var(--text-secondary);
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-weight: 700;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
   white-space: nowrap;
+  flex-shrink: 0;
   transition: all var(--transition-fast);
+}
+
+@media (min-width: 640px) {
+  .nav-tab-btn {
+    padding: 0.42rem 0.9rem;
+    font-size: 0.85rem;
+  }
 }
 
 .nav-tab-btn:hover {
@@ -118,8 +174,8 @@
 }
 
 .theme-toggle-btn {
-  width: 2.35rem;
-  height: 2.35rem;
+  width: 2.25rem;
+  height: 2.25rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-subtle);
   background-color: var(--bg-surface);
@@ -128,6 +184,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  flex-shrink: 0;
   transition: all var(--transition-fast);
 }
 
@@ -139,40 +196,57 @@
 /* Sub-Header Filter Bar (Cities & Quick Day Selector) */
 .filter-bar {
   border-top: 1px solid var(--border-subtle);
-  padding-block: 0.55rem;
+  padding-block: 0.5rem;
   background-color: var(--bg-surface-Subtle);
+  width: 100%;
+  max-width: 100%;
 }
 
 .filter-bar-inner {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+@media (min-width: 900px) {
+  .filter-bar-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 .city-pills-row {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.4rem;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   padding-bottom: 2px;
-  flex: 1;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  flex: 1 1 0%;
 }
 
 .city-filter-pill {
-  padding: 0.35rem 0.85rem;
+  padding: 0.32rem 0.75rem;
   border-radius: var(--radius-pill);
   border: 1px solid var(--border-subtle);
   background-color: var(--bg-surface);
   color: var(--text-secondary);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
   white-space: nowrap;
+  flex-shrink: 0;
   transition: all var(--transition-fast);
 }
 
@@ -190,32 +264,54 @@
 .day-Quick-jump {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+@media (min-width: 900px) {
+  .day-Quick-jump {
+    width: auto;
+    max-width: 340px;
+  }
 }
 
 .day-select {
-  padding: 0.32rem 0.75rem;
+  flex: 1 1 0%;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0.32rem 0.65rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-strong);
   background-color: var(--bg-surface);
   color: var(--text-primary);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 700;
   cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 /* Main Content Area */
 .main-content {
   flex: 1;
-  padding-block: 1.75rem 3.5rem;
+  width: 100%;
+  max-width: 1280px;
+  min-width: 0;
+  padding-block: 1.25rem 3rem;
 }
 
 /* Footer */
 .site-footer {
   background-color: var(--bg-surface);
   border-top: 1px solid var(--border-subtle);
-  padding-block: 2rem;
+  padding-block: 1.75rem;
   margin-top: auto;
+  width: 100%;
+  max-width: 100%;
 }
 
 .footer-inner {
@@ -235,6 +331,6 @@
 }
 
 .footer-note {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--text-secondary);
 }

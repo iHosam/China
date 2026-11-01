@@ -288,7 +288,7 @@ window.ChinaTripApp.SummaryPage = (function () {
               .map(function (h) {
                 return (
                   '<div class="hotel-option-item">' +
-                  '<div style="flex:1;min-width:200px;">' +
+                  '<div style="flex:1;min-width:0;">' +
                   '<div class="hotel-option-name">' +
                   h.nameAr +
                   '</div>' +
@@ -320,17 +320,17 @@ window.ChinaTripApp.SummaryPage = (function () {
       '<p class="section-subtitle">تفصيل دقيق لكل يوم يشمل التنقلات، الأنشطة، الفندق (5 نجوم)، والوجبات الحلال. اضغط على أي يوم للانتقال لتفاصيله الكاملة وصوره.</p>' +
       '</div>' +
       '</div>' +
-      '<div class="cost-breakdown-panel" style="overflow-x:auto;">' +
+      '<div class="cost-breakdown-panel">' +
       '<table class="cost-table">' +
       '<thead>' +
       '<tr>' +
       '<th>اليوم</th>' +
       '<th>المدينة والمحطة</th>' +
-      '<th>الفندق المقترح (5 نجوم)</th>' +
-      '<th>التنقلات (ر.س)</th>' +
-      '<th>تذاكر الأنشطة (ر.س)</th>' +
-      '<th>إقامة الليلة (ر.س)</th>' +
-      '<th>الوجبات الحلال (ر.س)</th>' +
+      '<th class="hide-on-mobile">الفندق المقترح (5 نجوم)</th>' +
+      '<th class="hide-on-mobile">التنقلات (ر.س)</th>' +
+      '<th class="hide-on-mobile">تذاكر الأنشطة (ر.س)</th>' +
+      '<th class="hide-on-mobile">إقامة الليلة (ر.س)</th>' +
+      '<th class="hide-on-mobile">الوجبات الحلال (ر.س)</th>' +
       '<th>إجمالي اليوم (ر.س)</th>' +
       '<th>التفاصيل</th>' +
       '</tr>' +
@@ -351,49 +351,50 @@ window.ChinaTripApp.SummaryPage = (function () {
             '<tr style="cursor:pointer;" onclick="window.ChinaTripApp.Controller.goToDay(' +
             day.day +
             ')">' +
-            '<td><strong>اليوم ' +
+            '<td style="white-space:nowrap;"><strong>اليوم ' +
             day.day +
             '</strong></td>' +
-            '<td>' +
+            '<td><strong>' +
             day.cityName +
-            ' — <span style="color:var(--text-secondary);font-size:0.8rem;">' +
+            '</strong> — <span style="color:var(--text-secondary);font-size:0.78rem;">' +
             day.title +
             '</span></td>' +
-            '<td style="font-size:0.8rem;">' +
+            '<td class="hide-on-mobile" style="font-size:0.8rem;">' +
             day.hotels[0].name.split(' (')[0] +
             '</td>' +
-            '<td>' +
+            '<td class="hide-on-mobile">' +
             Helpers.formatSAR(day.transport.costSAR) +
             '</td>' +
-            '<td>' +
+            '<td class="hide-on-mobile">' +
             Helpers.formatSAR(actCost) +
             '</td>' +
-            '<td>' +
+            '<td class="hide-on-mobile">' +
             Helpers.formatSAR(day.hotelNightCostSAR) +
             '</td>' +
-            '<td>' +
+            '<td class="hide-on-mobile">' +
             Helpers.formatSAR(mealCost) +
             '</td>' +
             '<td class="cost-val" style="color:var(--accent-primary);">' +
             Helpers.formatSAR(dayTotal) +
             '</td>' +
-            '<td><span class="maps-link" style="padding:0.2rem 0.55rem;">عرض اليوم ←</span></td>' +
+            '<td><span class="maps-link" style="padding:0.2rem 0.5rem;font-size:0.72rem;">عرض ←</span></td>' +
             '</tr>'
           );
         })
         .join('') +
       '<tr class="cost-total-row">' +
-      '<td colspan="3">الإجمالي الكلي لرحلة الـ 20 يوماً (بالريال السعودي)</td>' +
-      '<td>' +
+      '<td colspan="2">الإجمالي الكلي (20 يوماً)</td>' +
+      '<td class="hide-on-mobile">19 ليلة فندقية</td>' +
+      '<td class="hide-on-mobile">' +
       Helpers.formatSAR(totals.totalTransport) +
       '</td>' +
-      '<td>' +
+      '<td class="hide-on-mobile">' +
       Helpers.formatSAR(totals.totalActivities) +
       '</td>' +
-      '<td>' +
+      '<td class="hide-on-mobile">' +
       Helpers.formatSAR(totals.totalHotels) +
       '</td>' +
-      '<td>' +
+      '<td class="hide-on-mobile">' +
       Helpers.formatSAR(totals.totalMeals) +
       '</td>' +
       '<td class="cost-val">' +
