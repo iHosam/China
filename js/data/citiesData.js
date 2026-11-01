@@ -1,17 +1,19 @@
 /**
- * Summary & Destination Directory Data (All costs in SAR only, all content in Arabic)
+ * Summary & Destination Directory Data
+ * - All costs calculated for 2 People (شخصين) in SAR (ر.س) only
+ * - All content in Arabic
  */
 
 window.ChinaTripApp = window.ChinaTripApp || {};
 
 window.ChinaTripApp.CitiesData = {
   tripOverview: {
-    title: 'رحلة الصين الكبرى الفاخرة (20 يوماً / 19 ليلة)',
+    title: 'رحلة الصين الكبرى الفاخرة لشخصين (20 يوماً / 19 ليلة)',
     routeSummary: 'الرياض ⇄ بكين ⇄ شنغهاي ⇄ تشانغجياجيه ⇄ تشونغتشينغ ⇄ دالي ⇄ قوانغتشو ⇄ الرياض',
-    subtitle: 'خطة سفر متكاملة ومريحة للعين تغطي 6 وجهات صينية ساحرة، بإقامة فندقية فاخرة (5 نجوم ومنتجعات)، ومطاعم ومشروبات حلال 100%، وتفصيل يومي دقيق للتكاليف بالريال السعودي فقط.',
+    subtitle: 'خطة سفر متكاملة ومريحة للعين مصممة ومفصلة التكاليف لشخصين (2 مسافرين)، تغطي 6 وجهات صينية ساحرة، بإقامة فندقية فاخرة (5 نجوم ومنتجعات - غرفة لشخصين)، ومطاعم ومشروبات حلال 100%، وتفصيل يومي دقيق للتكاليف بالريال السعودي فقط.',
     heroImage: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1400&q=80',
-    transportOverview: 'طيران دولي مباشر من الرياض إلى بكين وعودة من قوانغتشو + قطارات الرصاصة الفائقة السرعة (الدرجة الأولى G-Series) + طيران داخلي مباشر + سيارات خاصة فاخرة مع سائق.',
-    halalGuarantee: 'جميع الوجبات والمطاعم والمشروبات المقترحة طوال الـ 20 يوماً حلال 100% (معتمدة إسلامياً Qingzhen أو مأكولات بحرية ونباتية خالية تماماً من الكحول وأي مشتقات غير حلال).'
+    transportOverview: 'تذكرتا طيران دولي مباشر لشخصين من الرياض إلى بكين وعودة من قوانغتشو + تذاكر قطارات الرصاصة الفائقة السرعة لشخصين (الدرجة الأولى G-Series) + طيران داخلي مباشر لشخصين + سيارات خاصة فاخرة مع سائق.',
+    halalGuarantee: 'جميع الوجبات والمطاعم والمشروبات المقترحة طوال الـ 20 يوماً حلال 100% ومقدرة لشخصين (معتمدة إسلامياً Qingzhen أو مأكولات بحرية ونباتية خالية تماماً من الكحول وأي مشتقات غير حلال).'
   },
 
   cities: [
@@ -23,21 +25,21 @@ window.ChinaTripApp.CitiesData = {
       mapsQuery: 'Beijing China landmarks',
       coverImage: 'https://images.unsplash.com/photo-1584646098378-0874589d76b1?auto=format&fit=crop&w=1000&q=80',
       description: 'عاصمة التاريخ الإمبراطوري العريق، تجمع بين المدينة المحرمة وميدان تيانانمن، أعجوبة سور الصين العظيم في قسم موتيان يو الخلاب، ومدينة يونيفرسال ستوديوز الترفيهية الكبرى.',
-      arrivalTransport: 'طيران دولي مباشر من الرياض (RUH) إلى مطار بكين العاصمة الدولي (PEK)',
+      arrivalTransport: 'طيران دولي مباشر لشخصين من الرياض (RUH) إلى مطار بكين العاصمة الدولي (PEK)',
       hotelStayTotalSAR: 3650,
-      activitiesTransportTotalSAR: 4950,
-      mealsTotalSAR: 1120,
+      activitiesTransportTotalSAR: 9250,
+      mealsTotalSAR: 2340,
       hotels: [
         {
           nameAr: 'فندق نيو ريزورت بكين (NUO Resort Hotel Beijing)',
-          stars: '5 نجوم فاخر',
+          stars: '5 نجوم فاخر (غرفة لشخصين)',
           pricePerNightSAR: 900,
           mapsQuery: 'NUO Resort Hotel Beijing',
           features: 'تصميم إمبراطوري عصري داخل منتجع يونيفرسال مع ممر دخول مبكر حصري'
         },
         {
           nameAr: 'فندق يونيفرسال ستوديوز جراند (The Universal Studios Grand Hotel)',
-          stars: '5 نجوم فاخر',
+          stars: '5 نجوم فاخر (غرفة لشخصين)',
           pricePerNightSAR: 950,
           mapsQuery: 'The Universal Studios Grand Hotel Beijing',
           features: 'يقع مباشرة عند بوابة يونيفرسال ستوديوز بكين ويوفر دخولاً VIP مبكراً'
@@ -59,21 +61,21 @@ window.ChinaTripApp.CitiesData = {
       mapsQuery: 'Shanghai The Bund Lujiazui China',
       coverImage: 'https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?auto=format&fit=crop&w=1000&q=80',
       description: 'العاصمة الاقتصادية المتألقة بناطحات السحاب، وممشى واجهة البوند الساحر، وحدائق يويوان الكلاسيكية، ومنتجع ديزني لاند شنغهاي الذي يضم أول مدينة زوتوبيا في العالم.',
-      arrivalTransport: 'قطار الرصاصة فائق السرعة (درجة أولى) من بكين إلى شنغهاي (~4.5 ساعات)',
+      arrivalTransport: 'قطار الرصاصة فائق السرعة (درجة أولى لشخصين) من بكين إلى شنغهاي (~4.5 ساعات)',
       hotelStayTotalSAR: 3300,
-      activitiesTransportTotalSAR: 2150,
-      mealsTotalSAR: 860,
+      activitiesTransportTotalSAR: 4060,
+      mealsTotalSAR: 1720,
       hotels: [
         {
           nameAr: 'فندق فيرمونت بيس شنغهاي (Fairmont Peace Hotel Shanghai)',
-          stars: '5 نجوم تاريخي فاخر',
+          stars: '5 نجوم تاريخي فاخر (غرفة لشخصين)',
           pricePerNightSAR: 1100,
           mapsQuery: 'Fairmont Peace Hotel Shanghai The Bund',
           features: 'إطلالة مباشرة على واجهة البوند ونهر هوانغبو وأفق أبراج بودونغ'
         },
         {
           nameAr: 'فندق ذا بينينسولا شنغهاي (The Peninsula Shanghai)',
-          stars: '5 نجوم الترا فاخر',
+          stars: '5 نجوم الترا فاخر (غرفة لشخصين)',
           pricePerNightSAR: 1100,
           mapsQuery: 'The Peninsula Shanghai The Bund',
           features: 'أفخم فنادق واجهة البوند مع أجنحة واسعة وإطلالة بانورامية على النهر'
@@ -95,21 +97,21 @@ window.ChinaTripApp.CitiesData = {
       mapsQuery: 'Zhangjiajie National Forest Park China',
       coverImage: 'https://images.unsplash.com/photo-1513415277900-a62401e19be4?auto=format&fit=crop&w=1000&q=80',
       description: 'أعجوبة الطبيعة الصينية ذات القمم الصخرية المعلقة بين السحب التي ألهمت فيلم أفاتار، مع أطول تلفريك جبلي في العالم إلى قوس بوابة السماء ومصعد بايلونغ الزجاجي الشاهق.',
-      arrivalTransport: 'طيران داخلي مباشر من شنغهاي (SHA) إلى تشانغجياجيه (DYG) (~ساعتان)',
+      arrivalTransport: 'طيران داخلي مباشر لشخصين من شنغهاي (SHA) إلى تشانغجياجيه (DYG) (~ساعتان)',
       hotelStayTotalSAR: 2550,
-      activitiesTransportTotalSAR: 2250,
-      mealsTotalSAR: 735,
+      activitiesTransportTotalSAR: 4200,
+      mealsTotalSAR: 1470,
       hotels: [
         {
           nameAr: 'فندق جراند حياة تشانغجياجيه (Grand Hyatt Zhangjiajie)',
-          stars: '5 نجوم فاخر',
+          stars: '5 نجوم فاخر (غرفة لشخصين)',
           pricePerNightSAR: 850,
           mapsQuery: 'Zhangjiajie 5 star hotel Wulingyuan',
           features: 'إقامة فاخرة وسط الطبيعة الجبلية الخلابة بالقرب من المنتزه الوطني'
         },
         {
           nameAr: 'فندق بولمان تشانغجياجيه (Pullman Zhangjiajie Hotel)',
-          stars: '5 نجوم منتجع جبلي',
+          stars: '5 نجوم منتجع جبلي (غرفة لشخصين)',
           pricePerNightSAR: 850,
           mapsQuery: 'Pullman Zhangjiajie Hotel',
           features: 'يقع في منطقة وولينغيوان بالقرب من بوابات جبال أفاتار مع حدائق ومسابح'
@@ -131,21 +133,21 @@ window.ChinaTripApp.CitiesData = {
       mapsQuery: 'Chongqing Hongyadong Raffles City China',
       coverImage: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?auto=format&fit=crop&w=1000&q=80',
       description: 'المدينة الجبلية متعددة الطوابق المبهرة بإضاءاتها الليلية، ومجمع هونغ يادونغ الخيالي، وقطار ليزيبا المونوريل المخترق للمباني السكنية، وجسر رافلز سيتي المعلق فوق التقاء النهرين.',
-      arrivalTransport: 'قطار الرصاصة السريع من تشانغجياجيه إلى تشونغتشينغ (~2.5 ساعة)',
+      arrivalTransport: 'قطار الرصاصة السريع (درجة أولى لشخصين) من تشانغجياجيه إلى تشونغتشينغ (~2.5 ساعة)',
       hotelStayTotalSAR: 3000,
-      activitiesTransportTotalSAR: 1100,
-      mealsTotalSAR: 885,
+      activitiesTransportTotalSAR: 1960,
+      mealsTotalSAR: 1770,
       hotels: [
         {
           nameAr: 'فندق نيكولو تشونغتشينغ (Niccolo Chongqing)',
-          stars: '5 نجوم فوق السحاب',
+          stars: '5 نجوم فوق السحاب (غرفة لشخصين)',
           pricePerNightSAR: 1000,
           mapsQuery: 'Niccolo Chongqing Hotel',
           features: 'يحتل الطوابق العليا من برج IFS مع إطلالة بانورامية مذهلة على المدينة والنهرين'
         },
         {
           nameAr: 'فندق إنتركونتيننتال رافلز سيتي (InterContinental Chongqing Raffles City)',
-          stars: '5 نجوم أيقوني',
+          stars: '5 نجوم أيقوني (غرفة لشخصين)',
           pricePerNightSAR: 1000,
           mapsQuery: 'InterContinental Chongqing Raffles City',
           features: 'يقع داخل الجسر السماوي المعلق في أبراج رافلز سيتي عند التقاء النهرين'
@@ -167,21 +169,21 @@ window.ChinaTripApp.CitiesData = {
       mapsQuery: 'Dali Erhai Lake Yunnan China',
       coverImage: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80',
       description: 'محطة الاسترخاء والطبيعة الحالمة على ضفاف بحيرة إيرهاي الفيروزية وجبال كانغشان في مقاطعة يونان، مع جولات الجيب المكشوفة وبلدة دالي القديمة ومعابد الباغودات الثلاث.',
-      arrivalTransport: 'قطار الرصاصة السريع (درجة أولى) من تشونغتشينغ إلى دالي (~6 ساعات)',
+      arrivalTransport: 'قطار الرصاصة السريع (درجة أولى لشخصين) من تشونغتشينغ إلى دالي (~6 ساعات)',
       hotelStayTotalSAR: 4200,
-      activitiesTransportTotalSAR: 1450,
-      mealsTotalSAR: 850,
+      activitiesTransportTotalSAR: 2510,
+      mealsTotalSAR: 1700,
       hotels: [
         {
           nameAr: 'منتجع إيرهاي ساندز دالي (Erhai Sands Resort Dali)',
-          stars: 'منتجع 5 نجوم على البحيرة',
+          stars: 'منتجع 5 نجوم على البحيرة (جناح لشخصين)',
           pricePerNightSAR: 1400,
           mapsQuery: 'Erhai Lake Luxury Resort Dali Yunnan',
           features: 'تراس خاص مطل مباشرة على مياه بحيرة إيرهاي الصافية وجبال كانغشان'
         },
         {
           nameAr: 'منتجع دالي ليانغ شان تشوانغ (Dali Daliangshanzhuang Resort)',
-          stars: 'منتجع 5 نجوم فاخر',
+          stars: 'منتجع 5 نجوم فاخر (جناح لشخصين)',
           pricePerNightSAR: 1400,
           mapsQuery: 'Dali Ancient City Luxury Resort Hotel',
           features: 'تصميم تراثي فخم بحدائق هادئة ومرافق سبا طبيعية متكاملة'
@@ -203,28 +205,28 @@ window.ChinaTripApp.CitiesData = {
       mapsQuery: 'Guangzhou Canton Tower Chimelong China',
       coverImage: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1000&q=80',
       description: 'ختام الرحلة في عاصمة الجنوب النابضة بالحياة؛ إقامة في منتجع تشيميلونغ العالمي لحضور السيرك الدولي وحديقة السفاري وتوائم الباندا، ثم برج كانتون والتسوق والعودة المباشرة للرياض.',
-      arrivalTransport: 'قطار الرصاصة السريع من دالي إلى قوانغتشو + طيران عودة مباشر للرياض (RUH)',
+      arrivalTransport: 'قطار الرصاصة السريع لشخصين من دالي إلى قوانغتشو + طيران عودة مباشر لشخصين للرياض (RUH)',
       hotelStayTotalSAR: 3600,
-      activitiesTransportTotalSAR: 5100,
-      mealsTotalSAR: 945,
+      activitiesTransportTotalSAR: 9760,
+      mealsTotalSAR: 1890,
       hotels: [
         {
           nameAr: 'فندق تشيميلونغ قوانغتشو (Chimelong Hotel Guangzhou)',
-          stars: 'منتجع 5 نجوم ترفيهي',
+          stars: 'منتجع 5 نجوم ترفيهي (غرفة لشخصين)',
           pricePerNightSAR: 1200,
           mapsQuery: 'Chimelong Hotel Guangzhou',
           features: 'يقع في قلب منتجع تشيميلونغ مع ساحة للنمور البيضاء وطيور الفلامنغو'
         },
         {
           nameAr: 'فندق تشيميلونغ باندا (Chimelong Panda Hotel)',
-          stars: 'منتجع 5 نجوم عائلي',
+          stars: 'منتجع 5 نجوم عائلي (غرفة لشخصين)',
           pricePerNightSAR: 1200,
           mapsQuery: 'Chimelong Panda Hotel Guangzhou',
           features: 'تصميم مبهج مستوحى من ثلاثي الباندا مع قطار داخلي للسيرك والسفاري'
         },
         {
           nameAr: 'فندق روزوود قوانغتشو (Rosewood Guangzhou)',
-          stars: '5 نجوم الترا فاخر (لليلة الأخيرة اختيارياً)',
+          stars: '5 نجوم الترا فاخر (غرفة لشخصين)',
           pricePerNightSAR: 1200,
           mapsQuery: 'Rosewood Guangzhou CTF Finance Centre',
           features: 'أعلى فندق 5 نجوم في العالم بإطلالة مباشرة على برج كانتون ونهر اللؤلؤ'

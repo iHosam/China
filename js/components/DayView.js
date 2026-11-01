@@ -60,11 +60,11 @@ window.ChinaTripApp.DayView = (function () {
       '<div class="day-total-cost-box">' +
       '<span class="day-total-label">إجمالي تكلفة اليوم ' +
       dayData.day +
-      '</span>' +
+      ' (لشخصين)</span>' +
       '<strong class="day-total-amount">' +
       Helpers.formatSAR(totalDayCostSAR) +
       '</strong>' +
-      '<span style="display:block;font-size:0.7rem;color:var(--text-muted);">شامل الفندق والتنقل والأنشطة والوجبات</span>' +
+      '<span style="display:block;font-size:0.7rem;color:var(--text-muted);">شامل الفندق والتنقل والأنشطة والوجبات لشخصين</span>' +
       '</div>' +
       '</header>' +
       // 2. MULTI-PICTURE GALLERY FOR ALL ACTIVITIES OF THIS DAY
@@ -285,8 +285,8 @@ window.ChinaTripApp.DayView = (function () {
       // Itemized Cost Breakdown Per Activity in SAR
       '<div class="cost-breakdown-panel">' +
       '<div class="cost-panel-header">' +
-      '<span><i class="fa-solid fa-receipt" style="color:var(--accent-primary);margin-left:0.4rem;"></i> تفصيل التكلفة اليومية لكل نشاط وبند (ر.س)</span>' +
-      '<span class="sar-badge">عملة موحدة: ر.س</span>' +
+      '<span><i class="fa-solid fa-receipt" style="color:var(--accent-primary);margin-left:0.4rem;"></i> تفصيل التكلفة اليومية لكل نشاط وبند لشخصين (ر.س)</span>' +
+      '<span class="sar-badge">لشخصين • ر.س</span>' +
       '</div>' +
       '<table class="cost-table">' +
       '<thead>' +

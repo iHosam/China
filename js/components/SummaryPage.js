@@ -69,10 +69,11 @@ window.ChinaTripApp.SummaryPage = (function () {
       '<div class="hero-overlay"></div>' +
       '<div class="hero-content">' +
       '<div class="hero-badges">' +
+      '<span class="hero-badge"><i class="fa-solid fa-user-group"></i> خطة وتكاليف محسوبة لشخصين (2 مسافرين)</span>' +
       '<span class="hero-badge"><i class="fa-solid fa-calendar-check"></i> 20 يوماً / 19 ليلة فاخرة</span>' +
       '<span class="hero-badge"><i class="fa-solid fa-hotel"></i> فنادق ومنتجعات 5 نجوم</span>' +
       '<span class="hero-badge hero-badge-halal"><i class="fa-solid fa-leaf"></i> طعام ومشروبات حلال 100%</span>' +
-      '<span class="hero-badge"><i class="fa-solid fa-coins"></i> التكاليف بالريال السعودي (ر.س) فقط</span>' +
+      '<span class="hero-badge"><i class="fa-solid fa-coins"></i> بالريال السعودي (ر.س) فقط</span>' +
       '</div>' +
       '<h2 class="hero-title">' +
       overview.title +
@@ -91,23 +92,23 @@ window.ChinaTripApp.SummaryPage = (function () {
       '</button>' +
       '<button type="button" class="btn btn-secondary" onclick="window.ChinaTripApp.Controller.scrollToElement(\'summary-budget-table\')">' +
       '<i class="fa-solid fa-calculator"></i>' +
-      '<span>جدول التكاليف التفصيلي (ر.س)</span>' +
+      '<span>جدول التكاليف لشخصين (ر.س)</span>' +
       '</button>' +
       '</div>' +
       '</div>' +
       '</div>' +
-      // 2. KPI SUMMARY STATS (SAR ONLY)
+      // 2. KPI SUMMARY STATS (SAR ONLY - FOR 2 PEOPLE)
       '<div class="kpi-grid">' +
       '<div class="kpi-card">' +
       '<div class="kpi-icon jade"><i class="fa-solid fa-plane-up"></i></div>' +
       '<div>' +
-      '<p class="kpi-label">إجمالي التنقلات وتذاكر الأنشطة</p>' +
+      '<p class="kpi-label">إجمالي التنقلات والأنشطة (لشخصين)</p>' +
       '<p class="kpi-value">' +
       Helpers.formatSAR(totals.totalTransportAndActivities) +
       '</p>' +
       '<p class="kpi-sub">نقل وطيران وقطارات (' +
       Helpers.formatSAR(totals.totalTransport) +
-      ') + أنشطة (' +
+      ') + تذاكر أنشطة (' +
       Helpers.formatSAR(totals.totalActivities) +
       ')</p>' +
       '</div>' +
@@ -115,31 +116,33 @@ window.ChinaTripApp.SummaryPage = (function () {
       '<div class="kpi-card">' +
       '<div class="kpi-icon amber"><i class="fa-solid fa-hotel"></i></div>' +
       '<div>' +
-      '<p class="kpi-label">إجمالي الإقامة الفندقية (19 ليلة)</p>' +
+      '<p class="kpi-label">إجمالي السكن 5 نجوم (19 ليلة لشخصين)</p>' +
       '<p class="kpi-value">' +
       Helpers.formatSAR(totals.totalHotels) +
       '</p>' +
-      '<p class="kpi-sub">فنادق 5 نجوم ومنتجعات فاخرة (أو ~17,200 ر.س بالحجز المبكر)</p>' +
+      '<p class="kpi-sub">غرفة فاخرة لشخصين في فنادق ومنتجعات 5 نجوم طوال الرحلة</p>' +
       '</div>' +
       '</div>' +
       '<div class="kpi-card">' +
       '<div class="kpi-icon halal"><i class="fa-solid fa-utensils"></i></div>' +
       '<div>' +
-      '<p class="kpi-label">إجمالي الوجبات والمشروبات الحلال</p>' +
+      '<p class="kpi-label">إجمالي الوجبات الحلال (لشخصين)</p>' +
       '<p class="kpi-value">' +
       Helpers.formatSAR(totals.totalMeals) +
       '</p>' +
-      '<p class="kpi-sub">مطاعم حلال معتمدة 100% طوال الـ 20 يوماً</p>' +
+      '<p class="kpi-sub">وجبات غداء وعشاء ومشروبات حلال 100% لشخصين (20 يوماً)</p>' +
       '</div>' +
       '</div>' +
       '<div class="kpi-card">' +
-      '<div class="kpi-icon blue"><i class="fa-solid fa-wallet"></i></div>' +
+      '<div class="kpi-icon blue"><i class="fa-solid fa-users"></i></div>' +
       '<div>' +
-      '<p class="kpi-label">الميزانية الشاملة الكلية التقديرية</p>' +
+      '<p class="kpi-label">الميزانية الشاملة الكلية (لشخصين)</p>' +
       '<p class="kpi-value">' +
       Helpers.formatSAR(totals.grandTotal) +
       '</p>' +
-      '<p class="kpi-sub">شاملة الطيران، القطارات، الفنادق، الأنشطة، والطعام الحلال</p>' +
+      '<p class="kpi-sub">أي بمعدل ' +
+      Helpers.formatSAR(Math.round(totals.grandTotal / 2)) +
+      ' للشخص الواحد شاملة كل شيء</p>' +
       '</div>' +
       '</div>' +
       '</div>' +
@@ -316,8 +319,8 @@ window.ChinaTripApp.SummaryPage = (function () {
       '<div id="summary-budget-table" style="scroll-margin-top:8rem;">' +
       '<div class="section-header">' +
       '<div>' +
-      '<h3 class="section-title"><i class="fa-solid fa-table-list"></i> الجدول الشامل لتكاليف الـ 20 يوماً (بالريال السعودي فقط)</h3>' +
-      '<p class="section-subtitle">تفصيل دقيق لكل يوم يشمل التنقلات، الأنشطة، الفندق (5 نجوم)، والوجبات الحلال. اضغط على أي يوم للانتقال لتفاصيله الكاملة وصوره.</p>' +
+      '<h3 class="section-title"><i class="fa-solid fa-table-list"></i> الجدول الشامل لتكاليف الـ 20 يوماً لشخصين (بالريال السعودي فقط)</h3>' +
+      '<p class="section-subtitle">جميع التكاليف في هذا الجدول محسوبة لشخصين (2 مسافرين) وتشمل التنقلات، تذاكر الأنشطة، الفندق (غرفة 5 نجوم لشخصين)، والوجبات الحلال. اضغط على أي يوم للانتقال لتفاصيله.</p>' +
       '</div>' +
       '</div>' +
       '<div class="cost-breakdown-panel">' +
@@ -383,8 +386,8 @@ window.ChinaTripApp.SummaryPage = (function () {
         })
         .join('') +
       '<tr class="cost-total-row">' +
-      '<td colspan="2">الإجمالي الكلي (20 يوماً)</td>' +
-      '<td class="hide-on-mobile">19 ليلة فندقية</td>' +
+      '<td colspan="2">الإجمالي الكلي لشخصين (20 يوماً)</td>' +
+      '<td class="hide-on-mobile">19 ليلة (غرفة لشخصين)</td>' +
       '<td class="hide-on-mobile">' +
       Helpers.formatSAR(totals.totalTransport) +
       '</td>' +
