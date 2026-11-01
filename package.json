@@ -1,0 +1,20 @@
+{
+  "name": "grand-china-20-days-itinerary",
+  "version": "2.0.0",
+  "description": "خطة رحلة الصين الكبرى (20 يوماً) - موقع تفاعلي متكامل بالريال السعودي مع خيارات حلال 100% وروابط خرائط جوجل",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "china",
+    "travel",
+    "itinerary",
+    "arabic",
+    "halal",
+    "sar"
+  ],
+  "author": "Grand China Travel Planner",
+  "license": "MIT"
+}

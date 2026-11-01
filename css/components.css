@@ -1,0 +1,1005 @@
+/**
+ * Component Styles:
+ * - Hero & Summary Landing Page
+ * - Route Timeline & Destination Cards
+ * - 5-Star Hotel Directory Cards
+ * - Day-by-Day Itinerary Cards & Multi-Photo Galleries
+ * - Activity Cards, Halal Dining Cards & Daily Cost Breakdown Tables
+ * - Lightbox Modal
+ */
+
+/* ==========================================
+   1. HERO & SUMMARY LANDING PAGE
+   ========================================== */
+.hero-banner {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background-color: #16222A;
+  color: #FFFFFF;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-lg);
+  min-height: 360px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+  transition: transform 8s ease;
+}
+
+.hero-banner:hover .hero-bg-img {
+  transform: scale(1.03);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(16, 26, 33, 0.95) 10%, rgba(16, 26, 33, 0.55) 60%, rgba(16, 26, 33, 0.25) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem 1.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .hero-content {
+    padding: 2.75rem 2.5rem;
+  }
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(8px);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #F4F1EA;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero-badge-halal {
+  background: rgba(15, 110, 86, 0.85);
+  border-color: rgba(110, 231, 183, 0.4);
+  color: #FFFFFF;
+}
+
+.hero-title {
+  font-size: clamp(1.5rem, 3.2vw, 2.35rem);
+  font-weight: 900;
+  line-height: 1.3;
+  color: #FFFFFF;
+  max-width: 850px;
+}
+
+.hero-desc {
+  font-size: 1rem;
+  color: #DCE2E8;
+  max-width: 780px;
+  line-height: 1.7;
+}
+
+.hero-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+/* KPI Summary Stats Grid */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+  margin-bottom: 2.25rem;
+}
+
+@media (min-width: 640px) {
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .kpi-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.kpi-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.kpi-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.kpi-icon.jade {
+  background-color: var(--accent-primary-soft);
+  color: var(--accent-primary);
+}
+
+.kpi-icon.amber {
+  background-color: var(--accent-secondary-soft);
+  color: var(--accent-secondary);
+}
+
+.kpi-icon.blue {
+  background-color: var(--transport-bg);
+  color: var(--transport-color);
+}
+
+.kpi-icon.halal {
+  background-color: var(--halal-bg);
+  color: var(--halal-color);
+}
+
+.kpi-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.kpi-value {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-block: 0.15rem;
+}
+
+.kpi-sub {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+/* Route Visual Stepper */
+.route-box {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 2.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.route-chain {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-block: 0.75rem;
+}
+
+.route-stop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 125px;
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  background-color: var(--bg-surface-Subtle);
+  border: 1px solid var(--border-subtle);
+  transition: all var(--transition-fast);
+}
+
+.route-stop:hover {
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+}
+
+.route-stop-days {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--accent-primary);
+  background-color: var(--accent-primary-soft);
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 0.35rem;
+}
+
+.route-stop-name {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.route-arrow {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+/* Destination Summary Cards Grid */
+.cities-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .cities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1120px) {
+  .cities-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.city-summary-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.city-summary-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.city-card-media {
+  position: relative;
+  height: 195px;
+  overflow: hidden;
+  background-color: var(--bg-secondary);
+}
+
+.city-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.city-summary-card:hover .city-card-media img {
+  transform: scale(1.05);
+}
+
+.city-card-badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: rgba(20, 28, 36, 0.82);
+  backdrop-filter: blur(6px);
+  color: #FFFFFF;
+  padding: 0.28rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.city-card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  flex: 1;
+}
+
+.city-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.city-card-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.city-card-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.city-card-meta {
+  background-color: var(--bg-surface-Subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+  font-size: 0.82rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.city-card-footer {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ==========================================
+   2. DAY-BY-DAY ITINERARY CARDS
+   ========================================== */
+.days-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
+.day-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  scroll-margin-top: 8.5rem;
+}
+
+/* Day Card Top Banner */
+.day-card-header {
+  background: linear-gradient(to left, var(--bg-surface-Subtle), var(--bg-surface));
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.day-header-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.day-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.day-number-pill {
+  background-color: var(--accent-primary);
+  color: #FFFFFF;
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 0.28rem 0.85rem;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.day-city-pill {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.day-title {
+  font-size: clamp(1.18rem, 2.2vw, 1.45rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-top: 0.2rem;
+}
+
+.day-subtitle {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+.day-total-cost-box {
+  background-color: var(--accent-primary-soft);
+  border: 1px solid var(--accent-primary-border);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 1rem;
+  text-align: center;
+  min-width: 155px;
+}
+
+.day-total-label {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.day-total-amount {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--accent-primary);
+}
+
+/* Multi-Picture Day Gallery Strip (All Activities Photos) */
+.day-gallery-section {
+  padding: 1.25rem 1.5rem;
+  background-color: var(--bg-surface-Subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.day-gallery-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.day-gallery-title {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.day-gallery-title i {
+  color: var(--accent-secondary);
+}
+
+.day-photos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .day-photos-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.day-photo-item {
+  position: relative;
+  height: 155px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background-color: var(--bg-secondary);
+  cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  .day-photo-item {
+    height: 175px;
+  }
+}
+
+.day-photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.day-photo-item:hover img {
+  transform: scale(1.06);
+}
+
+.day-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 22, 28, 0.88) 0%, rgba(15, 22, 28, 0.2) 55%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0.65rem;
+}
+
+.day-photo-caption {
+  color: #FFFFFF;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.day-photo-zoom-badge {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background: rgba(15, 22, 28, 0.65);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  backdrop-filter: blur(4px);
+}
+
+/* Day Card Body Content Grid */
+.day-card-body {
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .day-card-body {
+    grid-template-columns: 7fr 5fr;
+    align-items: start;
+  }
+}
+
+.day-col-main,
+.day-col-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+/* Info Box Sub-sections */
+.info-panel {
+  background-color: var(--bg-surface-Subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.15rem;
+}
+
+.info-panel-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.info-panel-title-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Activity List Cards (with Thumbnail, Time, Description, SAR Cost & Maps Link) */
+.activities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.activity-item-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+@media (min-width: 560px) {
+  .activity-item-card {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.activity-item-card:hover {
+  border-color: var(--accent-primary-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.activity-thumb-wrap {
+  width: 100%;
+  height: 130px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+  cursor: pointer;
+  background-color: var(--bg-secondary);
+}
+
+@media (min-width: 560px) {
+  .activity-thumb-wrap {
+    width: 120px;
+    height: 92px;
+  }
+}
+
+.activity-thumb-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.activity-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.activity-top-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.activity-time-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-secondary);
+  background-color: var(--accent-secondary-soft);
+  padding: 0.12rem 0.55rem;
+  border-radius: var(--radius-pill);
+}
+
+.activity-name {
+  font-size: 0.96rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.activity-desc {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.activity-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.2rem;
+}
+
+/* Halal Meals Section */
+.halal-panel {
+  background-color: var(--halal-bg);
+  border: 1px solid var(--halal-border);
+  border-radius: var(--radius-lg);
+  padding: 1.15rem;
+}
+
+.meals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.meal-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--halal-border);
+  border-radius: var(--radius-md);
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.meal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.meal-type-badge {
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: var(--halal-color);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.meal-title {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.meal-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.meal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.2rem;
+}
+
+/* Hotel Suggestion Box */
+.hotel-panel {
+  background-color: var(--hotel-bg);
+  border: 1px solid var(--hotel-border);
+  border-radius: var(--radius-lg);
+  padding: 1.15rem;
+}
+
+.hotel-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.hotel-option-item {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--hotel-border);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.hotel-option-name {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.hotel-option-sub {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+/* Transport Box */
+.transport-panel {
+  background-color: var(--transport-bg);
+  border: 1px solid var(--transport-border);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.15rem;
+}
+
+/* Daily Cost Breakdown Table (Per Activity in SAR) */
+.cost-breakdown-panel {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.cost-panel-header {
+  background-color: var(--bg-secondary);
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 800;
+  font-size: 0.92rem;
+}
+
+.cost-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+}
+
+.cost-table th,
+.cost-table td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  text-align: right;
+}
+
+.cost-table th {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  background-color: var(--bg-surface-Subtle);
+}
+
+.cost-table td.cost-val {
+  text-align: left;
+  font-weight: 800;
+  white-space: nowrap;
+  color: var(--text-primary);
+}
+
+.cost-table tr.cost-total-row {
+  background-color: var(--accent-primary-soft);
+  font-weight: 900;
+}
+
+.cost-table tr.cost-total-row td {
+  color: var(--accent-primary);
+  font-size: 0.95rem;
+  border-bottom: none;
+}
+
+/* Planner Tip Banner */
+.planner-tip-box {
+  background-color: var(--bg-surface-Subtle);
+  border-right: 4px solid var(--accent-secondary);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.planner-tip-box i {
+  color: var(--accent-secondary);
+  margin-top: 0.25rem;
+}
+
+/* ==========================================
+   3. LIGHTBOX MODAL
+   ========================================== */
+.lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(12, 16, 22, 0.92);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-normal);
+}
+
+.lightbox-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-dialog {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  max-width: 920px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+.lightbox-media-wrap {
+  position: relative;
+  height: min(62vh, 520px);
+  background-color: #0B0F14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-media-wrap img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.lightbox-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.65);
+  color: #FFFFFF;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.65);
+  color: #FFFFFF;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-prev {
+  right: 1rem;
+}
+
+.lightbox-next {
+  left: 1rem;
+}
+
+.lightbox-info-bar {
+  padding: 1.1rem 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
