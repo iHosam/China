@@ -2,148 +2,47 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>رحلة الصين الكبرى - 20 يوماً | عرض موشن جرافيك تفاعلي</title>
-  <!-- Tailwind CSS -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رحلة الصين الكبرى (20 يوماً) - موشن جرافيك تفاعلي</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Cairo & Tajawal for premium Arabic typography -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            cairo: ['Cairo', 'sans-serif'],
-            tajawal: ['Tajawal', 'sans-serif'],
-          },
-          colors: {
-            imperial: {
-              red: '#DC2626',
-              crimson: '#991B1B',
-              gold: '#F59E0B',
-              amber: '#D97706',
-              dark: '#090D16',
-              card: '#131B2E'
-            }
-          }
-        }
-      }
-    }
-  </script>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
-
     body {
-      font-family: 'Cairo', 'Tajawal', sans-serif;
-      background-color: #090D16;
-      color: #F8FAFC;
-      overflow-x: hidden;
+      font-family: 'Tajawal', sans-serif;
     }
-
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
+    .glass-panel {
+      background: rgba(19, 27, 46, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
-    ::-webkit-scrollbar-track {
-      background: #090D16;
+    .glass-pill {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
-    ::-webkit-scrollbar-thumb {
-      background: #DC2626;
-      border-radius: 9999px;
-    }
-
-    /* Keyframe Animations for Motion Graphics */
     @keyframes kenBurns {
       0% { transform: scale(1) translate(0, 0); }
-      50% { transform: scale(1.12) translate(-1.5%, -1.5%); }
+      50% { transform: scale(1.08) translate(-1%, -1%); }
       100% { transform: scale(1) translate(0, 0); }
     }
-
-    @keyframes floatSlow {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.5), 0 0 25px rgba(220, 38, 38, 0.35); }
-      50% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0), 0 0 40px rgba(245, 158, 11, 0.6); }
-    }
-
-    @keyframes dashMove {
-      to {
-        stroke-dashoffset: -40;
-      }
-    }
-
-    @keyframes slideUpStagger {
-      0% {
-        opacity: 0;
-        transform: translateY(28px) scale(0.97);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    @keyframes lanternsGlow {
-      0%, 100% { opacity: 0.25; transform: scale(1); }
-      50% { opacity: 0.55; transform: scale(1.15); }
-    }
-
     .animate-ken-burns {
-      animation: kenBurns 22s ease-in-out infinite;
+      animation: kenBurns 18s ease-in-out infinite alternate;
     }
-
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
     .animate-float {
       animation: floatSlow 4s ease-in-out infinite;
     }
-
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.3); }
+      50% { box-shadow: 0 0 30px rgba(245, 158, 11, 0.7); }
+    }
     .animate-glow {
       animation: pulseGlow 3s infinite;
     }
-
-    .animate-route-line {
-      stroke-dasharray: 8 6;
-      animation: dashMove 1.8s linear infinite;
-    }
-
-    .stagger-item {
-      opacity: 0;
-      animation: slideUpStagger 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
-    .delay-100 { animation-delay: 0.1s; }
-    .delay-200 { animation-delay: 0.22s; }
-    .delay-300 { animation-delay: 0.34s; }
-    .delay-400 { animation-delay: 0.46s; }
-    .delay-500 { animation-delay: 0.58s; }
-
-    /* Glassmorphism Utilities */
-    .glass-panel {
-      background: rgba(19, 27, 46, 0.78);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .glass-pill {
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(245, 158, 11, 0.35);
-    }
-
-    /* Hide scrollbar for horizontal pills on mobile */
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
@@ -153,1008 +52,1000 @@
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950">
+<body class="bg-[#090D16] text-slate-100 min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-black overflow-x-hidden">
 
-  <!-- Ambient Motion Background Orbs -->
-  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
-    <div class="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-red-600/20 blur-3xl" style="animation: lanternsGlow 7s ease-in-out infinite;"></div>
-    <div class="absolute top-1/2 -left-28 w-96 h-96 rounded-full bg-amber-500/15 blur-3xl" style="animation: lanternsGlow 9s ease-in-out infinite 2s;"></div>
-    <div class="absolute -bottom-24 right-1/3 w-80 h-80 rounded-full bg-rose-600/15 blur-3xl" style="animation: lanternsGlow 8s ease-in-out infinite 4s;"></div>
-  </div>
-
-  <!-- Top Navigation & Motion Controls -->
-  <header class="sticky top-0 z-40 glass-panel border-b border-white/10 px-3 sm:px-6 py-2.5">
-    <div class="max-w-7xl mx-auto flex flex-col gap-2">
-      <!-- Top Row: Brand Title + View Mode & Auto-Play Controls -->
-      <div class="flex items-center justify-between gap-2">
-        <div class="flex items-center gap-2.5">
-          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-red-600 to-amber-500 flex items-center justify-center shadow-lg shadow-red-600/30 animate-glow">
-            <i class="fa-solid fa-dragon text-white text-base sm:text-lg"></i>
+  <!-- Top Navigation & City Progress Bar -->
+  <header class="w-full bg-[#131B2E]/95 border-b border-white/10 sticky top-0 z-50 shadow-2xl backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col gap-3">
+      
+      <!-- Top Bar Title & Mode Controls -->
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-500 to-red-600 flex items-center justify-center shadow-lg shadow-amber-500/20 animate-glow">
+            <i class="fa-solid fa-plane-departure text-white text-lg"></i>
           </div>
           <div>
-            <div class="flex items-center gap-1.5">
-              <span class="text-[11px] sm:text-xs font-bold tracking-wider text-amber-400 uppercase">الرياض ⇄ الصين</span>
-              <span class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-red-500/20 text-red-300 border border-red-500/30">20 يوماً</span>
-            </div>
-            <h1 class="text-sm sm:text-lg font-extrabold text-white leading-tight">موشن جرافيك رحلة الصين الكبرى</h1>
+            <h1 class="text-base sm:text-xl font-black tracking-tight text-white flex items-center gap-2">
+              <span>رحلة الصين الكبرى</span>
+              <span class="text-xs px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30">20 يوماً فاخرة</span>
+            </h1>
+            <p class="text-xs text-slate-400">من الرياض ⇄ بكين ⇄ شنغهاي ⇄ تشانغجياجيه ⇄ تشونغتشينغ ⇄ دالي ⇄ قوانغتشو ⇄ الرياض</p>
           </div>
         </div>
 
-        <!-- Action Buttons: Play/Pause Motion Show & Full Schedule Modal -->
-        <div class="flex items-center gap-1.5 sm:gap-2.5">
-          <button id="autoplay-btn" onclick="toggleAutoPlay()" class="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-r from-amber-500 to-red-600 text-white shadow-md hover:opacity-95 active:scale-95 transition-all cursor-pointer">
-            <i id="autoplay-icon" class="fa-solid fa-play text-xs"></i>
-            <span id="autoplay-text">تشغيل العرض</span>
+        <!-- Action Controls -->
+        <div class="flex items-center gap-2 flex-wrap">
+          <button 
+            onclick="toggleAutoPlay()" 
+            id="autoplay-btn"
+            class="px-3.5 py-1.5 rounded-xl bg-gradient-to-l from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black font-extrabold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-amber-500/20 transition-all cursor-pointer"
+          >
+            <i class="fa-solid fa-play" id="autoplay-icon"></i>
+            <span id="autoplay-text">تشغيل العرض التلقائي</span>
           </button>
 
-          <button onclick="toggleFullView()" id="view-toggle-btn" class="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-white/15 active:scale-95 transition-all cursor-pointer">
-            <i id="view-toggle-icon" class="fa-solid fa-table-list text-amber-400"></i>
-            <span id="view-toggle-text" class="hidden sm:inline">الجدول الكامل</span>
+          <button 
+            onclick="toggleFullSchedule()"
+            class="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-white/10 font-bold text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer"
+          >
+            <i class="fa-solid fa-calendar-days text-amber-400"></i>
+            <span id="schedule-btn-text">الجدول الشامل (20 يوماً)</span>
           </button>
         </div>
       </div>
 
-      <!-- Auto-Play Story Progress Bars -->
-      <div id="story-progress-bars" class="grid grid-cols-20 gap-1 pt-0.5" style="grid-template-columns: repeat(20, minmax(0, 1fr));">
-        <!-- Populated dynamically by JS -->
+      <!-- Story Progress Bars (21 Steps: 1 Overview + 20 Days) -->
+      <div id="story-progress-bars" class="grid grid-cols-21 gap-1 w-full pt-1">
+        <!-- Generated dynamically via JS -->
       </div>
+
+      <!-- Scrollable City & Day Navigation Pills -->
+      <div id="city-nav-pills" class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+        <!-- Generated dynamically via JS -->
+      </div>
+
     </div>
   </header>
 
-  <!-- Interactive Animated Route Map Bar (Scrollable on Mobile) -->
-  <section class="relative z-20 bg-slate-950/70 border-b border-white/10 py-2.5 px-3 sm:px-6">
-    <div class="max-w-7xl mx-auto">
-      <div id="city-nav-pills" class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
-        <!-- Populated dynamically by JS -->
-      </div>
-    </div>
-  </section>
-
-  <!-- MAIN INTERACTIVE MOTION STAGE (Slide Reel Mode) -->
-  <main id="motion-stage-view" class="relative z-10 flex-grow flex flex-col justify-center max-w-7xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-6">
+  <!-- Main Interactive Slide Deck Container -->
+  <main class="flex-grow max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 flex items-center justify-center">
     
-    <!-- Motion Card Container -->
-    <div id="active-slide-card" class="relative w-full rounded-3xl overflow-hidden shadow-2xl border border-white/15 bg-slate-900/90 min-h-[580px] flex flex-col lg:flex-row">
-      <!-- Populated dynamically by JS with smooth motion transitions -->
+    <!-- Single Active Slide Card -->
+    <div id="active-slide-card" class="w-full glass-panel rounded-3xl border border-white/10 shadow-2xl overflow-hidden flex flex-col lg:flex-row transition-all duration-500">
+      <!-- Injected via JavaScript -->
     </div>
 
-    <!-- Bottom Mobile-Friendly Navigation Buttons -->
-    <div class="mt-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <div class="flex items-center justify-between w-full sm:w-auto gap-3">
-        <button onclick="prevSlide()" class="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-slate-800/90 hover:bg-slate-700 text-white font-bold text-sm border border-white/10 active:scale-95 transition cursor-pointer shadow-lg">
-          <i class="fa-solid fa-chevron-right text-amber-400"></i>
-          <span>اليوم السابق</span>
-        </button>
-
-        <div id="slide-counter-badge" class="px-4 py-2 rounded-xl glass-pill text-xs sm:text-sm font-bold text-amber-300 whitespace-nowrap">
-          يوم 1 / 20
+    <!-- Full Schedule Modal (Hidden by Default) -->
+    <div id="full-schedule-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-xl hidden overflow-y-auto p-4 sm:p-8">
+      <div class="max-w-6xl mx-auto bg-[#131B2E] border border-white/15 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
+        <div class="flex items-center justify-between border-b border-white/10 pb-4">
+          <div>
+            <h2 class="text-xl sm:text-2xl font-black text-white">الجدول الشامل لرحلة الصين الكبرى (20 يوماً)</h2>
+            <p class="text-xs sm:text-sm text-slate-400">ملخص كامل لجميع المحطات، الفنادق (5 نجوم)، التكاليف، وأساليب التنقل</p>
+          </div>
+          <button onclick="toggleFullSchedule()" class="w-10 h-10 rounded-full bg-red-600/80 hover:bg-red-600 text-white flex items-center justify-center text-lg transition-all cursor-pointer">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
         </div>
 
-        <button onclick="nextSlide()" class="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-l from-red-600 to-amber-600 hover:from-red-500 hover:to-amber-500 text-white font-bold text-sm active:scale-95 transition cursor-pointer shadow-lg shadow-red-600/25">
-          <span>اليوم التالي</span>
-          <i class="fa-solid fa-chevron-left"></i>
-        </button>
+        <div id="full-schedule-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Injected dynamically via JS -->
+        </div>
       </div>
-
-      <p class="text-xs text-slate-400 flex items-center gap-2">
-        <i class="fa-solid fa-images text-amber-400"></i>
-        <span>اضغط على الصور المصغرة داخل كل يوم لتبديل عرض صور المعالم، الفندق، ووسيلة التنقل</span>
-      </p>
     </div>
+
   </main>
 
-  <!-- FULL TIMELINE & 20-DAY TABLE VIEW -->
-  <section id="full-schedule-view" class="hidden relative z-10 max-w-7xl w-full mx-auto px-3 sm:px-6 py-6 space-y-8">
-    
-    <!-- Header Banner -->
-    <div class="glass-panel rounded-3xl p-5 sm:p-8 border border-amber-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-      <div>
-        <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">الدليل الشامل خطوة بخطوة</span>
-        <h2 class="text-2xl sm:text-3xl font-black text-white mt-1">الجدول الكامل لرحلة الـ 20 يوماً في الصين</h2>
-        <p class="text-slate-300 text-sm sm:text-base mt-1">جميع المدن (شاملة شنغهاي)، وسائل التنقل، التكاليف التقديرية، المعالم السياحية، وأشهى الوجبات.</p>
-      </div>
-      <button onclick="toggleFullView()" class="px-5 py-3 rounded-2xl bg-gradient-to-r from-red-600 to-amber-500 text-white font-bold text-sm flex items-center gap-2 shadow-lg cursor-pointer">
-        <i class="fa-solid fa-film"></i>
-        <span>العودة لعرض الموشن جرافيك</span>
+  <!-- Bottom Fixed Navigation Bar -->
+  <footer class="w-full bg-[#131B2E]/95 border-t border-white/10 py-3 px-4 backdrop-blur-md sticky bottom-0 z-40 shadow-2xl">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      
+      <!-- Previous Step Button -->
+      <button 
+        onclick="prevSlide()"
+        class="px-4 sm:px-6 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-white/10 font-extrabold text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer shadow-lg"
+      >
+        <i class="fa-solid fa-chevron-right text-amber-400"></i>
+        <span>المحطة السابقة</span>
       </button>
-    </div>
 
-    <!-- All Destination Cards Grid (Mobile Friendly) -->
-    <div id="all-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <!-- Populated dynamically by JS -->
-    </div>
-
-    <!-- Complete 20-Day Day-by-Day Table / Mobile Cards -->
-    <div class="glass-panel rounded-3xl p-4 sm:p-8 border border-white/10">
-      <h3 class="text-xl sm:text-2xl font-extrabold text-amber-400 mb-4 flex items-center gap-2">
-        <i class="fa-solid fa-calendar-check"></i>
-        <span>ملخص الأيام الـ 20 بالتفصيل والتكلفة اليومية</span>
-      </h3>
-      <div id="twenty-days-list" class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
-        <!-- Populated dynamically by JS -->
+      <!-- Slide Counter Badge -->
+      <div id="slide-counter-badge" class="px-4 py-1.5 rounded-full bg-black/60 border border-white/15 text-amber-300 font-extrabold text-xs sm:text-sm shadow-inner">
+        نظرة عامة على الرحلة
       </div>
-    </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="relative z-10 border-t border-white/10 bg-slate-950/90 py-4 px-4 text-center text-xs text-slate-400">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-      <p>خطة سفر مخصصة لمدة 20 يوماً: الرياض ← بكين ← شنغهاي ← تشانغجياجيه ← تشونغتشينغ ← منتجع دالي ← قوانغتشو ← الرياض</p>
-      <p class="text-amber-400 font-semibold">شاملة تكاليف الطيران، القطارات الفائقة السرعة، والفنادق (5 نجوم) بالريال السعودي</p>
+      <!-- Next Step Button -->
+      <button 
+        onclick="nextSlide()"
+        class="px-4 sm:px-6 py-2 rounded-xl bg-gradient-to-l from-red-600 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white font-extrabold text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer shadow-lg shadow-red-600/30"
+      >
+        <span>المحطة التالية</span>
+        <i class="fa-solid fa-chevron-left text-amber-300"></i>
+      </button>
+
     </div>
   </footer>
 
+  <!-- JavaScript Application Logic -->
   <script>
     // ==========================================
-    // COMPLETE ARABIC DATA FOR ALL 20 DAYS (20 SEPARATE STEPS WITH MULTI-GALLERY & HOTEL DETAILS)
+    // COMPLETE ARABIC DATA FOR 21 STEPS (1 OVERVIEW + 20 SEPARATE DAYS)
     // ==========================================
     const slidesData = [
+      {
+        id: 0,
+        isOverview: true,
+        daysBadge: "نظرة عامة • ملخص الرحلة",
+        city: "ملخص الرحلة الإجمالي",
+        title: "خطط رحلة الصين الكبرى (20 يوماً) - من الرياض إلى بكين وعودة من قوانغتشو",
+        subtitle: "ملخص الميزانية الكلية، مسار المدن، وسائل التنقل الذكية، وأبرز مميزات كل محطة في رحلتك",
+        transport: "طيران دولي مباشر + قطارات الرصاصة الفائقة السرعة (درجة أولى) + سيارات خاصة فاخرة",
+        howToReach: "يبدأ المسار برحلة مباشرة من الرياض إلى بكين، وينتقل جنوباً عبر قطارات السرعة الفائقة والطيران الداخلي، وينتهي برحلة مباشرة عودة من قوانغتشو إلى الرياض.",
+        transportIcon: "fa-earth-asia",
+        hotelName: "إقامة فندقية فاخرة (5 نجوم ومنتجعات حصرية) طوال الـ 19 ليلة",
+        travelCost: "إجمالي التنقلات (الطيران الدولي والمحلي + القطارات + السيارات): ~7,500 ر.س (2,000$)",
+        stayCost: "إجمالي الإقامة الفندقية (5 نجوم والمنتجعات): ~17,200 ر.س (4,585$)",
+        gallery: [
+          {
+            url: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1400&q=80",
+            label: "خريطة مسار الصين الكبرى"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?auto=format&fit=crop&w=1400&q=80",
+            label: "أفق شنغهاي وقوانغتشو الحديث"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1584646098378-0874589d76b1?auto=format&fit=crop&w=1400&q=80",
+            label: "معالم بكين التاريخية وأفاتار"
+          }
+        ],
+        fallbackImage: "https://placehold.co/1200x800/090d16/f59e0b?text=Grand+China+Overview",
+        locationTag: "الرياض ⇄ بكين ⇄ شنغهاي ⇄ تشانغجياجيه ⇄ تشونغتشينغ ⇄ دالي ⇄ قوانغتشو ⇄ الرياض",
+        places: [
+          "بكين (4 أيام): التاريخ الإمبراطوري، سور الصين العظيم، ومنتجع يونيفرسال ستوديوز",
+          "شنغهاي (3 أيام): واجهة البوند، برج شنغهاي، وديزني لاند (أرض زوتوبيا)",
+          "تشانغجياجيه (3 أيام): بوابة السماء، جبال أفاتار المعلقة، ومصعد بايلونغ الزجاجي",
+          "تشونغتشينغ (3 أيام): مجمع هونغ يادونغ، قطار ليزيبا، وكروز نهر اليانغتسي",
+          "منتجع دالي (3 أيام): إقامة فاخرة على بحيرة إيرهاي، جبال كانغشان، والمدينة القديمة",
+          "قوانغتشو (4 أيام): السيرك الدولي، سفاري تشيميلونغ، برج كانتون، والعودة للرياض"
+        ],
+        meals: [
+          "بط بكين المشوي، هوت بوت تشونغتشينغ، نودلز شنغهاي، وديم سوم قوانغتشو",
+          "خيارات مطاعم حلال ومأكولات عالمية في كافة المحطات والمنتجعات"
+        ],
+        highlightNote: "تكلفت الإقامة والفنادق بعناية لتكون 5 نجوم ومنتجعات استثنائية لضمان أقصى درجات الراحة والفخامة."
+      },
       {
         id: 1,
         daysBadge: "اليوم 1 • بكين",
         city: "يوم 1: الوصول لبكين",
         title: "الانطلاق من الرياض والوصول إلى العاصمة الإمبراطورية بكين",
-        subtitle: "رحلة طيران مباشرة مريحة، استلام الغرفة في فندق 5 نجوم، وجولة مسائية أولى في قلب بكين النابض",
-        transport: "طيران مباشر (الرياض RUH ← بكين PEK/PKX) - حوالي 9 ساعات ونصف",
-        howToReach: "استقبال خاص في المطار بسيارة فاخرة (Mercedes V-Class) والتوجه مباشرة إلى الفندق في وسط منطقة وانغفوجينغ خلال 40 دقيقة، ثم المشي خطوات إلى ممشى التسوق المسائي.",
+        subtitle: "رحلة طيران دولية مباشرة وبدء الاستكشاف الهادئ لقلب العاصمة الصينية مع عشاء ترحيبي فاخر.",
+        transport: "طيران مباشر من الرياض (RUH) إلى بكين (PEK) + سيارة خاصة فخمة للاستقبال.",
+        howToReach: "استقبال خاص من صالة الوصول بمطار بكين، والتوجه مباشرة عبر سيارة سيدان فاخرة إلى الفندق المختار في وسط المدينة (تقريبي 40 دقيقة).",
         transportIcon: "fa-plane-arrival",
-        hotelName: "فندق ذا بينينسولا بكين (The Peninsula Beijing) - 5 نجوم",
-        travelCost: "تذكرة الطيران المباشر + استقبال المطار الخاص: ~2,200 ر.س (585$)",
-        stayCost: "إقامة الليلة الأولى (جناح ديلوكس): ~900 ر.س (240$)",
+        hotelName: "NUO Resort Hotel Beijing أو The Universal Studios Grand Hotel (5 نجوم)",
+        travelCost: "طيران مباشر واستقبال خاص: ~2,800 ر.س (750$)",
+        stayCost: "إقامة ليلة واحدة: ~900 ر.س (240$)",
         gallery: [
           {
             url: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1400&q=80",
-            label: "معالم بكين الإمبراطورية"
+            label: "معالم بكين الإمبراطورية العريقة"
           },
           {
-            url: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1400&q=80",
-            label: "فندق ذا بينينسولا بكين (5 نجوم)"
+            url: "https://images.unsplash.com/photo-1599571234909-290e2f3e0f1b?auto=format&fit=crop&w=1400&q=80",
+            label: "فندق NUO Resort فاخر 5 نجوم"
           },
           {
-            url: "https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?auto=format&fit=crop&w=1400&q=80",
-            label: "شارع وانغفوجينغ ليلاً"
+            url: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1400&q=80",
+            label: "شارع وانغفوجينغ الحيوي ليلاً"
           }
         ],
-        fallbackImage: "https://placehold.co/1200x800/1e293b/f59e0b?text=Day+1+Beijing+Arrival",
-        locationTag: "بكين • حي وانغفوجينغ",
+        fallbackImage: "https://placehold.co/1200x800/090d16/f59e0b?text=Beijing+Arrival",
+        locationTag: "بكين • وسط المدينة",
         places: [
-          "الوصول إلى مطار بكين الدولي وإنهاء إجراءات الدخول السريعة",
-          "تسجيل الدخول والراحة في فندق ذا بينينسولا بكين الفاخر",
-          "جولة مسائية هادئة في شارع وانغفوجينغ للمشاة (Wangfujing Pedestrian Street)"
+          "الوصول إلى مطار بكين الدولي وإنهاء إجراءات الدخول بسلاسة",
+          "التوجه للفندق الفاخر لتسجيل الغرف وأخذ قسط من الراحة",
+          "جولة مسائية خفيفة في شارع المشاة الحيوي (وانغفوجينغ Wangfujing)",
+          "استكشاف الأسواق الليلية والأجواء العصرية"
         ],
         meals: [
-          "عشاء ترحيبي فاخر: بط بكين المشوي على حطب الفاكهة في مطعم Siji Minfu الشهير",
-          "شاي الياسمين الصيني الدافئ والحلويات الإمبراطورية"
+          "عشاء ترحيبي فاخر: بط بكين المشوي التقليدي على الفواكه المشتعلة",
+          "مقبلات الشاي الصيني المعطر وحلويات الباستري التقليدية"
         ],
-        highlightNote: "الفندق يقع على بُعد دقائق سيراً على الأقدام من شارع وانغفوجينغ والمدينة المحرمة لتقليل وقت التنقل."
+        highlightNote: "احرص على ضبط الساعة على التوقيت المحلي (فارق 5 ساعات متقدمة عن الرياض) والنوم المبكر استعداداً لجولة الغد."
       },
       {
         id: 2,
-        daysBadge: "اليوم 2 • بكين التاريخية",
-        city: "يوم 2: المدينة المحرمة",
-        title: "المدينة المحرمة، ساحة تيانانمن، وحديقة جينغشان",
-        subtitle: "التجول في أكبر قصر إمبراطوري في العالم ومشاهدة غروب الشمس فوق أسقف القصور الذهبية",
-        transport: "سيارة خاصة مع سائق + جولة مشي منظمة عبر المحور الإمبراطوري",
-        howToReach: "تنقلك السيارة الخاصة من الفندق في 5 دقائق إلى البوابة الجنوبية (ساحة تيانانمن)، وتعبر المدينة المحرمة من الجنوب للشمال حيث تقع حديقة جينغشان مباشرة مقابل بوابة الخروج الشمالية.",
-        transportIcon: "fa-landmark-dome",
-        hotelName: "فندق ذا بينينسولا بكين (The Peninsula Beijing) - الليلة 2",
-        travelCost: "سيارة خاصة ليوم كامل + تذاكر القصور والحدائق: ~200 ر.س (55$)",
-        stayCost: "إقامة الليلة الثانية في الفندق: ~900 ر.س (240$)",
+        daysBadge: "اليوم 2 • بكين",
+        city: "يوم 2: التاريخ الإمبراطوري",
+        title: "استكشاف السحر الإمبراطوري: ميدان تيانانمن والمدينة المحرمة",
+        subtitle: "جولة عميقة في أعظم قصور الأباطرة التاريخية والحدائق الإمبراطورية المطلة على العاصمة.",
+        transport: "سيارة خاصة مع سائق مرشد + مترو بكين السياحي عند الحاجة.",
+        howToReach: "الانطلاق صباحاً بسيارة الفندق الخاصة مباشرة إلى ميدان تيانانمن (Tiananmen Square)، ثم العبور سيراً عبر بوابة النصر إلى المدينة المحرمة.",
+        transportIcon: "fa-monument",
+        hotelName: "NUO Resort Hotel Beijing أو The Universal Studios Grand Hotel (5 نجوم)",
+        travelCost: "مواصلات خاصة وتذاكر دخول القصر: ~350 ر.س (95$)",
+        stayCost: "إقامة ليلة واحدة: ~900 ر.س (240$)",
         gallery: [
           {
             url: "https://images.unsplash.com/photo-1584646098378-0874589d76b1?auto=format&fit=crop&w=1400&q=80",
-            label: "القصر الإمبراطوري - المدينة المحرمة"
+            label: "المدينة المحرمة في بكين"
           },
           {
-            url: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1400&q=80",
-            label: "جناح الفندق الفاخر في بكين"
+            url: "https://images.unsplash.com/photo-1599571234909-290e2f3e0f1b?auto=format&fit=crop&w=1400&q=80",
+            label: "جناح الاستقبال في الفندق الفاخر"
           },
           {
-            url: "https://images.unsplash.com/photo-1599571234909-29ed5d1321d6?auto=format&fit=crop&w=1400&q=80",
-            label: "إطلالة حديقة جينغشان البانورامية"
+            url: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1400&q=80",
+            label: "حديقة جينشان وبانوراما بكين"
           }
         ],
-        fallbackImage: "https://placehold.co/1200x800/7f1d1d/fde68a?text=Day+2+Forbidden+City",
-        locationTag: "قلب بكين • المحور الإمبراطوري",
+        fallbackImage: "https://placehold.co/1200x800/090d16/f59e0b?text=Forbidden+City",
+        locationTag: "بكين • وسط التاريخ الإمبراطوري",
         places: [
-          "ساحة تيانانمن التاريخية وبوابة السلام السماوي",
-          "المدينة المحرمة (قاعات العرش الإمبراطوري والحديقة الإمبراطورية الداخلية)",
-          "الصعود القمة التل في حديقة جينغشان (Jingshan Park) لأجمل صورة بانورامية لبكين عند الغروب"
+          "زيارة ميدان تيانانمن (أكبر ميدان حضري مفتوح في العالم)",
+          "استكشاف قاعات وأجنحة المدينة المحرمة (Gugong) ومتحف القصر الإمبراطورية",
+          "صعود تلة حديقة جينشان (Jingshan Park) لمشاهدة بانوراما ساحرة للمدينة المحرمة بأكملها",
+          "جولة مسائية في أزقة هوتونغ (Hutong) التاريخية عبر العربات التقليدية"
         ],
         meals: [
-          "غداء نودلز بكين التقليدية بصلصة الصويا (Old Beijing Zhajiangmian)",
-          "عشاء لحم الضأن المسلوق في القدر النحاسي (Copper-pot Mutton) في مطعم Donglaishun الحلال"
+          "الغداء: نودلز العاصمة الشهيرة (Zhajiangmian) مع صلصة الصويا واللحم",
+          "العشاء: وجبة لحم الضأن المعدة في القدر النحاسي التقليدي (Copper-pot Shuan Yangrou)"
         ],
-        highlightNote: "يجب حجز تذاكر المدينة المحرمة بجواز السفر قبل 7 أيام على الأقل لأن العدد اليومي محدود."
+        highlightNote: "تذاكر المدينة المحرمة تحدد بعدد زوار يومي صارم؛ لذا يتم حجزها مسبقاً عبر نظام الحجز VIP الخاص بالمجموعة."
       },
       {
         id: 3,
-        daysBadge: "اليوم 3 • سور الصين",
+        daysBadge: "اليوم 3 • بكين",
         city: "يوم 3: سور الصين العظيم",
-        title: "سور الصين العظيم (موتانيو) والقصر الصيفي الإمبراطوري",
-        subtitle: "تجربة الصعود بالتلفريك المغلق إلى قمم سور الصين والنزول بالزحليقة الجبلية الممتعة",
-        transport: "سيارة خاصة ذهاباً وإياباً (ساعة ونصف) + تلفريك وزحليقة التوبوغان",
-        howToReach: "الانطلاق الساعة 8:00 صباحاً بالسيارة الخاصة من الفندق عبر الطريق السريع مباشرة إلى قطاع موتانيو، ثم استقلال حافلة المنتزه الداخلية والتلفريك المغلق حتى البرج رقم 14.",
-        transportIcon: "fa-cable-car",
-        hotelName: "فندق ذا بينينسولا بكين (The Peninsula Beijing) - الليلة 3",
-        travelCost: "سيارة خاصة ليوم كامل + تذاكر السور والتلفريك والزحليقة: ~250 ر.س (67$)",
-        stayCost: "إقامة الليلة الثالثة في الفندق: ~900 ر.س (240$)",
+        title: "الوقوف على أحد أعاجيب العالم: سور الصين العظيم (موتيان يو)",
+        subtitle: "رحلة إلى قسم موشنياو الخلاب من سور الصين، مع تجربة التلفريك والزحلوقة الجبلية الممتعة.",
+        transport: "سيارة خاصة فاخرة لرحلة الذهاب والعودة (ساعتان لكل اتجاه).",
+        howToReach: "رحلة صباحية مريحة لمدة ساعة ونصف عبر سيارة خاصة من الفندق إلى محطة سور موتيان يو (Mutianyu)، مع توفير تذاكر المسار السريع.",
+        transportIcon: "fa-mountain",
+        hotelName: "NUO Resort Hotel Beijing أو The Universal Studios Grand Hotel (5 نجوم)",
+        travelCost: "سيارة خاصة للسور + تذاكر التلفريك والزحلوقة: ~600 ر.س (160$)",
+        stayCost: "إقامة ليلة واحدة: ~900 ر.س (240$)",
         gallery: [
           {
-            url: "https://content.paulreiffer.com/wp-content/uploads/2018/08/beijing-banner-mutianyu-great-wall-china-frost-winter-paul-reiffer-workshop-luxury-all-inclusive-expedition-tour-photo-photography-asia.jpg",
-            label: "سور الصين العظيم - قطاع موتانيو"
+            url: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1400&q=80",
+            label: "سور الصين العظيم (موتيان يو)"
           },
           {
-            url: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1400&q=80",
-            label: "فندق ذا بينينسولا والسبا المسائي"
+            url: "https://images.unsplash.com/photo-1599571234909-290e2f3e0f1b?auto=format&fit=crop&w=1400&q=80",
+            label: "مرافق الاستجمام في الفندق"
           },
           {
-            url: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1400&q=80",
-            label: "بحيرة كونمينغ في القصر الصيفي"
+            url: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1400&q=80",
+            label: "تلفريك سور الصين العظيم"
           }
         ],
-        fallbackImage: "https://placehold.co/1200x800/7f1d1d/fde68a?text=Day+3+Great+Wall",
-        locationTag: "موتانيو & القصر الصيفي",
+        fallbackImage: "https://placehold.co/1200x800/090d16/f59e0b?text=Great+Wall",
+        locationTag: "بكين • موتيان يو",
         places: [
-          "سور الصين العظيم - قطاع موتانيو (Mutianyu Great Wall) الأقل ازدحاماً والأجمل طبيعياً",
-          "ركوب التلفريك للصعود وتجربة زحليقة التوبوغان (Toboggan Slide) للنزول من السور",
-          "زيارة القصر الصيفي (Summer Palace) عصرًا وركوب قارب التنين في بحيرة كونمينغ"
+          "الصعود بالتلفريك المكشوف إلى أبراج المراقبة التاريخية لسور موتيان يو",
+          "المشي على السور العظيم والتقاط صور بانورامية للجبال المحيطة الخضراء",
+          "النزول عبر الزحلوقة الجبلية السريعة (Toboggan) لتجربة حماسية ممتعة",
+          "زيارة استرخائية في فترة المساء واستعداد لليوم الترفيهي الكبير"
         ],
         meals: [
-          "غداء ريفي عند سفح السور: سمك السلمون المرقط المشوي الطازج (Rainbow Trout) مع الخضار",
-          "عشاء مشويات بكين الإمبراطورية في وسط المدينة"
+          "الغداء: سمك التراوت الجبلي الطازج والمحضّر بطرق ريفية تقليدية",
+          "العشاء: وجبة صينية عائلية من الأطباق الشمالية الشهية"
         ],
-        highlightNote: "قطاع موتانيو مثالي جداً للعائلات بفضل التلفريك المريح وتجنب السلالم شديدة الانحدار."
+        highlightNote: "ينصح بارتداء حذاء مشي رياضي مريح وملابس قطنية مرنة نظراً لكثرة الأدراج والسلالم الحجرية على السور."
       },
       {
         id: 4,
-        daysBadge: "اليوم 4 • ملاهي بكين",
-        city: "يوم 4: يونيفرسال بكين",
-        title: "يوم كامل في منتجع يونيفرسال ستوديوز بكين العالمي",
-        subtitle: "الإقامة فوق بوابة المنتجع مباشرة للاستمتاع بـ 7 عوالم سينمائية وميزة الدخول المبكر",
-        transport: "سيارة خاصة إلى حي تونغتشو (35 دقيقة) + المشي المباشر من الفندق للبوابة",
-        howToReach: "الانتقال صباحاً بالسيارة الخاصة من وسط بكين إلى فندق The Universal Studios Grand Hotel الذي يقع حرفياً فوق البوابة الرئيسية للملاهي، فتخرج من مصعد الفندق إلى داخل الحديقة مباشرة.",
+        daysBadge: "اليوم 4 • بكين",
+        city: "يوم 4: يونيفرسال ستوديوز",
+        title: "عالم المغامرة والسحر: يونيفرسال ستوديوز بكين (Universal Studios)",
+        subtitle: "يوم كامل مليء بالإثارة والتشويق في أكبر منتجع ترفيهي في آسيا، مع ميزة الدخول المبكر.",
+        transport: "سيارة خاصة فاخرة للوصول المباشر لبوابات المنتجع في منطقة تونغتشو.",
+        howToReach: "انتقال قصير من الفندق إلى بوابات منتجع يونيفرسال (موقع الفندق داخل أو بجوار المنتجع يتيح دخولاً فورياً عبر ممر النزلاء الخاص).",
         transportIcon: "fa-wand-magic-sparkles",
-        hotelName: "فندق يونيفرسال ستوديوز غراند (The Universal Studios Grand Hotel)",
-        travelCost: "تذاكر الدخول + بطاقة المسار السريع Universal Express: ~950 ر.س (255$)",
-        stayCost: "إقامة ليلة داخل فندق بوابة يونيفرسال: ~1,350 ر.س (360$)",
+        hotelName: "The Universal Studios Grand Hotel (أو NUO Resort Hotel) - 5 نجوم",
+        travelCost: "تذاكر الدخول السريعة VIP + مواصلات: ~1,200 ر.س (320$)",
+        stayCost: "إقامة ليلة واحدة: ~950 ر.س (250$)",
         gallery: [
           {
-            url: "https://www.universalbeijingresort.com/sites/default/files/2021-04/%E6%88%B7%E5%A4%961-min_0.jpg",
-            label: "بوابة منتجع يونيفرسال وفندق غراند"
+            url: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1400&q=80",
+            label: "يونيفرسال ستوديوز بكين"
           },
           {
-            url: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1400&q=80",
-            label: "الغرف الفاخرة في فندق يونيفرسال غراند"
+            url: "https://images.unsplash.com/photo-1599571234909-290e2f3e0f1b?auto=format&fit=crop&w=1400&q=80",
+            label: "جناح يونيفرسال جراند هوتل"
           },
           {
-            url: "https://images.unsplash.com/photo-1513889961551-628c1e5e2ee9?auto=format&fit=crop&w=1400&q=80",
-            label: "الألعاب النارية وقلعة هاري بوتر"
+            url: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1400&q=80",
+            label: "عالم هاري بوتر السحري"
           }
         ],
-        fallbackImage: "https://placehold.co/1200x800/1e3a8a/fde68a?text=Day+4+Universal+Beijing",
-        locationTag: "منتجع يونيفرسال بكين • تونغتشو",
+        fallbackImage: "https://placehold.co/1200x800/090d16/f59e0b?text=Universal+Studios",
+        locationTag: "بكين • تونغتشو",
         places: [
-          "عالم هاري بوتر السحري وقلعة هوجورتس (Harry Potter and the Forbidden Journey)",
-          "أرض كونغ فو باندا المغلقة والمكيفة بالكامل + عالم جوراسيك وورلد (Jurassic World Flyer)",
-          "منطقة ترانسفورمرز وأفعوانية الديسيبتيكون + سهرة في ممشى Universal CityWalk"
+          "استخدام ميزة الدخول المبكر (Early Park Admission) قبل الزوار الآخرين",
+          "استكشاف منطقة هاري بوتر السحرية وقلعة هوغوورتس الشهيرة",
+          "خوض مغامرات مدينة كونغ فو باندا وعالم المتحولون (Transformers)",
+          "حضور العروض الاستعراضية المبهرة والتسوق في شارع سيتي ووك (CityWalk)"
         ],
         meals: [
-          "فطور مع الشخصيات الكرتونية في مطعم Lotus Garden داخل الفندق",
-          "غداء في مطعم Three Broomsticks مع مشروب الزبدة (Butterbeer) وعشاء في CityWalk"
+          "الغداء: مشروب الباتربير (Butterbeer) وأطباق الولائم في حانة الحانات الثلاث",
+          "العشاء: مأكولات عالمية ومشاوي فاخرة في مطاعم سيتي ووك"
         ],
-        highlightNote: "بطاقة Universal Express توفر عليك الانتظار وتضمن ركوب جميع الألعاب الـ 14 الكبرى في يوم واحد."
+        highlightNote: "يوصى بشدة باستخدام تطبيق المنتجع لمتابعة أوقات الانتظار وتفعيل بطاقة التخطي السريع (Express Pass) لتوفير الوقت."
       },
       {
         id: 5,
-        daysBadge: "اليوم 5 • قطار شنغهاي",
-        city: "يوم 5: قطار الرصاصة لشنغهاي",
-        title: "قطار الرصاصة إلى شنغهاي، كورنيش البوند، وكروز نهر هوانغبو",
-        subtitle: "تجربة السفر بأسرع قطار في العالم (350 كم/س) من بكين إلى قلب شنغهاي النابض",
-        transport: "قطار الرصاصة الفائق السرعة Fuxing Hao (درجة أولى/رجال أعمال) - 4.5 ساعات",
-        howToReach: "سيارة خاصة إلى محطة جنوب بكين (Beijing South Station)، ركوب قطار الرصاصة السريع إلى محطة شنغهاي هونغتشياو، ومنها سيارة خاصة (25 دقيقة) إلى الفندق المطل على واجهة البوند مباشرة.",
+        daysBadge: "اليوم 5 • شنغهاي",
+        city: "يوم 5: السفر لشنغهاي",
+        title: "قطار الرصاصة إلى العاصمة الاقتصادية: الوصول إلى شنغهاي",
+        subtitle: "الرحلة عبر قطار السرعة الفائق إلى شنغهاي، واستكشاف واجهة البوند التاريخية وأفق ناطحات السحاب.",
+        transport: "قطار الرصاصة فائق السرعة (درجة أولى - G-Series) مدة الرحلة ~4.5 ساعات.",
+        howToReach: "سيارة خاصة من الفندق إلى محطة قطار بكين الجنوبية، ركوب القطار السريع (350 كم/ساعة) للوصول إلى محطة شنغهاي، ثم سيارة خاصة للفندق.",
         transportIcon: "fa-train-subway",
-        hotelName: "فندق ذا ريتز كارلتون شنغهاي بودونغ أو والدورف أستوريا البوند (5 نجوم)",
-        travelCost: "تذكرة قطار الرصاصة درجة أولى + التوصيل + كروز النهر: ~450 ر.س (120$)",
-        stayCost: "إقامة الليلة الأولى في شنغهاي (إطلالة البوند): ~1,050 ر.س (280$)",
+        hotelName: "Fairmont Peace Hotel Shanghai أو The Peninsula Shanghai (5 نجوم)",
+        travelCost: "تذاكر قطار درجة أولى + مواصلات خاصة: ~750 ر.س (200$)",
+        stayCost: "إقامة ليلة واحدة: ~1,100 ر.س (295$)",
         gallery: [
           {
             url: "https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?auto=format&fit=crop&w=1400&q=80",
-            label: "أفق شنغهاي وواجهة البوند ليلاً"
+            label: "أفق واجهة البوند وبرج شنغهاي"
           },
           {
-            url: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1400&q=80",
-            label: "فندق 5 نجوم مطل على نهر هوانغبو"
+            url: "https://images.unsplash.com/photo-1599571234909-290e2f3e0f1b?auto=format&fit=crop&w=1400&q=80",
+            label: "فيرمونت بيس هوتل التاريخي الفاخر"
           },
           {
-            url: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=1400&q=80",
-            label: "القطار السريع وكورنيش شنغهاي"
+            url: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1400&q=80",
+            label: "محطة قطار الرصاصة السريع"
           }
         ],
-        fallbackImage: "https://placehold.co/1200x800/0f172a/38bdf8?text=Day+5+Shanghai+Bund",
-        locationTag: "شنغهاي • واجهة البوند التاريخية",
+        fallbackImage: "https://placehold.co/1200x800/090d16/f59e0b?text=Shanghai+The+Bund",
+        locationTag: "شنغهاي • البوند",
         places: [
-          "تجربة السفر في مقصورة الدرجة الأولى بقطار Fuxing السريع بين بكين وشنغهاي",
-          "التمشية عصراً على كورنيش البوند الشهير (The Bund) ومشاهدة إضاءة الأبراج",
-          "رحلة كروز ليلية فاخرة (VIP Deck) لمدة ساعة في نهر هوانغبو وسط أضواء النيون"
+          "ركوب قطار الرصاصة الفائق الاستمتاع بالمناظر الريفية والحضرية الخاطفة",
+          "تسجيل الوصول في فندق فاخر مطل على النهر في قلب شنغهاي",
+          "جولة مسائية ساحرة على ممشى واجهة البوند (The Bund) لمشاهدة إضاءات ناطحات السحاب",
+          "رحلة بحرية قصيرة في نهر هوانغبو لمشاهدة برج اللؤلؤ وبرج شنغهاي"
         ],
         meals: [
-          "غداء خفيف على متن القطار السريع أو فور الوصول في مطعم Din Tai Fung",
-          "عشاء فاخر يضم فطائر الشوربة الشنغهاوية (Xiaolongbao) والمأكولات البحرية المطلة على البوند"
+          "الغداء: وجبة خفيفة في مقصورة قطار الدرجة الأولى أو محطة القطار",
+          "العشاء: أطباق المطبخ الشنغهاي الراقي ومطاعم البوند الحائزة على نجوم ميشلان"
         ],
-        highlightNote: "القطار السريع بين بكين وشنغهاي أسرع وأكثر راحة من الطيران لأنه ينطلق ويصل لقلب المدينتين دون تأخير."
+        highlightNote: "قطارات الصين فائقة الدقة والانضباط؛ يرجى التواجد في محطة القطار قبل الموعد بـ 45 دقيقة."
       },
       {
         id: 6,
-        daysBadge: "اليوم 6 • معالم شنغهاي",
-        city: "يوم 6: أبراج وحدائق شنغهاي",
-        title: "قمة برج شنغهاي، حديقة يويوان الكلاسيكية، وشارع نانجينغ",
-        subtitle: "يوم يجمع بين أعلى منصة مشاهدة في الصين والحدائق الإمبراطورية وأشهر شوارع التسوق",
-        transport: "نفق Бوند السياحي تحت النهر + سيارة خاصة / مترو شنغهاي الحديث",
-        howToReach: "عبور نهر هوانغبو في 5 دقائق إلى حي لوجياتسوي المالي للصعود لبرج شنغهاي، ثم التوجه بالسيارة في 10 دقائق إلى حديقة يويوان التاريخية، ومنها إلى شارع نانجينغ المجاور للفندق.",
-        transportIcon: "fa-city",
-        hotelName: "فندق والدورف أستوريا / ريتز كارلتون شنغهاي - الليلة 2",
-        travelCost: "تذكرة قمة برج شنغهاي + حديقة يويوان + سيارة خاصة: ~230 ر.س (62$)",
-        stayCost: "إقامة الليلة الثانية في فندق البوند بشنغهاي: ~1,050 ر.س (280$)",
+        daysBadge: "اليوم 6 • شنغهاي",
+        city: "يوم 6: ديزني لاند شنغهاي",
+        title: "سحر الخيال والأساطير: ديزني لاند شنغهاي (Shanghai Disneyland)",
+        subtitle: "يوم كامل في أحدث وأكبر حدائق ديزني عالمياً، وتضم أول منطقة مطورة لعالم زوتوبيا (Zootopia).",
+        transport: "سيارة خاصة فاخرة لرحلة الذهاب والعودة من فندق شنغهاي.",
+        howToReach: "رحلة صباحية مباشرة لمدة 35 دقيقة بسيارة خاصة من وسط شنغهاي إلى بوابات ديزني لاند مع ترتيب تذاكر الدخول السريع.",
+        transportIcon: "fa-face-smile-beam",
+        hotelName: "Fairmont Peace Hotel Shanghai أو The Peninsula Shanghai (5 نجوم)",
+        travelCost: "تذاكر ديزني VIP + مواصلات: ~1,100 ر.س (295$)",
+        stayCost: "إقامة ليلة واحدة: ~1,100 ر.س (295$)",
         gallery: [
           {
-            url: "https://images.unsplash.com/photo-1506158669146-619067262a00?auto=format&fit=crop&w=1400&q=80",
-            label: "برج شنغهاي وبرج لؤلؤة الشرق في لوجياتسوي"
+            url: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1400&q=80",
+            label: "قلعة ديزني لاند شنغهاي الكبرى"
           },
           {
-            url: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1400&q=80",
-            label: "إطلالة الفندق على أبراج شنغهاي"
-          },
-          {
-            url: "https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1400&q=80",
-            label: "العمارة التراثية في حديقة يويوان"
-          }
-        ],
-        fallbackImage: "https://placehold.co/1200x800/0f172a/38bdf8?text=Day+6+Shanghai+Tower",
-        locationTag: "حي لوجياتسوي & حديقة يويوان",
-        places: [
-          "الصعود بأسرع مصعد في العالم إلى الطابق 118 في برج شنغهاي (Shanghai Tower - ارتفاع 632م)",
-          "زيارة حديقة يويوان التاريخية (Yu Garden) وجسر التسع تعرجات والبازار الصيني التقليدي",
-          "جولة مسائية وتسوق في شارع نانجينغ للمشاة (Nanjing Road) وأكبر متاجر العلامات العالمية"
-        ],
-        meals: [
-          "غداء السمك المقرمش بصلصة الحلو والحامض والروبيان المطهو في بازار يويوان",
-          "عشاء حلال أو مأكولات بحرية عالمية في مطاعم واجهة البوند"
-        ],
-        highlightNote: "ننصح بالصعود لبرج شنغهاي في الصباح الباكر عندما تكون السماء صافية لرؤية المدينة بالكامل."
-      },
-      {
-        id: 7,
-        daysBadge: "اليوم 7 • ديزني لاند",
-        city: "يوم 7: ديزني لاند شنغهاي",
-        title: "يوم كامل في منتجع شنغهاي ديزني لاند ثم الطيران لتشانغجياجيه",
-        subtitle: "استكشاف أرض زوتوبيا الحصرية، دراجات ترون الضوئية، وأكبر قلعة ديزني في العالم",
-        transport: "سيارة خاصة صباحاً إلى ديزني لاند (30 دقيقة) + طيران مسائي مباشر لتشانغجياجيه",
-        howToReach: "تنقلك السيارة الخاصة مع الحقائب صباحاً إلى منتجع شنغهاي ديزني (تودع الحقائب في خدمة الأمانات الرسمية VIP عند البوابة)، وبعد انتهاء جولتك تتوجه في 20 دقيقة فقط إلى مطار بودونغ المجاور للطيران إلى تشانغجياجيه.",
-        transportIcon: "fa-chess-rook",
-        hotelName: "منتجع بولمان تشانغجياجيه أو كراون بلازا (5 نجوم عند الوصول ليلاً)",
-        travelCost: "تذاكر ديزني مع Premier Access + طيران مباشر لتشانغجياجيه: ~1,350 ر.س (360$)",
-        stayCost: "إقامة الليلة الأولى في تشانغجياجيه (5 نجوم): ~650 ر.س (175$)",
-        gallery: [
-          {
-            url: "https://images.unsplash.com/photo-1548919973-5cef591cdbc9?auto=format&fit=crop&w=1400&q=80",
-            label: "قلعة شنغهاي ديزني لاند السحرية"
-          },
-          {
-            url: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1400&q=80",
-            label: "منتجع الإقامة الفاخر في تشانغجياجيه"
-          },
-          {
-            url: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1400&q=80",
-            label: "أجواء الألعاب الليلية وعالم ترون"
-          }
-        ],
-        fallbackImage: "https://placehold.co/1200x800/1d4ed8/fde68a?text=Day+7+Shanghai+Disneyland",
-        locationTag: "منتجع شنغهاي ديزني ← تشانغجياجيه",
-        places: [
-          "عالم زوتوبيا الحصري (Zootopia Land) وتجربة مطاردة الشرطة التفاعلية (Hot Pursuit)",
-          "أفعوانية الدراجات الضوئية السريعة (TRON Lightcycle Power Run) ومغامرة قراصنة الكاريبي المبهرة",
-          "الطيران المسائي المباشر (ساعتان ونصف) إلى مطار تشانغجياجيه للاستيقاظ صباحاً أمام الجبال مباشرة"
-        ],
-        meals: [
-          "غداء مميز في مطعم Barbossa's Bounty داخل مغارة قراصنة الكاريبي",
-          "حلويات ومخبوزات ديزني في ممشى Disneytown قبل التوجه للمطار"
-        ],
-        highlightNote: "مطار شنغهاي بودونغ يبعد 20 دقيقة فقط عن ديزني لاند، مما يجعل الجمع بينهما في نفس اليوم عملياً ومريحاً جداً."
-      },
-      {
-        id: 8,
-        daysBadge: "اليوم 8 • بوابة السماء",
-        city: "يوم 8: جبل تيانمن وبوابة السماء",
-        title: "معجزة بوابة السماء (Heaven's Gate) والممشى الزجاجي المعلق",
-        subtitle: "الصعود بأطول تلفريك جبلي في العالم من وسط المدينة مباشرة إلى قمة جبل تيانمن فوق السحاب",
-        transport: "تلفريك جبل تيانمن (7.5 كم) + السلالم الكهربائية داخل الصخور",
-        howToReach: "تنقلك السيارة في 10 دقائق إلى محطة تلفريك تيانمن وسط المدينة، تصعد بالتلفريك (28 دقيقة في الهواء) إلى القمة، ثم تنزل عبر 7 سلالم كهربائية محفورة داخل الجبل مباشرة إلى قوس بوابة السماء.",
-        transportIcon: "fa-mountain",
-        hotelName: "فندق ومنتجع هيلتون غاردن / كراون بلازا تشانغجياجيه (5 نجوم)",
-        travelCost: "تذاكر المسار A الشاملة (تلفريك + سلالم + ممشى زجاجي): ~220 ر.س (60$)",
-        stayCost: "إقامة الليلة الثانية في تشانغجياجيه: ~650 ر.س (175$)",
-        gallery: [
-          {
-            url: "https://nomadict.org/wp-content/uploads/2018/12/@rkrkrk_Tianmen-Mountain-region-Gate.jpg",
-            label: "قوس بوابة السماء الشهير (Heaven's Gate)"
-          },
-          {
-            url: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1400&q=80",
-            label: "منتجع الإقامة الجبلي في تشانغجياجيه"
-          },
-          {
-            url: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1400&q=80",
-            label: "القمم الضبابية وتلفريك جبل تيانمن"
-          }
-        ],
-        fallbackImage: "https://placehold.co/1200x800/064e3b/fde68a?text=Day+8+Heavens+Gate",
-        locationTag: "جبل تيانمن • تشانغجياجيه",
-        places: [
-          "قوس بوابة السماء الصخري العملاق (Tianmen Cave) وسلالم السماء الـ 999",
-          "الممشى الزجاجي الشفاف المعلق على حافة الجرف (Coiling Dragon Cliff Glass Skywalk)",
-          "زيارة معلم المباني الـ 72 العجيبة (72 Strange Buildings) المضاءة ليلاً في المدينة"
-        ],
-        meals: [
-          "غداء طبق سانشياغو التوجي التقليدي (Tujia Sanxiaguo) باللحوم والخضار الجبلية",
-          "عشاء سمك الأنهار المشوي مع براعم الخيزران الطازجة"
-        ],
-        highlightNote: "اختيار المسار (Line A) يجنبك صعود الدرج الطويل حيث تنزل من القمة لبوابة السماء بالسلالم الكهربائية."
-      },
-      {
-        id: 9,
-        daysBadge: "اليوم 9 • جبال أفاتار",
-        city: "يوم 9: قمم أفاتار المعلقة",
-        title: "أعمدة وولينغشتوان الشاهقة (جبال أفاتار) ومصعد بايلونغ الزجاجي",
-        subtitle: "استكشاف الغابات الصخرية الساحرة التي استوحي منها فيلم أفاتار العالمي",
-        transport: "سيارة خاصة إلى بوابة وولينغشتوان (35 دقيقة) + مصعد بايلونغ الزجاجي",
-        howToReach: "تنقلك السيارة الخاصة إلى مدخل المحمية، تستقل حافلة المحمية البيئية إلى قاعدة مصعد بايلونغ الزجاجي الذي يرفعك 326 متراً في الهواء خلال 88 ثانية فقط إلى قمم يوانجياجيه.",
-        transportIcon: "fa-mountain-sun",
-        hotelName: "منتجع بولمان تشانغجياجيه (Pullman Zhangjiajie Hotel) - 5 نجوم",
-        travelCost: "سيارة خاصة + تذاكر المحمية ومصعد بايلونغ والقطار المصغر: ~280 ر.س (75$)",
-        stayCost: "إقامة الليلة الثالثة في منتجع وولينغشتوان: ~650 ر.س (175$)",
-        gallery: [
-          {
-            url: "https://www.yellowbirdtour.com/wp-content/uploads/2026/03/Zhangjiajie-Avatar-scaled.webp",
-            label: "قمم أفاتار المعلقة في وولينغشتوان"
-          },
-          {
-            url: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1400&q=80",
-            label: "منتجع بولمان تشانغجياجيه الفاخر"
-          },
-          {
-            url: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1400&q=80",
-            label: "إطلالات يوانجياجيه وجسر تحت السماء"
-          }
-        ],
-        fallbackImage: "https://placehold.co/1200x800/065f46/fde68a?text=Day+9+Avatar+Mountains",
-        locationTag: "محمية وولينغشتوان • تشانغجياجيه",
-        places: [
-          "مصعد بايلونغ الزجاجي الخارجي (Bailong Glass Elevator) المطل على الأعمدة الصخرية",
-          "منطقة يوانجياجيه (Yuanjiajie) وعمود السماء الجنوبي الشهير بجبل هاليلويا في أفاتار",
-          "جسر تحت السماء الأول (First Bridge Under Heaven) وقطار معرض العشرة أميال السياحي"
-        ],
-        meals: [
-          "حساء الفطر البري الجبلي الساخن مع الدجاج البلدي",
-          "كعك الأرتيميسيا المقرمش (Artemisia Baba) واللحم المشوي على الحطب"
-        ],
-        highlightNote: "القطار الكهربائي في معرض العشرة أميال يتيح لك مشاهدة الوديان الصخرية من الأسفل دون تعب."
-      },
-      {
-        id: 10,
-        daysBadge: "اليوم 10 • تشونغتشينغ",
-        city: "يوم 10: هونغ يادونغ بتشونغتشينغ",
-        title: "القطار السريع إلى تشونغتشينغ ومجمع هونغ يادونغ المضيء",
-        subtitle: "الوصول إلى المدينة الجبلية ثلاثية الأبعاد ومشاهدة أشهر مبنى تراثي مضاء على ضفاف النهر",
-        transport: "قطار الرصاصة السريع (تشانغجياجيه غرب ← تشونغتشينغ) - ساعتان وربع",
-        howToReach: "تنطلق صباحاً بالقطار السريع عبر الأنفاق الجبلية إلى تشونغتشينغ، ومن المحطة تنقلك السيارة الخاصة في 20 دقيقة إلى فندقك في منطقة جيفانغبي المشرفة على النهرين.",
-        transportIcon: "fa-train",
-        hotelName: "فندق ذا ويستن ليبيرايشن سكوير أو رافلز سيتي إنتركونتيننتال (5 نجوم)",
-        travelCost: "تذكرة القطار السريع درجة أولى + سيارة خاصة: ~220 ر.س (60$)",
-        stayCost: "إقامة الليلة الأولى في تشونغتشينغ (إطلالة نهرية): ~750 ر.س (200$)",
-        gallery: [
-          {
-            url: "https://english.www.gov.cn/images/202505/29/683859a3c6d0868f1eab6c2a.jpeg",
-            label: "مجمع هونغ يادونغ المضيء ليلاً (11 طابقاً)"
-          },
-          {
-            url: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1400&q=80",
-            label: "فندق إنتركونتيننتال رافلز سيتي تشونغتشينغ"
-          },
-          {
-            url: "https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1400&q=80",
-            label: "أضواء جسر تشيانسيمين فوق النهر"
-          }
-        ],
-        fallbackImage: "https://placehold.co/1200x800/4c1d95/fde68a?text=Day+10+Chongqing+Hongyadong",
-        locationTag: "وسط تشونغتشينغ • جيفانغبي",
-        places: [
-          "ساحة ونصب التحرير الشهير (Jiefangbei Pedestrian Street) في قلب المدينة",
-          "مجمع هونغ يادونغ (Hongyadong) المكون من 11 طابقاً محفورة في الجرف الصخري والمضاءة كفيلم Spirited Away",
-          "التمشية على جسر تشيانسيمين (Qiansimen Bridge) لالتقاط أجمل الصور البانورامية لهونغ يادونغ"
-        ],
-        meals: [
-          "عشاء هوت بوت تشونغتشينغ الأصلي في قدر مقسوم (Yuanyang Pot: نصف مرق غير حار ونصف سيتشوان حار)",
-          "تحلية جيلي الثلج بالسكر البني والفواكه (Bingfen) لتبريد الفم"
-        ],
-        highlightNote: "في هونغ يادونغ يمكنك الدخول من الشارع في الطابق 11 والنزول بالمصعد إلى الطابق 1 على ضفة النهر!"
-      },
-      {
-        id: 11,
-        daysBadge: "اليوم 11 • قطار المباني",
-        city: "يوم 11: قطار ليزيبا وتسيتشيكو",
-        title: "قطار ليزيبا المخترق للمباني وبلدة تسيتشيكو التاريخية",
-        subtitle: "مشاهدة أعجوبة الهندسة المعمارية حيث يمر المترو داخل شقق سكنية، وزيارة البلدة الأثرية",
-        transport: "تجربة ركوب قطار المونوريل (الخط 2) + سيارة خاصة مع سائق",
-        howToReach: "تركب المونوريل من محطة Linjiangmen لتعيش تجربة اختراق المبنى بنفسك، ثم تنزل في منصة المشاهدة بليزيبا لتصويره، وبعدها تنقلك السيارة الخاصة في 20 دقيقة إلى بلدة تسيتشيكو.",
-        transportIcon: "fa-train-tram",
-        hotelName: "فندق إنتركونتيننتال رافلز سيتي تشونغتشينغ - الليلة 2",
-        travelCost: "سيارة خاصة ليوم كامل + تذاكر المونوريل: ~180 ر.س (48$)",
-        stayCost: "إقامة الليلة الثانية في تشونغتشينغ: ~750 ر.س (200$)",
-        gallery: [
-          {
-            url: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=1400&q=80",
-            label: "أفق تشونغتشينغ الجبلي والقطارات المعلقة"
-          },
-          {
-            url: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1400&q=80",
-            label: "الإطلالة البانورامية من غرف الفندق"
-          },
-          {
-            url: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1400&q=80",
-            label: "شوارع بلدة تسيتشيكو التاريخية"
-          }
-        ],
-        fallbackImage: "https://placehold.co/1200x800/4c1d95/fde68a?text=Day+11+Liziba+Monorail",
-        locationTag: "محطة ليزيبا & تسيتشيكو",
-        places: [
-          "محطة ليزيبا الشهيرة (Liziba Station) حيث يخترق القطار المعلق الطوابق السادسة إلى الثامنة من عمارة سكنية",
-          "بلدة تسيتشيكو التاريخية (Ciqikou Ancient Town) المشهورة بمقاهي الشاي التقليدية وأزقتها الحجرية",
-          "حديقة إيلينغ (Eling Park) ومنصة الاختبار لمشاهدة التقاء نهري اليانغتسي وجيالينغ من الأعلى"
-        ],
-        meals: [
-          "فطور نودلز تشونغتشينغ الشهيرة (Chongqing Xiaomian)",
-          "غداء السمك المشوي المتبل بالأعشاب وحلوى العجين المقلي (Mahua) في تسيتشيكو"
-        ],
-        highlightNote: "توجد منصة تصوير رسمية مخصصة للزوار أسفل مبنى ليزيبا لالتقاط فيديو دخول القطار في العمارة."
-      },
-      {
-        id: 12,
-        daysBadge: "اليوم 12 • كروز النهرين",
-        city: "يوم 12: تلفريك اليانغتسي والكروز",
-        title: "جسر رافلز سيتي السماوي، تلفريك نهر اليانغتسي، وكروز النهرين",
-        subtitle: "التحليق فوق نهر اليانغتسي بالتلفريك وإبحار ليلي ساحر وسط ناطحات السحاب المضيئة",
-        transport: "تلفريك نهر اليانغتسي + يخت كروز النهرين الليلي + المشي داخل رافلز سيتي",
-        howToReach: "بما أنك تقيم في مجمع رافلز سيتي أو جيفانغبي، تصعد بالمصعد مباشرة إلى الجسر السماوي (The Crystal)، وتبعد محطة تلفريك اليانغتسي ورصيف السفن السياحية 5 دقائق فقط بالسيارة.",
-        transportIcon: "fa-ship",
-        hotelName: "فندق إنتركونتيننتال رافلز سيتي تشونغتشينغ - الليلة 3",
-        travelCost: "تذاكر الجسر السماوي + تلفريك اليانغتسي + كروز VIP: ~220 ر.س (60$)",
-        stayCost: "إقامة الليلة الثالثة في تشونغتشينغ: ~750 ر.س (200$)",
-        gallery: [
-          {
-            url: "https://english.www.gov.cn/images/202505/29/683859a3c6d0868f1eab6c2a.jpeg",
-            label: "إطلالة كروز النهرين الليلي في تشونغتشينغ"
-          },
-          {
-            url: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1400&q=80",
-            label: "مسبح وجناح فندق رافلز سيتي السماوي"
+            url: "https://images.unsplash.com/photo-1599571234909-290e2f3e0f1b?auto=format&fit=crop&w=1400&q=80",
+            label: "أجنحة فندقية كلاسيكية فاخرة"
           },
           {
             url: "https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?auto=format&fit=crop&w=1400&q=80",
-            label: "أبراج رافلز سيتي والتقاء النهرين"
+            label: "عروض الألعاب النارية المسائية الساحرة"
           }
         ],
-        fallbackImage: "https://placehold.co/1200x800/4c1d95/fde68a?text=Day+12+Chongqing+Cruise",
-        locationTag: "رافلز سيتي & نهر اليانغتسي",
+        fallbackImage: "https://placehold.co/1200x800/090d16/f59e0b?text=Shanghai+Disneyland",
+        locationTag: "شنغهاي • بودونغ ديزني",
         places: [
-          "الممشى الزجاجي والجسر السماوي (Crystal Skybridge) أعلى أبراج رافلز سيتي بارتفاع 250 متراً",
-          "تلفريك نهر اليانغتسي التاريخي (Yangtze River Cableway) الذي يعبر فوق النهر العريض",
-          "رحلة كروز النهرين الليلية (Two Rivers Night Cruise) لمشاهدة أفق السايبر بانك المضيء بالكامل"
+          "زيارة مدينة زوتوبيا الجديدة كلياً (عالم الحيوانات الناطقة المذهل)",
+          "تجربة ألعاب ترون لايت كوارتر (TRON Lightcycle Power Run) الأسرع في العالم",
+          "الاستمتاع بالعروض الموسيقية الكبرى واستعراض القلعة المسائي بالألعاب النارية",
+          "التسوق في شارع ديزني تاون (Disneyland Town)"
         ],
         meals: [
-          "غداء دجاج سيتشوان المقرمش والبط المتبل في مول رافلز سيتي الفاخر",
-          "عشاء مشويات بحرية على ضفة شارع نانبين (Nanbin Road) المطل على الأبراج"
+          "الغداء: وجبات ديزني التمائمية الشهيرة ومأكولات الآسيوية السريعة",
+          "العشاء: عشاء فاخر في مطاعم ديسكفري داخل المنتجع أو وسط المدينة"
         ],
-        highlightNote: "عند التقاء النهرين من فوق جسر رافلز سيتي يمكنك رؤية لونين مختلفين للمياه (الأخضر والأحمر الطيني) يلتقيان دون أن يختلطا فوراً."
+        highlightNote: "عرض الألعاب النارية الليلي أمام قلعة القصص الخيالية هو الأضخم عالمياً؛ احرص على حجز مكان متميز مبكراً."
+      },
+      {
+        id: 7,
+        daysBadge: "اليوم 7 • شنغهاي",
+        city: "يوم 7: برج شنغهاي والحدائق",
+        title: "قمة سماء شنغهاي وحدائق يويوان الكلاسيكية",
+        subtitle: "الصعود إلى أعلى منصة مراقبة في الصين، واستكشاف الحدائق الصينية العريقة والأسواق التقليدية.",
+        transport: "مترو شنغهاي السياحي وسيارات أجرة فاخرة للتنقل بين المعالم.",
+        howToReach: "استخدام مترو شنغهاي السريع أو سيارة خاصة للوصول إلى حي بودونغ المالي وصعود برج شنغهاي (Shanghai Tower).",
+        transportIcon: "fa-city",
+        hotelName: "Fairmont Peace Hotel Shanghai أو The Peninsula Shanghai (5 نجوم)",
+        travelCost: "تذاكر برج شنغهاي ومنصة المراقبة + حدائق يويوان: ~300 ر.س (80$)",
+        stayCost: "إقامة ليلة واحدة: ~1,100 ر.س (295$)",
+        gallery: [
+          {
+            url: "https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?auto=format&fit=crop&w=1400&q=80",
+            label: "برج شنغهاي الناطح للسحاب"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1599571234909-290e2f3e0f1b?auto=format&fit=crop&w=1400&q=80",
+            label: "أجواء فندق البوند الراقي"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1400&q=80",
+            label: "حدائق يويوان التاريخية التقليدية"
+          }
+        ],
+        fallbackImage: "https://placehold.co/1200x800/090d16/f59e0b?text=Shanghai+Tower",
+        locationTag: "شنغهاي • بودونغ ويويوان",
+        places: [
+          "الصعود عبر أسرع مصعد في العالم إلى الطابق 118 في برج شنغهاي (Shanghai Tower)",
+          "استكشاف حدائق يويوان (Yuyuan Garden) الكلاسيكية ذات الجسور المتعرجة والبرك المائية",
+          "التجول في السوق القديم المحيط بالحديقة وتذوق الشاي الصيني الأصيل",
+          "جولة تسوق نهائية في شارع نانجينغ التجاري الشهير"
+        ],
+        meals: [
+          "الغداء: زلابية شياو لونغ باو (Xiaolongbao) الشنغهاي الشهيرة في مطعم دي هوي",
+          "العشاء: أطباق المأكولات البحرية والأسماك على الطريقة الشنغهايّة"
+        ],
+        highlightNote: "الطابق 118 في برج شنغهاي يوفر رؤية مذهلة للمدينة من فوق السحاب؛ يفضل الذهاب في يوم صافي."
+      },
+      {
+        id: 8,
+        daysBadge: "اليوم 8 • تشانغجياجيه",
+        city: "يوم 8: السفر لتشانغجياجيه",
+        title: "الطيران المباشر إلى تشانغجياجيه: بوابة السماء والأساطير",
+        subtitle: "رحلة طيران داخلية مباشرة من شنغهاي إلى تشانغجياجيه، والوصول إلى معالم جبال أفاتار ومدينة المباني العجيبة.",
+        transport: "طيران مباشر من شنغهاي (SHA) إلى تشانغجياجيه (DYG) لمدة ساعتين تقريباً.",
+        howToReach: "الانقلاب من الفندق إلى مطار شنغهاي، طيران مباشر إلى مطار تشانغجياجيه خه هوا، ثم سيارة خاصة للفندق (15 دقيقة فقط).",
+        transportIcon: "fa-plane",
+        hotelName: "Grand Hyatt Zhangjiajie أو Pullman Zhangjiajie Hotel (5 نجوم)",
+        travelCost: "طيران داخلي + مواصلات خاصة: ~1,300 ر.س (350$)",
+        stayCost: "إقامة ليلة واحدة: ~850 ر.س (225$)",
+        gallery: [
+          {
+            url: "http://googleusercontent.com/image_collection/image_retrieval/17401353995834132282_0",
+            label: "جبال تشانغجياجيه وطبيعة أفاتار الساحرة"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1599571234909-290e2f3e0f1b?auto=format&fit=crop&w=1400&q=80",
+            label: "فندق جراند حياة تشانغجياجيه الفاخر"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1400&q=80",
+            label: "مباني السحر الـ 72 العجيبة ليلاً"
+          }
+        ],
+        fallbackImage: "https://placehold.co/1200x800/090d16/f59e0b?text=Zhangjiajie+Arrival",
+        locationTag: "تشانغجياجيه • المدينة",
+        places: [
+          "الوصول إلى مطار تشانغجياجيه والاستقبال عبر مرشد سياحي محلي",
+          "التسجيل في الفندق الراقي وأخذ قسط من الراحة",
+          "جولة مسائية ساحرة لزيارة مجمع (مباني الـ 72 العجيبة) المضاءة بألوان سحرية خيالية",
+          "التعرف على ثقافة قبائل توجيا (Tujia) المحلية"
+        ],
+        meals: [
+          "الغداء: وجبة خفيفة أثناء رحلة الطيران الداخلي",
+          "العشاء: وجبة سانشياجاو (Sanxiaguo) التقليدية من لحوم ومأكولات جبال هونان"
+        ],
+        highlightNote: "مجمع المباني الـ 72 ليلاً يعتبر تحفة معمارية مبهرة للتصوير الفوتوغرافي."
+      },
+      {
+        id: 9,
+        daysBadge: "اليوم 9 • تشانغجياجيه",
+        city: "يوم 9: جولة بوابة السماء",
+        title: "التحدي الأعظم: صعود جليدي وأعجوبة (بوابة السماء)",
+        subtitle: "زيارة منتزه جبل تيانمن الصخري العظيم، وصعود أطول تلفريك في العالم، واجتياز الممر الزجاجي المعلق.",
+        transport: "تلفريك تيانمن + سيارة الجبل الخاصة + سلالم السلالم الكهربائية الحجرية.",
+        howToReach: "سيارة خاصة من الفندق إلى محطة تلفريك وسط مدينة تشانغجياجيه المباشرة لركوب الخط A الصاعد لقمة الجبل.",
+        transportIcon: "fa-cable-car",
+        hotelName: "Grand Hyatt Zhangjiajie أو Pullman Zhangjiajie Hotel (5 نجوم)",
+        travelCost: "تذاكر منتزه تيانمن VIP والتلفريك والسلالم: ~450 ر.س (120$)",
+        stayCost: "إقامة ليلة واحدة: ~850 ر.س (225$)",
+        gallery: [
+          {
+            url: "http://googleusercontent.com/image_collection/image_retrieval/17401353995834132282_0",
+            label: "أعجوبة بوابة السماء (Tianmen Cave)"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1599571234909-290e2f3e0f1b?auto=format&fit=crop&w=1400&q=80",
+            label: "مرافق الاسترخاء في فندق بولمان"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1400&q=80",
+            label: "الممر الزجاجي المعلق على الهاوية"
+          }
+        ],
+        fallbackImage: "https://placehold.co/1200x800/090d16/f59e0b?text=Tianmen+Mountain",
+        locationTag: "تشانغجياجيه • جبل تيانمن",
+        places: [
+          "ركوب أطول تلفريك في العالم (7.4 كم) مع إطلالات مذهلة على قمم الجبال والمدينة",
+          "المشي على الممر الزجاجي المعلق على حافة الهاوية (Coiling Dragon Cliff Glass Skywalk)",
+          "نزول السلالم المتحركة الداخلية الضخمة داخل الجبل للوصول إلى قوس بوابة السماء العظيم",
+          "صعود أو نزول طريق الـ 99 منحنياً الجبلي الشهير (Tongtian Avenue)"
+        ],
+        meals: [
+          "الغداء: أطباق ريفية محلية من جبال هونان (مطعم جبلي تقليدي)",
+          "العشاء: لحم الخنزير المدخن على الطريقة التوجية مع الفطر البري الطازج"
+        ],
+        highlightNote: "الجو على قمة الجبل قد يكون أبرد من المدينة؛ ينصح بإحضار جاكيت خفيف حتى في الصيف."
+      },
+      {
+        id: 10,
+        daysBadge: "اليوم 10 • تشانغجياجيه",
+        city: "يوم 10: قمم أفاتار ووليانغ",
+        title: "عوالم الفيلم الشهير: جبال أفاتار المعلقة ومصعد بايلونغ الزجاجي",
+        subtitle: "استكشاف منتزه تشانغجياجيه الوطني للغابات والصعود عبر أعلى مصعد خارجي زجاجي في العالم.",
+        transport: "سيارة متنزهات كهربائية + مصعد بايلونغ الزجاجي + تلفريك يوانجياجيه.",
+        howToReach: "رحلة صباحية بسيارة خاصة من الفندق إلى مدخل منتزه وليانغ (Wulingyuan) لبدء جولة الغابات المعلقة.",
+        transportIcon: "fa-mountain-sun",
+        hotelName: "Grand Hyatt Zhangjiajie أو Pullman Zhangjiajie Hotel (5 نجوم)",
+        travelCost: "تذاكر منتزه الغابات ومصعد بايلونغ والقطار الصغير: ~500 ر.س (135$)",
+        stayCost: "إقامة ليلة واحدة: ~850 ر.س (225$)",
+        gallery: [
+          {
+            url: "http://googleusercontent.com/image_collection/image_retrieval/6267812417023516085_0",
+            label: "جبال أفاتار المعلقة (Wulingyuan)"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1599571234909-290e2f3e0f1b?auto=format&fit=crop&w=1400&q=80",
+            label: "غرفة نوم فندقية فاخرة بإطلالة جبلية"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1400&q=80",
+            label: "مصعد بايلونغ الزجاجي الشاهق"
+          }
+        ],
+        fallbackImage: "https://placehold.co/1200x800/090d16/f59e0b?text=Avatar+Mountains",
+        locationTag: "تشانغجياجيه • وليانغ",
+        places: [
+          "الصعود عبر مصعد بايلونغ الزجاجي (Bailong Elevator) الملتصق بالصخور العمودية الشاهقة",
+          "استكشاف قمة يوانجياجيه (Yuanjiajie) مصدر إلهام جبال هاليلمويا في فيلم أفاتار",
+          "زيارة عمود الجبل الجنوبي (جبل أبحاث أفاتار المسمى رسمياً بـ (أفاتار هاليليلويا)",
+          "ركوب القطار الكهربائي الصغير عبر وادي غاليري العشرة أميال (Ten-Mile Gallery)"
+        ],
+        meals: [
+          "الغداء: وجبة سريعة محلية داخل المنتزه الطبيعي مع عصائر الفواكه البرية",
+          "العشاء: حساء الفطر البري الجبلي المشكل والأطباق الساخنة"
+        ],
+        highlightNote: "المشاهد الطبيعية في هذا المنتزه ألهمت المخرج جيمس كاميرون؛ تأكد من شحن كاميرتك بالكامل."
+      },
+      {
+        id: 11,
+        daysBadge: "اليوم 11 • تشونغتشينغ",
+        city: "يوم 11: السفر لتشونغتشينغ",
+        title: "القطار إلى مدينة السايبربانك: الوصول إلى تشونغتشينغ",
+        subtitle: "الركوب في قطار السرعة الفائق متوجهاً إلى تشونغتشينغ، وتجربة الهوت بوت الناري ومجمع هونغ يادونغ السحري.",
+        transport: "قطار الرصاصة فائق السرعة من محطة تشانغجياجيه الغربية إلى تشونغتشينغ (~2.5 ساعة).",
+        howToReach: "سيارة خاصة من الفندق لمحطة قطار تشانغجياجيه، ركوب القطار السريع حتى تشونغتشينغ، ثم سيارة خاصة للفندق.",
+        transportIcon: "fa-train",
+        hotelName: "Niccolo Chongqing أو InterContinental Chongqing Raffles City (5 نجوم)",
+        travelCost: "تذاكر قطار درجة أولى + مواصلات خاصة: ~450 ر.س (120$)",
+        stayCost: "إقامة ليلة واحدة: ~1,000 ر.س (265$)",
+        gallery: [
+          {
+            url: "http://googleusercontent.com/image_collection/image_retrieval/2975437067324755704_0",
+            label: "مجمع هونغ يادونغ المبهر ليلاً في تشونغتشينغ"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1599571234909-290e2f3e0f1b?auto=format&fit=crop&w=1400&q=80",
+            label: "فندق نيكولو تشونغتشينغ الراقي المطل على النهر"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?auto=format&fit=crop&w=1400&q=80",
+            label: "أفق مدينة تشونغتشينغ الجبلية الضخمة"
+          }
+        ],
+        fallbackImage: "https://placehold.co/1200x800/090d16/f59e0b?text=Chongqing+Hongyadong",
+        locationTag: "تشونغتشينغ • وسط المدينة",
+        places: [
+          "الوصول بالقطار السريع إلى محطة تشونغتشينغ والتسجيل في فندق فاخر فوق السحاب",
+          "جولة مسائية استثنائية في مجمع هونغ يادونغ (Hongyadong) المستوحى من أفلام الخيال",
+          "الاستمتاع بإضاءات المدينة على ضفاف نهر اليانغتسي وجارينج",
+          "تذوق ثقافة الشارع الحيوية في ساحات المدينة الجبلية متعددة الطوابق"
+        ],
+        meals: [
+          "الغداء: نودلز تشونغتشينغ الحارة الشهيرة (Xiaomian) في محطة القطار أو وسط المدينة",
+          "العشاء: هوت بوت تشونغتشينغ الأصلي بتتبيلة الفلفل الحار والسيشوان المقسم (Yuanyang Hotpot)"
+        ],
+        highlightNote: "تشونغتشينغ مبنية على جبال شاهقة بطوابق متعددة؛ قد تجد نفسك في الطابق الـ 20 وتخرج لتجد شارعاً عاماً رئيسياً!"
+      },
+      {
+        id: 12,
+        daysBadge: "اليوم 12 • تشونغتشينغ",
+        city: "يوم 12: قطار ليزيبا والمدينة القديمة",
+        title: "القطار المخترق للمباني وعراقة تشيقيكو",
+        subtitle: "مشاهدة قطار المونوريل وهو يخترق شقة سكنية من الداخل، وزيارة مدينة تشيقيكو التاريخية.",
+        transport: "مونوريل تشونغتشينغ المعلق + سيارة خاصة للسائق والمرشد.",
+        howToReach: "استخدام نظام المونوريل الشهير للوصول إلى محطة ليزيبا، ثم سيارة خاصة إلى بلدة تشيقيكو التاريخية.",
+        transportIcon: "fa-train-subway",
+        hotelName: "Niccolo Chongqing أو InterContinental Chongqing Raffles City (5 نجوم)",
+        travelCost: "مواصلات خاصة وتذاكر الأنشطة: ~250 ر.س (70$)",
+        stayCost: "إقامة ليلة واحدة: ~1,000 ر.س (265$)",
+        gallery: [
+          {
+            url: "http://googleusercontent.com/image_collection/image_retrieval/1269871059905267960_0",
+            label: "قطار المونوريل يخترق المبنى السكني في ليزيبا"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1599571234909-290e2f3e0f1b?auto=format&fit=crop&w=1400&q=80",
+            label: "جناح الاستقبال الراقي في الفندق"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1400&q=80",
+            label: "بلدة تشيقيكو التاريخية القديمة"
+          }
+        ],
+        fallbackImage: "https://placehold.co/1200x800/090d16/f59e0b?text=Liziba+Monorail",
+        locationTag: "تشونغتشينغ • ليزيبا وتشيقيكو",
+        places: [
+          "زيارة منصة مشاهدة محطة ليزيبا (Liziba Station) لرؤية قطار المونوريل يخترق مبنى سكنياً من منتصفه",
+          "استكشاف أزقة بلدة تشيقيكو التاريخية (Ciqikou Ancient Town) المطلة على النهر",
+          "تجربة الحرف اليدوية وتذوق المعجنات التقليدية وحلوى السكر المكرمل",
+          "التجول في حديقة إيلينغ (Eling Park) لرؤية إطلالة بانورامية علوية للمدينة"
+        ],
+        meals: [
+          "الغداء: بط معطّر بالتوابل والبهارات ومأكولات سيتشوان خفيفة",
+          "العشاء: أسماك النهر المشوية بصوص الفلفل الحار والكزبرة الطازجة"
+        ],
+        highlightNote: "احرص على الكاميرا لالتقاط لحظة خروج القطار من المبنى بدقة عالية."
       },
       {
         id: 13,
-        daysBadge: "اليوم 13 • منتجع دالي (1)",
-        city: "يوم 13: الوصول لمنتجع دالي",
-        title: "الانتقال إلى مقاطعة يونان وبداية الإقامة الفاخرة في منتجع دالي (3 ليالٍ)",
-        subtitle: "الهروب إلى الهدوء والطبيعة الخلابة على ضفاف بحيرة إيرهاي وجبال كانغشان",
-        transport: "قطار فائق السرعة (أو طيران قصير) من تشونغتشينغ إلى دالي + سيارة المنتجع",
-        howToReach: "الانتقال صباحاً بالقطار السريع عبر جبال الجنوب الغربي الساحرة إلى محطة دالي، حيث تنتظرك سيارة المنتجع الخاصة لنقلك في 35 دقيقة على الطريق الساحلي إلى منتجعك المطل على البحيرة.",
-        transportIcon: "fa-umbrella-beach",
-        hotelName: "منتجع أركاديا / سونغتسان أو لينغهاي الفاخر على بحيرة إيرهاي (5 نجوم)",
-        travelCost: "تذاكر القطار السريع درجة أولى + توصيل المنتجع الخاص: ~420 ر.س (112$)",
-        stayCost: "إقامة الليلة الأولى في منتجع دالي الفاخر: ~1,100 ر.س (295$)",
+        daysBadge: "اليوم 13 • تشونغتشينغ",
+        city: "يوم 13: ناطحات رافلز سيتي",
+        title: "جسر رافلز سيتي المعلق وكروز نهر اليانغتسي",
+        subtitle: "زيارة الجسر السماوي المعلق الأعلى في آسيا، وجولة بحرية ليلية في نهرين متقاطعين.",
+        transport: "سيارة خاصة فاخرة + تذاكر السفينة السياحية النهرية.",
+        howToReach: "انتقال قصير من الفندق إلى منصة رافلز سيتي (Raffles City Crystal), ثم التوجه لميناء الرحلات النهرية.",
+        transportIcon: "fa-ship",
+        hotelName: "Niccolo Chongqing أو InterContinental Chongqing Raffles City (5 نجوم)",
+        travelCost: "تذاكر جسر كريستال سكاي ووك + كروز نهري: ~400 ر.س (110$)",
+        stayCost: "إقامة ليلة واحدة: ~1,000 ر.س (265$)",
         gallery: [
           {
-            url: "https://www.visityunnanchina.com/files/2022-03/Mount_Cangshan_Dali_Yunnan_China_02.jpg",
-            label: "بحيرة إيرهاي وجبال كانغشان في دالي"
+            url: "http://googleusercontent.com/image_collection/image_retrieval/2975437067324755704_0",
+            label: "جسر رافلز سيتي السماوي المعلق وناطحات السحاب"
           },
           {
-            url: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1400&q=80",
-            label: "منتجع بحيرة إيرهاي الفاخر مع مسبح بانورامي"
+            url: "https://images.unsplash.com/photo-1599571234909-290e2f3e0f1b?auto=format&fit=crop&w=1400&q=80",
+            label: "فندق إنتركونتيننتال رافلز سيتي"
           },
           {
-            url: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1400&q=80",
-            label: "تراس شاي المساء المطل على البحيرة"
+            url: "https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?auto=format&fit=crop&w=1400&q=80",
+            label: "رحلة كروز نهر اليانغتسي ليلاً"
           }
         ],
-        fallbackImage: "https://placehold.co/1200x800/0284c7/fde68a?text=Day+13+Dali+Lake+Resort",
-        locationTag: "بحيرة إيرهاي • دالي (يونان)",
+        fallbackImage: "https://placehold.co/1200x800/090d16/f59e0b?text=Raffles+City+Chongqing",
+        locationTag: "تشونغتشينغ • يوتشونغ",
         places: [
-          "تسجيل الدخول في جناح مطل مباشرة على مياه بحيرة إيرهاي الفيروزية",
-          "جلسة شاي ما بعد الظهيرة (Afternoon Tea) على التراس المائي للمنتجع مع إطلالة الغروب",
-          "تمشية مسائية هادئة في قرية شوانغلانغ الساحلية (Shuanglang) المجاورة للمنتجع"
+          "زيارة الجسر السماوي الأفقي (The Crystal) المعلق بين ناطحات السحاب على ارتفاع 250 متراً",
+          "الاستمتاع برؤية التقاء نهري اليانغتسي وجالينج بلونيهما المختلفين",
+          "تجربة التلفريك المعلق العابر لنهر اليانغتسي (Yangtze River Cableway)",
+          "رحلة بحرية ليلية كروز (Two Rivers Night Cruise) لمشاهدة إضاءات تشونغتشينغ الساحرة"
         ],
         meals: [
-          "غداء نودلز عبور الجسر اليونانية الشهيرة (Crossing-the-Bridge Rice Noodles) في المنتجع",
-          "عشاء فاخر على ضوء الشموع يضم أطباق يونان الجبلية والأسماك الطازجة"
+          "الغداء: دجاج تشونغتشينغ المقلي الشهير بقطع الفلفل الجاف (Laziji)",
+          "العشاء: عشاء فاخر في مطعم معلق على قمة رافلز سيتي"
         ],
-        highlightNote: "تتميز دالي بطقس ربيعي معتدل طوال العام (20-25 درجة مئوية) وهواء نقي جداً بعيداً عن صخب المدن."
+        highlightNote: "الرحلة النهرية المسائية هي أفضل طريقة لمشاهدة تشونغتشينغ بلقبها (مدينة الجبل الساحرة المضائه)."
       },
       {
         id: 14,
-        daysBadge: "اليوم 14 • منتجع دالي (2)",
-        city: "يوم 14: جولة بحيرة إيرهاي",
-        title: "جولة بحيرة إيرهاي، قرية شيتشو التراثية، واستجمام المنتجع",
-        subtitle: "اليوم الثاني في منتجع دالي: جولة بسيارة مكشوفة حول البحيرة وتجربة الحرف اليونانية",
-        transport: "سيارة جيب مكشوفة خاصة + دراجات كهربائية في الممر البيئي الساحلي",
-        howToReach: "تنطلق من بوابة المنتجع مباشرة بسيارة مكشوفة خاصة مع مصور/سائق على طول طريق البحيرة الخلاب، وتتوقف في الممر البيئي الساحلي (الخالي من السيارات) لركوب الدراجات الكهربائية المحاذية للماء.",
-        transportIcon: "fa-car-side",
-        hotelName: "منتجع بحيرة إيرهاي الفاخر في دالي - الليلة 2",
-        travelCost: "استئجار سيارة مكشوفة خاصة ليوم كامل + ورشة الصباغة: ~230 ر.س (62$)",
-        stayCost: "إقامة الليلة الثانية في منتجع بحيرة إيرهاي: ~1,100 ر.س (295$)",
+        daysBadge: "اليوم 14 • دالي",
+        city: "يوم 14: السفر لمنتجع دالي",
+        title: "القطار السريع إلى بحيرة إيرهاي: بداية إقامة منتجع دالي",
+        subtitle: "الوصول بالقطار إلى مقاطعة يونان الساحرة، والانتقال إلى منتجع فاخر على ضفاف بحيرة إيرهاي الصافية.",
+        transport: "قطار الرصاصة الفائق السرعة من تشونغتشينغ إلى دالي (موصول بتبديل سريع) أو رحلة طيران سريعة (~6 ساعات).",
+        howToReach: "استقلال قطار السرعة الفائق الاستمتاع بالمناظر الطبيعية الجبلية ليونان، ثم الاستقبال بسيارة المنتجع الخاصة.",
+        transportIcon: "fa-water",
+        hotelName: "洱海Sands Resort Dali أو Dali Daliangshanzhuang Resort (منتجع 5 نجوم على البحيرة)",
+        travelCost: "تذاكر قطار درجة أولى + نقل خاص للمنتجع: ~850 ر.س (230$)",
+        stayCost: "إقامة ليلة واحدة في المنتجع: ~1,400 ر.س (375$)",
         gallery: [
           {
-            url: "https://www.visityunnanchina.com/files/2022-03/Mount_Cangshan_Dali_Yunnan_China_02.jpg",
-            label: "الممر البيئي الساحلي لبحيرة إيرهاي"
+            url: "http://googleusercontent.com/image_collection/image_retrieval/3449131423411868554_0",
+            label: "بحيرة إيرهاي الهادئة وجبال كانغشان في دالي"
           },
           {
-            url: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1400&q=80",
-            label: "الاسترخاء في منتجع دالي المطل على الماء"
+            url: "https://images.unsplash.com/photo-1599571234909-290e2f3e0f1b?auto=format&fit=crop&w=1400&q=80",
+            label: "منتجع فاخر على ضفاف البحيرة"
           },
           {
-            url: "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1400&q=80",
-            label: "الطبيعة الريفية وحقول شيتشو في دالي"
+            url: "http://googleusercontent.com/image_collection/image_retrieval/10355785647228985371_0",
+            label: "معالم دالي وبحيرة إيرهاي الطبيعية"
           }
         ],
-        fallbackImage: "https://placehold.co/1200x800/0284c7/fde68a?text=Day+14+Erhai+Lake+Tour",
-        locationTag: "الممر البيئي & بلدة شيتشو",
+        fallbackImage: "https://placehold.co/1200x800/090d16/f59e0b?text=Dali+Erhai+Lake",
+        locationTag: "دالي • بحيرة إيرهاي",
         places: [
-          "منعطف S الشهير في الممر البيئي لبحيرة إيرهاي (Erhai Ecological Corridor) وتغذية طيور النورس",
-          "بلدة شيتشو التاريخية (Xizhou Ancient Town) ومشاهدة حقول القمح والأرز الخضراء",
-          "تجربة ورشة الصباغة الطبيعية التقليدية لقومية الباي (Bai Tie-Dye Workshop) في قرية تشوتشنغ"
+          "الوصول إلى محطة قطار دالي واستقبال خاص من طاقم المنتجع الفاخر",
+          "تسجيل الوصول في المنتجع الواقع على ضفاف بحيرة إيرهاي (Erhai Lake)",
+          "الاسترخاء في التراس الخاص المطل على المياه الصافية وجبال كانغشان المغطاة بالغيوم",
+          "جولة مسائية هادئة على الممر البيئي المحيط بالبحيرة"
         ],
         meals: [
-          "فطور فطائر شيتشو المقرمشة (Xizhou Baba) مع جبن الحليب المشوي (Rushan)",
-          "عشاء هوت بوت الفطر البري الجبلي الطازج الغني بالنكهات الطبيعية"
+          "الغداء: نودلز عبور الجسر الشهيرة الخاصة بمقاطعة يونان (Crossing-the-Bridge Noodles)",
+          "العشاء: عشاء راقي في مطعم المنتجع من المأكولات العضوية والأسماك الطازجة"
         ],
-        highlightNote: "الممر البيئي حول بحيرة إيرهاي مخصص للمشاة والدراجات فقط، مما يجعله آمناً وهادئاً تماماً."
+        highlightNote: "تبدأ هنا إقامتك المريحة لمدة 3 أيام في أجمل منتجعات يونان للاستجمام والاسترخاء تماماً."
       },
       {
         id: 15,
-        daysBadge: "اليوم 15 • منتجع دالي (3)",
-        city: "يوم 15: الباغودات ودالي القديمة",
-        title: "الباغودات الثلاث، تلفريك جبل كانغشان، ومدينة دالي القديمة",
-        subtitle: "اليوم الثالث في منتجع دالي: الصعود لقمم كانغشان والتجول في شوارع البلدة التاريخية",
-        transport: "سيارة المنتجع الخاصة + تلفريك جبل كانغشان المعلق (Ximatan Cableway)",
-        howToReach: "تنقلك سيارة المنتجع في 20 دقيقة إلى معبد الباغودات الثلاث وتلفريك جبل كانغشان، وعصراً تتوجه في 10 دقائق إلى البوابة الجنوبية لمدينة دالي القديمة قبل العودة للمنتجع لجلسة سبا مسائية.",
-        transportIcon: "fa-gopuram",
-        hotelName: "منتجع بحيرة إيرهاي الفاخر في دالي - الليلة 3",
-        travelCost: "سيارة خاصة + تذاكر الباغودات الثلاث وتلفريك كانغشان: ~250 ر.س (67$)",
-        stayCost: "إقامة الليلة الثالثة في منتجع بحيرة إيرهاي: ~1,100 ر.س (295$)",
+        daysBadge: "اليوم 15 • دالي",
+        city: "يوم 15: استرخاء منتجع دالي",
+        title: "يوم الاسترخاء والبحيرة: جولة دالي البيئية وثقافة باي",
+        subtitle: "استئجار سيارة جيب مكشوفة وجولة حول بحيرة إيرهاي وزيارة قرية شوانغลัง القديمة وثقافة شعب باي.",
+        transport: "سيارة جيب مكشوفة خاصة بالمنتجع + دراجات كهربائية.",
+        howToReach: "انطلاق خاص من المنتجع بسيارة جيب مكشوفة للتجول على طول الممر البيئي الممتع للبحيرة.",
+        transportIcon: "fa-car-side",
+        hotelName: "洱海Sands Resort Dali أو Dali Daliangshanzhuang Resort (منتجع 5 نجوم)",
+        travelCost: "استئجار سيارة جيب خاصة وجولة القوارب: ~350 ر.س (95$)",
+        stayCost: "إقامة ليلة واحدة في المنتجع: ~1,400 ر.س (375$)",
         gallery: [
           {
-            url: "https://www.fabionodariphoto.com/wp-content/uploads/2021/10/dali-three-pagodas-aerial.jpg",
-            label: "الباغودات الثلاث التاريخية وجبال كانغشان"
+            url: "http://googleusercontent.com/image_collection/image_retrieval/3449131423411868554_0",
+            label: "الممر البيئي لبحيرة إيرهاي وجبال كانغشان"
           },
           {
-            url: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1400&q=80",
-            label: "السبا والمسبح في منتجع دالي"
+            url: "https://images.unsplash.com/photo-1599571234909-290e2f3e0f1b?auto=format&fit=crop&w=1400&q=80",
+            label: "مرافق السبا والاستجمام في المنتجع"
           },
           {
-            url: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1400&q=80",
-            label: "أبراج وأسوار مدينة دالي القديمة"
+            url: "http://googleusercontent.com/image_collection/image_retrieval/10355785647228985371_0",
+            label: "قرية شوانغลัง وصيادو بحيرة إيرهاي"
           }
         ],
-        fallbackImage: "https://placehold.co/1200x800/0369a1/fde68a?text=Day+15+Dali+Ancient+City",
-        locationTag: "الباغودات الثلاث & دالي القديمة",
+        fallbackImage: "https://placehold.co/1200x800/090d16/f59e0b?text=Dali+Resort+Day+2",
+        locationTag: "دالي • شوانغลัง وإيرهاي",
         places: [
-          "معبد تشونغشينغ والباغودات الثلاث الشهيرة (Three Pagodas) المنعكسة على بحيرة التأمل",
-          "الصعود بتلفريك جبل كانغشان إلى ارتفاع 3,900 متر لمشاهدة البحيرة كاملة من فوق السحاب",
-          "التجول المسائي في مدينة دالي القديمة (Dali Ancient City)، شارع الأجانب، وبرج ووهوا"
+          "جولة سيارة جيب مكشوفة على طول كورنيش بحيرة إيرهاي مع التقاط صور تذكارية مذهلة",
+          "زيارة قرية شوانغลัง (Shuanglang Fishing Village) الساحرة والتعرف على ثقافة شعب باي (Bai)",
+          "تجربة ورش الصباغة التقليدية بالألوان الطبيعية في بلدة شيتشو (Xizhou)",
+          "العودة للمنتجع للاستمتاع بجلسات المساج والسبا الطبيعي الاسترخائي"
         ],
         meals: [
-          "غداء سمك بحيرة دالي المطهو في القدر الفخاري (Dali Claypot Fish)",
-          "فطائر الورد الطازجة الخارجة من الفرن (Rose Flower Cakes) مع قهوة يونان المختصة"
+          "الغداء: هوت بوت الفطر البري الجبلي الفاخر من جبال يونان",
+          "العشاء: أجبان رشان (Rushan) المشوية التقليدية وأطباق يونان العضوية الخاصة"
         ],
-        highlightNote: "لا تفوت شراء علبة من فطائر الورد الطازجة من مخابز دالي القديمة كهدية لذيذة للرحلة."
+        highlightNote: "جلسة الاسترخاء المسائية في المنتجع مصممة خصيصاً لإبعاد أي إرهاق سفري."
       },
       {
         id: 16,
-        daysBadge: "اليوم 16 • منتجع تشيميلونغ",
-        city: "يوم 16: السيرك الدولي بقوانغتشو",
-        title: "الانتقال إلى قوانغتشو وحضور عرض السيرك الدولي في منتجع تشيميلونغ",
-        subtitle: "الوصول إلى أضخم منتجع ترفيهي في جنوب الصين والإقامة في فندق النمور البيضاء",
-        transport: "طيران مباشر صباحي من دالي/كونمينغ إلى قوانغتشو (ساعتان ونصف) + سيارة خاصة",
-        howToReach: "رحلة طيران مريحة إلى مطار قوانغتشو، ومنه بالسيارة الخاصة (45 دقيقة) إلى منتجع تشيميلونغ في حي بانيو، حيث يربط ممر خاص داخل الفندق غرفتك بمسرح السيرك الدولي مباشرة.",
-        transportIcon: "fa-tent",
-        hotelName: "فندق تشيميلونغ هوتيل (Chimelong Hotel) أو فندق الباندا - داخل المنتجع",
-        travelCost: "تذكرة الطيران المباشر + توصيل خاص + تذكرة VIP للسيرك الدولي: ~750 ر.س (200$)",
-        stayCost: "إقامة الليلة الأولى داخل فندق منتجع تشيميلونغ: ~1,200 ر.س (320$)",
+        daysBadge: "اليوم 16 • دالي",
+        city: "يوم 16: دالي القديمة والباغودا",
+        title: "عبق التاريخ والثلاث معابد في دالي القديمة",
+        subtitle: "استكشاف أسوار دالي التاريخية، ومعابد تشونغشنغ والثلاث باغودات الشهيرة، والتسوق الحرفي.",
+        transport: "سيارة خاصة فاخرة للتنقل بين معالم دالي القديمة.",
+        howToReach: "سيارة خاصة من المنتجع إلى بوابات دالي القديمة (Dali Ancient City) خلال 20 دقيقة.",
+        transportIcon: "fa-archway",
+        hotelName: "洱海Sands Resort Dali أو Dali Daliangshanzhuang Resort (منتجع 5 نجوم)",
+        travelCost: "تذاكر الثلاث باغودات ومعالم دالي القديمة: ~250 ر.س (70$)",
+        stayCost: "إقامة ليلة واحدة في المنتجع: ~1,400 ر.س (375$)",
         gallery: [
           {
-            url: "https://www.kkday.com/en/blog/wp-content/uploads/Chimelong-Safari-Park-Guangzhou-Travel-Guide-Tickets-Getting-There-Food-and-Highlights.jpg",
-            label: "منتجع تشيميلونغ الترفيهي في قوانغتشو"
+            url: "http://googleusercontent.com/image_collection/image_retrieval/10355785647228985371_0",
+            label: "الثلاث باغودات التاريخية في معبد تشونغشنغ بدالي"
           },
           {
-            url: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1400&q=80",
-            label: "فندق تشيميلونغ الفاخر ومطعم النمر الأبيض"
+            url: "https://images.unsplash.com/photo-1599571234909-290e2f3e0f1b?auto=format&fit=crop&w=1400&q=80",
+            label: "أجواء المنتجع الفاخر المسائية في دالي"
           },
           {
-            url: "https://images.unsplash.com/photo-1513889961551-628c1e5e2ee9?auto=format&fit=crop&w=1400&q=80",
-            label: "عروض السيرك الدولي الليلية المبهرة"
+            url: "http://googleusercontent.com/image_collection/image_retrieval/3449131423411868554_0",
+            label: "جبال كانغشان خلف مدينة دالي القديمة"
           }
         ],
-        fallbackImage: "https://placehold.co/1200x800/b45309/fde68a?text=Day+16+Chimelong+Circus",
-        locationTag: "منتجع تشيميلونغ • قوانغتشو",
+        fallbackImage: "https://placehold.co/1200x800/090d16/f59e0b?text=Dali+Three+Pagodas",
+        locationTag: "دالي • المدينة القديمة",
         places: [
-          "تسجيل الدخول في فندق تشيميلونغ الذي يضم جزيرة حيوانات حقيقية (نمور بيضاء وفلامنغو) في ساحته الوسطى",
-          "جولة استكشافية مريحة داخل مرافق وحدائق المنتجع الاستوائية",
-          "حضور عرض السيرك الدولي الكبير (Chimelong International Circus) بمشاركة أكثر من 300 فنان عالمي"
+          "زيارة معبد تشونغشنغ (Chongsheng Temple) ومعالم الباغودات الثلاث التاريخية المعمارية",
+          "التجول داخل شوارع دالي القديمة ذات البيوت الحجرية والأزهار المزخرفة",
+          "زيارة متاجر الفضة والحرف اليدوية الأصيلة لشعب باي",
+          "تناول قهوة يونان العربية الفاخرة في أحد المقاهي المطلة على الجبال"
         ],
         meals: [
-          "عشاء فاخر في مطعم بوفيه النمر الأبيض (White Tiger Buffet) بجوار النوافذ الزجاجية للنمور البيضاء",
-          "مأكولات بحرية ومشويات عالمية وحلال داخل الفندق"
+          "الغداء: سمك الفخار الشهير على طريقة دالي (Shaguo Yu) الطازج من البحيرة",
+          "العشاء: كعكات زهور الورد الطازجة (Xianhua Bing) وأطباق يونانية محلية"
         ],
-        highlightNote: "حجز مقاعد الدرجة الأولى الوسطى في السيرك الدولي يمنحك رؤية مذهلة للعروض البهلوانية والمائية."
+        highlightNote: "مدينة دالي تتميز بأجواء بوهيمية وهادئة؛ احرص على شراء تذكارات الفضة المصنوعة يدوياً."
       },
       {
         id: 17,
-        daysBadge: "اليوم 17 • سفاري وملاهي",
-        city: "يوم 17: سفاري وملاهي تشيميلونغ",
-        title: "حديقة سفاري تشيميلونغ (الباندا الثلاثة) وملاهي تشيميلونغ بارادايس",
-        subtitle: "يوم ترفيهي متكامل بين أندر حيوانات العالم بالتلفريك وأقوى الأفعوانيات الحماسية",
-        transport: "حافلات المنتجع المجانية الخاصة بالنزلاء (5 دقائق) + قطار السفاري والتلفريك",
-        howToReach: "تستقل الحافلة المجانية من أمام باب فندق تشيميلونغ كل 10 دقائق إلى بوابة السفاري صباحاً، وتستخدم القطار المفتوح والتلفريك المعلق فوق الحيوانات، ثم تنتقل عصراً لبوابة تشيميلونغ بارادايس المجاورة.",
-        transportIcon: "fa-paw",
-        hotelName: "فندق تشيميلونغ هوتيل (Chimelong Hotel) - الليلة 2",
-        travelCost: "تذاكر دخول السفاري + ملاهي تشيميلونغ بارادايس الشاملة: ~400 ر.س (107$)",
-        stayCost: "إقامة الليلة الثانية في فندق منتجع تشيميلونغ: ~1,200 ر.س (320$)",
+        daysBadge: "اليوم 17 • قوانغتشو",
+        city: "يوم 17: السفر لقوانغتشو",
+        title: "القطار السريع إلى عاصمة الجنوب: الوصول إلى قوانغتشو",
+        subtitle: "الرحلة بقطار الرصاصة السريع إلى قوانغتشو عاصمة التجارة والذواقة، وبدء الإقامة في منتجع تشيميلونغ العالمي.",
+        transport: "قطار الرصاصة الفائق السرعة من دالي / كونمينغ إلى قوانغتشو (~6.5 ساعات عبر شبكة السرعة).",
+        howToReach: "سيارة خاصة لمحطة القطار، ركوب القطار الفائق حتى قوانغتشو، ثم سيارة خاصة مباشرة لمنتجع تشيميلونغ الضخم.",
+        transportIcon: "fa-train",
+        hotelName: "Chimelong Hotel Guangzhou أو Chimelong Panda Hotel (منتجع 5 نجوم)",
+        travelCost: "تذاكر قطار درجة أولى ونقل خاص: ~900 ر.س (240$)",
+        stayCost: "إقامة ليلة واحدة في المنتجع: ~1,200 ر.س (320$)",
         gallery: [
           {
-            url: "https://www.kkday.com/en/blog/wp-content/uploads/Chimelong-Safari-Park-Guangzhou-Travel-Guide-Tickets-Getting-There-Food-and-Highlights.jpg",
-            label: "تلفريك سفاري تشيميلونغ والباندا العملاقة"
+            url: "http://googleusercontent.com/image_collection/image_retrieval/1167391155626801239_0",
+            label: "أفق برج كانتون ونهر بيرل في قوانغتشو ليلاً"
           },
           {
-            url: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1400&q=80",
-            label: "الأجنحة العائلية الفاخرة في فندق تشيميلونغ"
+            url: "http://googleusercontent.com/image_collection/image_retrieval/9368390607046841221_0",
+            label: "منتجع وفنادق تشيميلونغ العالمية في قوانغتشو"
           },
           {
-            url: "https://images.unsplash.com/photo-1513889961551-628c1e5e2ee9?auto=format&fit=crop&w=1400&q=80",
-            label: "أفعوانيات ملاهي تشيميلونغ بارادايس"
+            url: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1400&q=80",
+            label: "مرافق فندق تشيميلونغ باندا العائلي الفاخر"
           }
         ],
-        fallbackImage: "https://placehold.co/1200x800/b45309/fde68a?text=Day+17+Chimelong+Safari",
-        locationTag: "سفاري تشيميلونغ & بارادايس",
+        fallbackImage: "https://placehold.co/1200x800/090d16/f59e0b?text=Guangzhou+Chimelong",
+        locationTag: "قوانغتشو • منتجع تشيميلونغ",
         places: [
-          "حديقة سفاري تشيميلونغ (Chimelong Safari Park): مشاهدة توائم الباندا الثلاثة الوحيدة في العالم والكوالا",
-          "ركوب التلفريك الجوي فوق مناطق الزرافات والحمير الوحشية والنمور البيضاء",
-          "ملاهي تشيميلونغ بارادايس (Chimelong Paradise): تجربة أفعوانية السقوط العمودي Dive Coaster وأفعوانية الـ 10 حلقات"
+          "الوصول بالقطار السريع إلى محطة قوانغتشو الجنوبية والانتقال فوراً للمنتجع",
+          "تسجيل الوصول في فندق تشيميلونغ (الحيواني أو الباندا) الفريد من نوعه",
+          "حضور عرض السيرك العالمي المبهر (Chimelong International Circus) في المساء",
+          "الاستمتاع بالأجواء الترفيهية الفخمة داخل المنتجع"
         ],
         meals: [
-          "غداء في مطعم الباندا داخل الحديقة مع عروض ترفيهية حية",
-          "عشاء كانتوني فاخر (ديم سوم ومشويات) في مطعم Panyu داخل الفندق"
+          "الغداء: وجبة خفيفة ومشروبات منعشة أثناء السفر بالقطار",
+          "العشاء: بوفيه العشاء الفاخر في مطعم النمور البيضاء مع إطلالة حية على الحيوانات"
         ],
-        highlightNote: "التلفريك المعلق داخل حديقة السفاري مشمول في التذكرة ويوفر لك إطلالة جوية بانورامية على الغابة والحيوانات."
+        highlightNote: "عرض السيرك في تشيميلونغ يعتبر الأضخم والأكثر إثارة في العالم؛ الحجز المسبق للمقاعد الممتازة ضروري."
       },
       {
         id: 18,
-        daysBadge: "اليوم 18 • برج كانتون",
-        city: "يوم 18: برج كانتون ونهر اللؤلؤ",
-        title: "الانتقال لقلب قوانغتشو، الترام الفقاعي ببرج كانتون، وكروز نهر اللؤلؤ",
-        subtitle: "استكشاف الواجهة العصرية لقوانغتشو والصعود لقمة برج كانتون الملون ليلاً",
-        transport: "سيارة خاصة من منتجع تشيميلونغ إلى حي تيانخه (25 دقيقة) + يخت نهري",
-        howToReach: "الانتقال ظهرًا بالسيارة الخاصة إلى فندق 5 نجوم في حي تشوجيانغ نيو تاون (Zhujiang New Town) الراقي، ومنه تعبر ساحة هواشينغ إلى برج كانتون ورصيف سفن الكروز الليلي.",
-        transportIcon: "fa-tower-observation",
-        hotelName: "فندق فور سيزونز قوانغتشو أو ماندارين أورينتال (5 نجوم)",
-        travelCost: "سيارة خاصة + تذكرة برج كانتون والترام الفقاعي + كروز نهر اللؤلؤ: ~250 ر.س (67$)",
-        stayCost: "إقامة الليلة الأولى في وسط قوانغتشو (فور سيزونز): ~950 ر.س (255$)",
+        daysBadge: "اليوم 18 • قوانغتشو",
+        city: "يوم 18: سفاري تشيميلونغ",
+        title: "مملكة الحيوانات البرية: سفاري تشيميلونغ وملاهي باراديس",
+        subtitle: "استكشاف أكبر حديقة سفاري في آسيا، ومشاهدة الدببة الباندا النادرة، وتجربة الملاهي والألعاب.",
+        transport: "قطار السفاري الداخلي + قطار الكابل المعلق + حافلات المنتجع المجانية.",
+        howToReach: "ممر مباشر أو تنقل قصير خلال حافلات المنتجع الكهربائية من الفندق إلى بوابات سفاري تشيميلونغ.",
+        transportIcon: "fa-hippo",
+        hotelName: "Chimelong Hotel Guangzhou أو Chimelong Panda Hotel (منتجع 5 نجوم)",
+        travelCost: "تذاكر سفاري تشيميلونغ وبراديس VIP: ~750 ر.س (200$)",
+        stayCost: "إقامة ليلة واحدة في المنتجع: ~1,200 ر.س (320$)",
         gallery: [
           {
-            url: "https://images.unsplash.com/photo-1787644330269-5293307a5925?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
-            label: "برج كانتون المضيء وأفق نهر اللؤلؤ"
+            url: "http://googleusercontent.com/image_collection/image_retrieval/9368390607046841221_0",
+            label: "سفاري تشيميلونغ والحيوانات النادرة"
           },
           {
-            url: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1400&q=80",
-            label: "فندق فور سيزونز قوانغتشو في الطوابق العليا"
+            url: "https://images.unsplash.com/photo-1599571234909-290e2f3e0f1b?auto=format&fit=crop&w=1400&q=80",
+            label: "غرفة نوم باندا مخصصة عائلية فاخرة"
           },
           {
-            url: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=1400&q=80",
-            label: "ساحة هواشينغ وحي تشوجيانغ ليلاً"
+            url: "http://googleusercontent.com/image_collection/image_retrieval/1167391155626801239_0",
+            label: "ألعاب ملاهي تشيميلونغ باراديس الحماسية"
           }
         ],
-        fallbackImage: "https://placehold.co/1200x800/be123c/fde68a?text=Day+18+Canton+Tower",
-        locationTag: "برج كانتون • نهر اللؤلؤ",
+        fallbackImage: "https://placehold.co/1200x800/090d16/f59e0b?text=Chimelong+Safari",
+        locationTag: "قوانغتشو • سفاري وبانوراما",
         places: [
-          "الصعود إلى قمة برج كانتون (Canton Tower - ارتفاع 600م) وتجربة الترام الفقاعي الزجاجي الدوار (Bubble Tram)",
-          "التمشية في ساحة مدينة الزهور (Huacheng Square) المحاطة بدار الأوبرا والمتحف الوطني",
-          "رحلة كروز ليلية فاخرة في نهر اللؤلؤ (Pearl River Night Cruise) تحت الجسور المضيئة"
+          "جولة سفاري بالسيارة الذاتية أو القطار لمشاهدة الأسود، النمور، والزرافات عن قرب",
+          "زيارة مركز توأمي الباندا العملاقة الشهيرة والتعرف على صغار الباندا",
+          "تجربة ألعاب مدينة ملاهي تشيميلونغ باراديس (Chimelong Paradise) وأفعوانياتها الكبرى",
+          "التسوق في المتاجر التذكارية الخاصة بالمنتجع"
         ],
         meals: [
-          "غداء ديم سوم كانتوني فاخر (فطائر الروبيان Har Gow ولفائف الأرز المقرمشة)",
-          "عشاء تركي وعربي حلال فاخر في مطعم البسفور (Bosphorus) الشهير في قوانغتشو"
+          "الغداء: وجبة ديم سوم كانتونية أصيلة داخل مطاعم المنتجع",
+          "العشاء: مأكولات كانتونية وبوفيه عالمي فاخر في مطاعم الفندق"
         ],
-        highlightNote: "فندق فور سيزونز قوانغتشو يقع في الطوابق 74 إلى 98 من برج IFC، ويوفر إطلالة خيالية مباشرة على برج كانتون."
+        highlightNote: "حديقة سفاري تشيميلونغ تضم توائم الباندا الثلاثة الوحيدين الناجين في العالم; لا تفوت رؤيتهم."
       },
       {
         id: 19,
-        daysBadge: "اليوم 19 • تراث وتسوق",
-        city: "يوم 19: تراث وأسواق قوانغتشو",
-        title: "جزيرة شاميان، مسجد أبي وقاص التاريخي، والتسوق في شارع بكين",
-        subtitle: "جولة تجمع بين التاريخ الإسلامي العريق في الصين والعمارة الكلاسيكية وأشهر أسواق الهدايا",
-        transport: "سيارة خاصة مع سائق طوال اليوم للتنقل المريح بين المعالم والأسواق",
-        howToReach: "تنقلك السيارة الخاصة صباحاً إلى قاعة عشيرة تشن وجزيرة شاميان على ضفة النهر، ثم زيارة مسجد Huaisheng التاريخي، وقضاء المساء في ممشى شارع بكين التجاري.",
-        transportIcon: "fa-bag-shopping",
-        hotelName: "فندق فور سيزونز قوانغتشو (Four Seasons Guangzhou) - الليلة 2",
-        travelCost: "سيارة خاصة مع سائق طوال اليوم + تذاكر المتاحف: ~150 ر.س (40$)",
-        stayCost: "إقامة الليلة الثانية في وسط قوانغتشو: ~950 ر.س (255$)",
+        daysBadge: "اليوم 19 • قوانغتشو",
+        city: "يوم 19: برج كانتون والتسوق",
+        title: "برج كانتون وعبق التاريخ في جزيرة شاميان وتجربة اليوم الأخير",
+        subtitle: "الصعود إلى قمة برج كانتون، زيارة المعالم التاريخية، وجولة تسوق نهائية في شارع بكين.",
+        transport: "سيارة خاصة فاخرة + المترو السياحي.",
+        howToReach: "سيارة خاصة من المنتجع إلى وسط قوانغتشو (منطقة تيانهه وبرج كانتون) خلال 25 دقيقة.",
+        transportIcon: "fa-tower-observation",
+        hotelName: "Chimelong Hotel Guangzhou أو Rosewood Guangzhou (5 نجوم)",
+        travelCost: "تذاكر برج كانتون وترام لؤلؤة النهر: ~350 ر.س (95$)",
+        stayCost: "إقامة ليلة واحدة: ~1,200 ر.س (320$)",
         gallery: [
           {
-            url: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1400&q=80",
-            label: "العمارة التراثية في قاعة عشيرة تشن"
+            url: "http://googleusercontent.com/image_collection/image_retrieval/1167391155626801239_0",
+            label: "برج كانتون الشامخ وإضاءات نهر بيرل"
           },
           {
-            url: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1400&q=80",
-            label: "غرف الفندق الفاخرة في وسط قوانغتشو"
+            url: "https://images.unsplash.com/photo-1599571234909-290e2f3e0f1b?auto=format&fit=crop&w=1400&q=80",
+            label: "فندق روزوود قوانغتشو الفاخر"
           },
           {
-            url: "https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?auto=format&fit=crop&w=1400&q=80",
-            label: "ممشى شارع بكين للتسوق ليلاً"
+            url: "http://googleusercontent.com/image_collection/image_retrieval/9368390607046841221_0",
+            label: "جزيرة شاميان التاريخية الهادئة"
           }
         ],
-        fallbackImage: "https://placehold.co/1200x800/be123c/fde68a?text=Day+19+Guangzhou+Shopping",
-        locationTag: "جزيرة شاميان & شارع بكين",
+        fallbackImage: "https://placehold.co/1200x800/090d16/f59e0b?text=Canton+Tower",
+        locationTag: "قوانغتشو • وسط المدينة",
         places: [
-          "جزيرة شاميان التاريخية (Shamian Island) بمبانيها الكلاسيكية وأشجارها الظليلة على النهر",
-          "زيارة قاعة عشيرة تشن (Chen Clan Ancestral Hall) ومسجد أبي وقاص التاريخي (Huaisheng Mosque - أقدم مسجد في الصين)",
-          "التسوق المسائي في شارع بكين للمشاة (Beijing Road Pedestrian Street) ومشاهدة الطريق الأثري الزجاجي"
+          "الصعود إلى قمة برج كانتون (Canton Tower) وركوب عربة الفقاعة المعلقة",
+          "التجول في جزيرة شاميان (Shamian Island) ذات المباني الاستعمارية العريقة والأشجار الظليلة",
+          "زيارة قاعة أسرة تشن العريقة (Chen Clan Ancestral Hall) والفنون المعمارية",
+          "التسوق النهائي لشراء الهدايا التذكارية من شارع بكين التجاري (Beijing Road)"
         ],
         meals: [
-          "فطور Yum Cha الكانتوني الصباحي في مطعم Guangzhou Restaurant العريق",
-          "غداء وعشاء في المطاعم الحلال الشهيرة بجوار المسجد التاريخي أو مطعم السعيد"
+          "الغداء: وجبة ديم سوم كانتونية تقليدية (Dim Sum) وأطباق هار غاو المتبلة",
+          "العشاء: عشاء الوداع الفاخر من الأطباق الكانتونية المشوية والأرز بالفخار (Claypot Rice)"
         ],
-        highlightNote: "شارع بكين ومولات تيانخه في قوانغتشو هي المكان الأفضل لشراء الهدايا والإلكترونيات والملابس قبل العودة."
+        highlightNote: "وجبة اليَم تشا (Yum Cha) الصباحية في قوانغتشو تعتبر طقساً عريقاً لا يكتمل السفر دونه."
       },
       {
         id: 20,
-        daysBadge: "اليوم 20 • العودة للرياض",
-        city: "يوم 20: قوانغتشو ← الرياض",
-        title: "التسوق الأخير في مولات تيانخه ورحلة العودة المباشرة إلى الرياض",
-        subtitle: "ختام مريح لرحلة الـ 20 يوماً في الصين والتوجه إلى مطار بايون الدولي للعودة إلى الوطن",
-        transport: "سيارة خاصة للمطار (40 دقيقة) + طيران مباشر من قوانغتشو (CAN) إلى الرياض (RUH)",
-        howToReach: "قضاء الصباح في مول Taikoo Hui أو Parc Central المجاور للفندق، ثم تنقلك سيارة الفندق الخاصة مباشرة إلى صالة المغادرة الدولية في مطار قوانغتشو بايون للرحلة المباشرة إلى الرياض.",
+        daysBadge: "اليوم 20 • قوانغتشو ⇄ الرياض",
+        city: "يوم 20: العودة للرياض",
+        title: "الختام والعودة بسلام: رحلة العودة المباشرة من قوانغتشو إلى الرياض",
+        subtitle: "إنهاء إجراءات تسجيل المغادرة، التوجه إلى مطار باييون الدولي، ورحلة طيران مباشرة ختامية عودة إلى الرياض.",
+        transport: "سيارة خاصة فاخرة من الفندق إلى مطار قوانغتشو باييون (CAN) + طيران مباشر إلى الرياض (RUH).",
+        howToReach: "سيارة خاصة مريحة تنقلك من الفندق مباشرة إلى صالة المغتربين الدوليين في مطار قوانغتشو (40 دقيقة).",
         transportIcon: "fa-plane-departure",
-        hotelName: "تسجيل خروج متأخر مريح من الفندق (Late Check-out) قبل التوجه للمطار",
-        travelCost: "تذكرة الطيران المباشر قوانغتشو ← الرياض + توصيل المطار الخاص: ~2,450 ر.س (655$)",
-        stayCost: "نهاية الإقامة الفندقية (إجمالي 19 ليلة فندقية 5 نجوم في الرحلة)",
+        hotelName: "نهاية الرحلة • العودة إلى أرض الوطن بسلامة الله",
+        travelCost: "طيران العودة المباشر ومواصلات المطار: ~3,100 ر.س (825$)",
+        stayCost: "غرفة راحة يوم المغادرة: متضمنة في ترتيب الفندق",
         gallery: [
           {
-            url: "https://images.unsplash.com/photo-1787644330269-5293307a5925?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
-            label: "وداعاً قوانغتشو - أفق حي تيانخه"
+            url: "http://googleusercontent.com/image_collection/image_retrieval/1167391155626801239_0",
+            label: "مطار قوانغتشو الدولي ومنظر الوداع"
           },
           {
-            url: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1400&q=80",
-            label: "بهو الفندق الفاخر قبل المغادرة"
+            url: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1400&q=80",
+            label: "طائرة العودة المباشرة إلى الرياض"
           },
           {
-            url: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1400&q=80",
-            label: "الرحلة المباشرة من قوانغتشو إلى الرياض"
+            url: "https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?auto=format&fit=crop&w=1400&q=80",
+            label: "ذكريات سعيدة وناجحة لرحلة الصين الكبرى"
           }
         ],
-        fallbackImage: "https://placehold.co/1200x800/1e293b/f59e0b?text=Day+20+Return+To+Riyadh",
-        locationTag: "مطار بايون (CAN) ← الرياض (RUH)",
+        fallbackImage: "https://placehold.co/1200x800/090d16/f59e0b?text=Return+to+Riyadh",
+        locationTag: "قوانغتشو ➔ الرياض",
         places: [
-          "جولة تسوق صباحية أخيرة في مول Taikoo Hui أو Grandview Mall (يضم أكواريوم داخلي ضخم)",
-          "استرداد الضرائب للمشتريات (Tax Refund) في مطار قوانغتشو بايون الدولي",
-          "الصعود للطائرة في رحلة مباشرة ومريحة إلى مطار الملك خالد الدولي بالرياض"
+          "تناول وجبة إفطار كانتونية خفيفة وتجهيز الحقائب والشنط",
+          "إنجاز مغادرة الفندق والانتقال بسيارة خاصة إلى مطار قوانغتشو الدولي (CAN)",
+          "إنهاء إجراءات شحن الأمتعة والجوازات ودخول السوق الحرة",
+          "استقلال رحلة الطيران المباشرة العودة إلى مطار الملك خالد الدولي بالرياض (RUH)"
         ],
         meals: [
-          "فطور غني في الفندق مع القهوة المختصة والمخبوزات الطازجة",
-          "غداء نودلز الونتون بالروبيان أو وجبة حلال قبل التوجه لصالة كبار الشخصيات بالمطار"
+          "الإفطار: وجبة فطور فاخرة في مطعم الفندق",
+          "الوجبات الخفيفة والمشروبات الساخنة على متن رحلة العودة المباشرة"
         ],
-        highlightNote: "احرص على الوصول لمطار قوانغتشو قبل 3 ساعات ونصف لإنهاء إجراءات استرداد الضرائب وشحن الهدايا براحة تامة."
+        highlightNote: "نتمنى لكم رحلة سعيدة وعوداً حميداً إلى أرض الوطن، ونتطلع لخدمتكم في رحلات قادمة مقبلة!"
       }
     ];
 
-    // ==========================================
-    // DAY-BY-DAY 20 DAYS MASTER DATA (WITH SHANGHAI & DAILY COSTS)
-    // ==========================================
-    const twentyDaysSchedule = [
-      { day: "اليوم 1", city: "بكين", transit: "طيران مباشر: الرياض ← بكين", cost: "الطيران: ~2,200 ر.س | الفندق: 900 ر.س", sights: "الوصول، استلام الغرفة، جولة مسائية في شارع وانغفوجينغ", food: "عشاء ترحيبي: بط بكين المشوي" },
-      { day: "اليوم 2", city: "بكين", transit: "سيارة خاصة مع سائق", cost: "التنقل والتذاكر: 200 ر.س | الفندق: 900 ر.س", sights: "ساحة تيانانمن، المدينة المحرمة، وحديقة جينغشان عند الغروب", food: "نودلز بكين التقليدية (Zhajiangmian)" },
-      { day: "اليوم 3", city: "بكين", transit: "سيارة خاصة (1.5 ساعة)", cost: "السيارة والتلفريك: 250 ر.س | الفندق: 900 ر.س", sights: "سور الصين العظيم (موتانيو بالتلفريك والزحليقة) + القصر الصيفي", food: "سمك السلمون المرقط ولحم الضأن بالقدر النحاسي" },
-      { day: "اليوم 4", city: "بكين (يونيفرسال)", transit: "داخل منتجع يونيفرسال", cost: "تذاكر Express: 950 ر.س | فندق المنتجع: 1,350 ر.س", sights: "يوم كامل في ملاهي يونيفرسال ستوديوز بكين وممشى سيتي ووك", food: "مشروب الزبدة، مطعم Three Broomsticks وعشاء ديم سوم" },
-      { day: "اليوم 5", city: "شنغهاي", transit: "قطار الرصاصة: بكين ← شنغهاي (4.5 ساعة)", cost: "القطار (درجة أولى): 450 ر.س | الفندق: 1,050 ر.س", sights: "الوصول لشنغهاي، كورنيش البوند التاريخي (The Bund)، وكروز نهر هوانغبو", food: "فطائر الشوربة الشنغهاوية (Xiaolongbao) وعشاء على البوند" },
-      { day: "اليوم 6", city: "شنغهاي", transit: "سيارة خاصة / مترو شنغهاي", cost: "التنقل وبرج شنغهاي: 230 ر.س | الفندق: 1,050 ر.س", sights: "قمة برج شنغهاي، حديقة يويوان الكلاسيكية، وشارع نانجينغ للتسوق", food: "السمك المقرمش والمأكولات البحرية الشنغهاوية" },
-      { day: "اليوم 7", city: "شنغهاي ← تشانغجياجيه", transit: "ديزني لاند + طيران مسائي لتشانغجياجيه", cost: "ديزني + الطيران: 1,350 ر.س | الفندق: 650 ر.س", sights: "يوم كامل في شنغهاي ديزني لاند (زوتوبيا وترون) ثم طيران مسائي لتشانغجياجيه", food: "غداء في مطعم القراصنة بديزني لاند" },
-      { day: "اليوم 8", city: "تشانغجياجيه", transit: "تلفريك جبل تيانمن والسلالم الكهربائية", cost: "التلفريك والتذاكر: 220 ر.س | الفندق: 650 ر.س", sights: "بوابة السماء (Heaven's Gate)، الممشى الزجاجي، والمباني الـ 72 ليلاً", food: "يخنة سانشياغو التوجية (Sanxiaguo)" },
-      { day: "اليوم 9", city: "تشانغجياجيه", transit: "سيارة خاصة + مصعد بايلونغ الزجاجي", cost: "السيارة والمحمية: 280 ر.س | الفندق: 650 ر.س", sights: "جبال أفاتار المعلقة في وولينغشتوان، يوانجياجيه، ومعرض العشرة أميال", food: "حساء الفطر البري وكعك الأرتيميسيا" },
-      { day: "اليوم 10", city: "تشونغتشينغ", transit: "قطار سريع: تشانغجياجيه ← تشونغتشينغ (2.2 ساعة)", cost: "القطار السريع: 220 ر.س | الفندق: 750 ر.س", sights: "ساحة التحرير (Jiefangbei) ومجمع هونغ يادونغ المضيء ليلاً (11 طابقاً)", food: "هوت بوت تشونغتشينغ (مقسوم حار وغير حار)" },
-      { day: "اليوم 11", city: "تشونغتشينغ", transit: "سيارة خاصة + قطار المونوريل", cost: "التنقلات: 180 ر.س | الفندق: 750 ر.س", sights: "قطار ليزيبا المخترق للمبنى، بلدة تسيتشيكو القديمة، وحديقة إيلينغ", food: "نودلز تشونغتشينغ والسمك المشوي المتبل" },
-      { day: "اليوم 12", city: "تشونغتشينغ", transit: "سيارة خاصة + مركب نهري", cost: "التلفريك والكروز: 220 ر.س | الفندق: 750 ر.س", sights: "جسر رافلز السماوي، تلفريك نهر اليانغتسي، وكروز النهرين الليلي", food: "دجاج سيتشوان المقرمش وجيلي Bingfen المثلج" },
-      { day: "اليوم 13", city: "منتجع دالي", transit: "قطار سريع: تشونغتشينغ ← دالي", cost: "القطار السريع: 420 ر.س | منتجع البحيرة: 1,100 ر.س", sights: "تسجيل الدخول في منتجع بحيرة إيرهاي الفاخر (إقامة 3 ليالٍ) والاستجمام", food: "نودلز عبور الجسر اليونانية الشهيرة" },
-      { day: "اليوم 14", city: "منتجع دالي", transit: "سيارة مكشوفة خاصة / دراجة كهربائية", cost: "جولة البحيرة: 230 ر.س | منتجع البحيرة: 1,100 ر.س", sights: "الممر البيئي لبحيرة إيرهاي، قرية شوانغلانغ، وورش الصباغة في شيتشو", food: "هوت بوت الفطر الجبلي وجبن Rushan المشوي" },
-      { day: "اليوم 15", city: "منتجع دالي", transit: "سيارة المنتجع + تلفريك الجبل", cost: "التلفريك والمعالم: 250 ر.س | منتجع البحيرة: 1,100 ر.س", sights: "الباغودات الثلاث، تلفريك جبل كانغشان، ومدينة دالي القديمة", food: "سمك القدر الفخاري وفطائر الورد الطازجة" },
-      { day: "اليوم 16", city: "قوانغتشو (تشيميلونغ)", transit: "طيران مباشر: دالي/كونمينغ ← قوانغتشو", cost: "الطيران والسيرك: 750 ر.س | فندق تشيميلونغ: 1,200 ر.س", sights: "الوصول إلى منتجع تشيميلونغ وحضور عرض السيرك الدولي المسائي", food: "بوفيه النمر الأبيض داخل فندق تشيميلونغ" },
-      { day: "اليوم 17", city: "قوانغتشو (تشيميلونغ)", transit: "حافلات المنتجع الداخلية", cost: "تذاكر السفاري والملاهي: 400 ر.س | الفندق: 1,200 ر.س", sights: "يوم كامل في سفاري تشيميلونغ (الباندا الثلاثة) وملاهي تشيميلونغ بارادايس", food: "غداء ديم سوم والمأكولات الكانتونية" },
-      { day: "اليوم 18", city: "قوانغتشو", transit: "سيارة خاصة إلى وسط قوانغتشو", cost: "برج كانتون والكروز: 250 ر.س | الفندق: 950 ر.س", sights: "برج كانتون (الترام الفقاعي)، ساحة هواشينغ، وكروز نهر اللؤلؤ الليلي", food: "فطور Yum Cha الكانتوني ومطاعم حلال" },
-      { day: "اليوم 19", city: "قوانغتشو", transit: "سيارة خاصة في المدينة", cost: "التنقلات: 150 ر.س | الفندق: 950 ر.س", sights: "جزيرة شاميان، قاعة عشيرة تشن، مسجد أبي وقاص، والتسوق في شارع بكين", food: "أرز القدر الفخاري والمشويات الحلال" },
-      { day: "اليوم 20", city: "قوانغتشو ← الرياض", transit: "طيران مباشر: قوانغتشو (CAN) ← الرياض (RUH)", cost: "توصيل المطار + تذكرة العودة للرياض: ~2,450 ر.س", sights: "التسوق الأخير للهدايا في مولات تيانخه والتوجه إلى مطار بايون الدولي", food: "نودلز الونتون الكانتونية قبل المغادرة" }
-    ];
-
-    // ==========================================
-    // STATE & MOTION CONTROLLER
-    // ==========================================
+    // State Management Variables
     let currentIndex = 0;
     let activeGalleryIdx = 0;
     let isAutoPlaying = false;
     let autoPlayTimer = null;
-    let progressInterval = null;
     let currentProgress = 0;
-    const SLIDE_DURATION = 7500; // 7.5 seconds per day in Auto-Play mode
-    let isFullScheduleOpen = false;
+    const slideDuration = 8000; // 8 seconds per slide in auto-play
 
-    function init() {
+    // Initialize Application on Window Load
+    window.onload = function() {
       renderStoryBars();
       renderCityPills();
       renderActiveSlide();
-      renderFullScheduleView();
-      setupKeyboardNavigation();
-    }
+      renderFullScheduleModalContent();
+    };
 
-    // Switch Active Image in the Day's Multi-Picture Gallery
-    function selectGalleryImage(imgIdx) {
-      activeGalleryIdx = imgIdx;
-      const slide = slidesData[currentIndex];
-      const mainImg = document.getElementById('main-slide-image');
-      const mainCaption = document.getElementById('main-image-caption');
-      if (mainImg && slide.gallery[imgIdx]) {
-        mainImg.src = slide.gallery[imgIdx].url;
-        if (mainCaption) {
-          mainCaption.textContent = slide.gallery[imgIdx].label;
-        }
-      }
-      // Update thumbnail borders
-      slide.gallery.forEach((_, idx) => {
-        const thumbBtn = document.getElementById(`thumb-btn-${idx}`);
-        if (thumbBtn) {
-          if (idx === imgIdx) {
-            thumbBtn.className = "relative rounded-xl overflow-hidden border-2 border-amber-400 shadow-lg scale-105 transition-all cursor-pointer h-14 sm:h-16 w-24 sm:w-28 flex-shrink-0";
-          } else {
-            thumbBtn.className = "relative rounded-xl overflow-hidden border border-white/25 opacity-75 hover:opacity-100 transition-all cursor-pointer h-14 sm:h-16 w-24 sm:w-28 flex-shrink-0";
-          }
-        }
-      });
-    }
-
-    // Render Top Story Progress Bars (20 Days)
+    // Render Top Story Progress Bars (21 Steps)
     function renderStoryBars() {
       const container = document.getElementById('story-progress-bars');
-      container.innerHTML = slidesData.map((_, idx) => `
-        <div onclick="goToSlide(${idx})" title="اليوم ${idx + 1}" class="h-1.5 rounded-full bg-slate-800 overflow-hidden cursor-pointer">
+      container.innerHTML = slidesData.map((slide, idx) => `
+        <div onclick="goToSlide(${idx})" title="${slide.city}" class="h-1.5 rounded-full bg-slate-800 overflow-hidden cursor-pointer">
           <div id="story-bar-${idx}" class="h-full transition-all duration-150 ${
             idx < currentIndex ? 'w-full bg-amber-400' : idx === currentIndex ? 'bg-gradient-to-l from-red-500 to-amber-400' : 'w-0 bg-slate-600'
-          }" style="${idx === currentIndex ? `width: ${ isAutoPlaying ? currentProgress : 100 }%` : ''}"></div>
+          }" style="${idx === currentIndex ? `width: ${isAutoPlaying ? currentProgress : 100}%` : ''}"></div>
         </div>
       `).join('');
     }
 
-    // Render Scrollable Day Navigation Pills (All 20 Days)
+    // Render Scrollable Day Navigation Pills (21 Steps)
     function renderCityPills() {
       const container = document.getElementById('city-nav-pills');
       container.innerHTML = slidesData.map((slide, idx) => {
@@ -1186,7 +1077,7 @@
       const slide = slidesData[currentIndex];
       const card = document.getElementById('active-slide-card');
       const counter = document.getElementById('slide-counter-badge');
-      counter.textContent = `اليوم ${currentIndex + 1} من ${slidesData.length}`;
+      counter.textContent = slide.isOverview ? `نظرة عامة على الرحلة` : `اليوم ${currentIndex} من 20`;
 
       const currentPhoto = slide.gallery[activeGalleryIdx] || slide.gallery[0];
 
@@ -1259,7 +1150,7 @@
                 <i class="fa-solid fa-hotel text-white text-base"></i>
               </div>
               <div class="min-w-0">
-                <p class="text-[11px] font-bold text-amber-400">الفندق / المنتجع المختار لهذا اليوم</p>
+                <p class="text-[11px] font-bold text-amber-400">الإقامة / الفندق المختار</p>
                 <p class="text-xs sm:text-sm font-extrabold text-white leading-snug">${slide.hotelName}</p>
               </div>
             </div>
@@ -1279,7 +1170,7 @@
             <div class="stagger-item delay-200 rounded-2xl bg-sky-950/45 border border-sky-500/35 p-3 space-y-1">
               <div class="flex items-center gap-2 text-xs sm:text-sm font-extrabold text-sky-300">
                 <i class="fa-solid ${slide.transportIcon} text-amber-400"></i>
-                <span>وسيلة التنقل وكيفية الوصول للمعالم:</span>
+                <span>${slide.isOverview ? 'مسار التنقل العام وأساليب السفر:' : 'وسيلة التنقل وكيفية الوصول للمعالم:'}</span>
               </div>
               <p class="text-xs font-bold text-white">${slide.transport}</p>
               <p class="text-xs text-slate-300 leading-relaxed">${slide.howToReach}</p>
@@ -1290,14 +1181,14 @@
               <div class="rounded-xl bg-emerald-950/50 border border-emerald-500/30 p-2.5 flex items-start gap-2">
                 <i class="fa-solid fa-ticket text-emerald-400 mt-0.5 text-xs"></i>
                 <div>
-                  <span class="block text-[10px] font-bold text-emerald-300 uppercase">تكلفة التنقل والتذاكر</span>
+                  <span class="block text-[10px] font-bold text-emerald-300 uppercase">${slide.isOverview ? 'إجمالي التنقل' : 'تكلفة التنقل والتذاكر'}</span>
                   <span class="text-xs font-extrabold text-white">${slide.travelCost}</span>
                 </div>
               </div>
               <div class="rounded-xl bg-amber-950/50 border border-amber-500/30 p-2.5 flex items-start gap-2">
                 <i class="fa-solid fa-bed text-amber-400 mt-0.5 text-xs"></i>
                 <div>
-                  <span class="block text-[10px] font-bold text-amber-300 uppercase">تكلفة إقامة الليلة</span>
+                  <span class="block text-[10px] font-bold text-amber-300 uppercase">${slide.isOverview ? 'إجمالي الإقامة (19 ليلة)' : 'تكلفة إقامة الليلة'}</span>
                   <span class="text-xs font-extrabold text-white">${slide.stayCost}</span>
                 </div>
               </div>
@@ -1307,7 +1198,7 @@
             <div class="stagger-item delay-300 rounded-2xl bg-slate-900/80 border border-white/10 p-3.5 space-y-1.5">
               <h3 class="text-xs sm:text-sm font-extrabold text-amber-400 flex items-center gap-2">
                 <i class="fa-solid fa-map-location-dot text-red-500"></i>
-                <span>أماكن الزيارة والأنشطة في هذا اليوم</span>
+                <span>${slide.isOverview ? 'توزيع الأيام وأبرز مميزات كل مدينة' : 'أماكن الزيارة والأنشطة في هذا اليوم'}</span>
               </h3>
               <ul class="space-y-1.5">
                 ${slide.places.map(place => `
@@ -1323,7 +1214,7 @@
             <div class="stagger-item delay-400 rounded-2xl bg-gradient-to-br from-red-950/50 to-amber-950/30 border border-amber-500/25 p-3.5 space-y-1.5">
               <h3 class="text-xs sm:text-sm font-extrabold text-amber-300 flex items-center gap-2">
                 <i class="fa-solid fa-utensils text-amber-400"></i>
-                <span>الوجبات والمطاعم المقترحة</span>
+                <span>${slide.isOverview ? 'أشهر المأكولات والمطاعم' : 'الوجبات والمطاعم المقترحة'}</span>
               </h3>
               <ul class="space-y-1.5">
                 ${slide.meals.map(meal => `
@@ -1339,217 +1230,124 @@
           <!-- Expert Tip Footer -->
           <div class="stagger-item delay-500 mt-3 pt-2.5 border-t border-white/10 flex items-start gap-2 text-xs text-slate-300">
             <i class="fa-solid fa-lightbulb text-amber-400 text-sm mt-0.5 flex-shrink-0"></i>
-            <p><strong class="text-amber-300">نصيحة اليوم:</strong> ${slide.highlightNote}</p>
+            <p><strong class="text-amber-300">نصيحة المخطط:</strong> ${slide.highlightNote}</p>
           </div>
         </div>
       `;
     }
 
-    // Render Full Schedule & All 20 Days Cards Grid
-    function renderFullScheduleView() {
-      const grid = document.getElementById('all-cards-grid');
-      grid.innerHTML = slidesData.map((slide, idx) => `
-        <div class="glass-panel rounded-3xl overflow-hidden border border-white/10 flex flex-col justify-between hover:border-amber-500/50 transition-all group">
-          <div>
-            <!-- Top Dual/Triple Mini Photo Strip in Grid View -->
-            <div class="relative h-48 overflow-hidden bg-slate-950">
-              <img
-                src="${slide.gallery[0].url}"
-                alt="${slide.title}"
-                onerror="this.onerror=null;this.src='${slide.fallbackImage}';"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-black/30"></div>
-              <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-red-600 text-white text-xs font-bold shadow">
-                ${slide.daysBadge}
-              </span>
-              <!-- Mini thumbnails preview inside card -->
-              <div class="absolute bottom-2 left-2 flex gap-1">
-                ${slide.gallery.slice(1).map(g => `
-                  <img src="${g.url}" alt="${g.label}" onerror="this.onerror=null;this.src='${slide.fallbackImage}';" class="w-10 h-8 rounded object-cover border border-amber-400/70 shadow" />
-                `).join('')}
-              </div>
-              <span class="absolute bottom-3 right-3 text-amber-300 text-xs font-bold flex items-center gap-1.5">
-                <i class="fa-solid ${slide.transportIcon}"></i>
-                <span>${slide.city}</span>
-              </span>
-            </div>
-
-            <div class="p-4 space-y-2.5">
-              <h3 class="text-base font-extrabold text-white">${slide.title}</h3>
-              <p class="text-xs text-amber-300 bg-amber-500/10 border border-amber-500/20 rounded-xl p-2">
-                <i class="fa-solid fa-hotel ml-1"></i> <strong>الفندق:</strong> ${slide.hotelName}
-              </p>
-              <p class="text-xs text-sky-200 bg-sky-950/50 border border-sky-500/20 rounded-xl p-2 leading-relaxed">
-                <i class="fa-solid fa-route ml-1 text-sky-400"></i> <strong>كيفية الوصول:</strong> ${slide.howToReach}
-              </p>
-
-              <div class="grid grid-cols-1 gap-1.5 text-xs">
-                <div class="bg-emerald-950/50 border border-emerald-500/25 rounded-lg p-2 text-emerald-200">
-                  <strong class="text-emerald-400">التنقل:</strong> ${slide.travelCost}
-                </div>
-                <div class="bg-amber-950/50 border border-amber-500/25 rounded-lg p-2 text-amber-200">
-                  <strong class="text-amber-400">الإقامة:</strong> ${slide.stayCost}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="p-4 pt-0">
-            <button onclick="openSlideFromGrid(${idx})" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-red-600 text-white text-xs font-bold transition cursor-pointer flex items-center justify-center gap-2">
-              <i class="fa-solid fa-images"></i>
-              <span>عرض تفاصيل وصور اليوم ${idx + 1}</span>
-            </button>
-          </div>
-        </div>
-      `).join('');
-
-      const daysList = document.getElementById('twenty-days-list');
-      daysList.innerHTML = twentyDaysSchedule.map((item, idx) => `
-        <div onclick="openSlideFromGrid(${idx})" class="rounded-2xl bg-slate-900/90 border border-white/10 p-4 flex flex-col justify-between gap-2 hover:border-amber-500/40 transition cursor-pointer">
-          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-2">
-            <div class="flex items-center gap-2">
-              <span class="px-2.5 py-1 rounded-lg bg-gradient-to-l from-red-600 to-amber-500 text-white font-extrabold text-xs">${item.day}</span>
-              <span class="font-bold text-white text-sm sm:text-base">${item.city}</span>
-            </div>
-            <span class="text-[11px] font-semibold text-amber-300 bg-amber-500/10 px-2.5 py-1 rounded-lg border border-amber-500/20">${item.transit}</span>
-          </div>
-          <div class="space-y-1.5 text-xs sm:text-sm pt-1">
-            <p class="text-emerald-300 font-bold bg-emerald-950/40 border border-emerald-500/20 px-2.5 py-1 rounded-lg inline-block"><i class="fa-solid fa-coins ml-1"></i> ${item.cost}</p>
-            <p class="text-slate-200"><strong class="text-amber-400">المعالم:</strong> ${item.sights}</p>
-            <p class="text-slate-300"><strong class="text-red-400">الوجبات:</strong> ${item.food}</p>
-          </div>
-        </div>
-      `).join('');
+    // Select specific image from gallery thumbnail
+    function selectGalleryImage(idx) {
+      activeGalleryIdx = idx;
+      renderActiveSlide();
     }
 
-    // Navigation Functions
+    // Navigation Controls
     function nextSlide() {
       currentIndex = (currentIndex + 1) % slidesData.length;
       activeGalleryIdx = 0;
-      resetProgressAndRender();
-      scrollToCardTop();
+      renderStoryBars();
+      renderCityPills();
+      renderActiveSlide();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function prevSlide() {
       currentIndex = (currentIndex - 1 + slidesData.length) % slidesData.length;
       activeGalleryIdx = 0;
-      resetProgressAndRender();
-      scrollToCardTop();
+      renderStoryBars();
+      renderCityPills();
+      renderActiveSlide();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function goToSlide(idx) {
       currentIndex = idx;
       activeGalleryIdx = 0;
-      if (isFullScheduleOpen) {
-        toggleFullView();
-      }
-      resetProgressAndRender();
-      scrollToCardTop();
-    }
-
-    function scrollToCardTop() {
-      const stage = document.getElementById('motion-stage-view');
-      if (stage) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    }
-
-    function openSlideFromGrid(idx) {
-      currentIndex = idx;
-      toggleFullView();
-      resetProgressAndRender();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function resetProgressAndRender() {
-      currentProgress = 0;
       renderStoryBars();
       renderCityPills();
       renderActiveSlide();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Auto-Play Motion Reel Mode
+    // Toggle Auto Play Cinematic Mode
     function toggleAutoPlay() {
       isAutoPlaying = !isAutoPlaying;
-      const icon = document.getElementById('autoplay-icon');
-      const text = document.getElementById('autoplay-text');
+      const btnIcon = document.getElementById('autoplay-icon');
+      const btnText = document.getElementById('autoplay-text');
 
       if (isAutoPlaying) {
-        if (isFullScheduleOpen) toggleFullView();
-        icon.className = 'fa-solid fa-pause text-xs';
-        text.textContent = 'إيقاف مؤقت';
-        startAutoPlayTimers();
+        btnIcon.className = "fa-solid fa-pause";
+        btnText.textContent = "إيقاف العرض التلقائي";
+        startAutoPlayLoop();
       } else {
-        icon.className = 'fa-solid fa-play text-xs';
-        text.textContent = 'تشغيل العرض';
-        stopAutoPlayTimers();
-        renderStoryBars();
+        btnIcon.className = "fa-solid fa-play";
+        btnText.textContent = "تشغيل العرض التلقائي";
+        stopAutoPlayLoop();
       }
     }
 
-    function startAutoPlayTimers() {
-      stopAutoPlayTimers();
+    let progressInterval = null;
+    function startAutoPlayLoop() {
       currentProgress = 0;
-      const stepTime = 70;
-      const increment = (stepTime / SLIDE_DURATION) * 100;
+      const intervalMs = 50;
+      const increment = (intervalMs / slideDuration) * 100;
+
+      if (progressInterval) clearInterval(progressInterval);
 
       progressInterval = setInterval(() => {
+        if (!isAutoPlaying) {
+          clearInterval(progressInterval);
+          return;
+        }
         currentProgress += increment;
-        const activeBar = document.getElementById(`story-bar-${currentIndex}`);
-        if (activeBar) {
-          activeBar.style.width = `${Math.min(currentProgress, 100)}%`;
-        }
+        renderStoryBars();
+
         if (currentProgress >= 100) {
-          currentIndex = (currentIndex + 1) % slidesData.length;
           currentProgress = 0;
-          renderStoryBars();
-          renderCityPills();
-          renderActiveSlide();
+          nextSlide();
         }
-      }, stepTime);
+      }, intervalMs);
     }
 
-    function stopAutoPlayTimers() {
+    function stopAutoPlayLoop() {
       if (progressInterval) clearInterval(progressInterval);
-      if (autoPlayTimer) clearTimeout(autoPlayTimer);
+      currentProgress = 0;
+      renderStoryBars();
     }
 
-    // Toggle between Motion Stage & Full 20-Day Table View
-    function toggleFullView() {
-      isFullScheduleOpen = !isFullScheduleOpen;
-      const stageView = document.getElementById('motion-stage-view');
-      const fullView = document.getElementById('full-schedule-view');
-      const btnIcon = document.getElementById('view-toggle-icon');
-      const btnText = document.getElementById('view-toggle-text');
-
-      if (isFullScheduleOpen) {
-        if (isAutoPlaying) toggleAutoPlay();
-        stageView.classList.add('hidden');
-        fullView.classList.remove('hidden');
-        btnIcon.className = 'fa-solid fa-film text-amber-400';
-        btnText.textContent = 'عرض الموشن';
-      } else {
-        fullView.classList.add('hidden');
-        stageView.classList.remove('hidden');
-        btnIcon.className = 'fa-solid fa-table-list text-amber-400';
-        btnText.textContent = 'الجدول الكامل';
+    // Toggle Full Schedule Modal View
+    function toggleFullSchedule() {
+      const modal = document.getElementById('full-schedule-modal');
+      modal.classList.toggle('hidden');
+      if (!modal.classList.contains('hidden') && isAutoPlaying) {
+        toggleAutoPlay();
       }
     }
 
-    // Keyboard Arrow Support for Desktop (Reversed for RTL)
-    function setupKeyboardNavigation() {
-      window.addEventListener('keydown', (e) => {
-        if (isFullScheduleOpen) return;
-        if (e.key === 'ArrowLeft') {
-          nextSlide();
-        } else if (e.key === 'ArrowRight') {
-          prevSlide();
-        }
-      });
+    // Render Full Schedule Cards Grid in Modal
+    function renderFullScheduleModalContent() {
+      const container = document.getElementById('full-schedule-grid');
+      container.innerHTML = slidesData.map((slide, idx) => `
+        <div 
+          onclick="goToSlide(${idx}); toggleFullSchedule();"
+          class="bg-slate-900/90 border border-white/10 hover:border-amber-400/60 rounded-2xl p-4 cursor-pointer transition-all space-y-2 group shadow-lg"
+        >
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded-full bg-red-600 text-white text-[10px] font-extrabold">
+              ${slide.daysBadge}
+            </span>
+            <span class="text-xs text-amber-400 font-bold group-hover:underline">عرض التفاصيل ←</span>
+          </div>
+          <h3 class="text-sm font-extrabold text-white group-hover:text-amber-300 transition-colors line-clamp-1">${slide.title}</h3>
+          <p class="text-xs text-slate-300 line-clamp-2">${slide.subtitle}</p>
+          <div class="pt-2 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400">
+            <span><i class="fa-solid fa-hotel text-amber-400"></i> ${slide.hotelName.split('(')[0]}</span>
+            <span class="text-emerald-400 font-bold">${slide.stayCost.split(':')[1] || slide.stayCost}</span>
+          </div>
+        </div>
+      `).join('');
     }
-
-    window.onload = init;
   </script>
 </body>
 </html>
